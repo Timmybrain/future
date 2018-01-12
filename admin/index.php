@@ -1,0 +1,2 @@
+<?php
+require "dashboard.php";

@@ -1,0 +1,206 @@
+div.ip_container {
+	position: relative;
+	margin-top: 7% !important;
+}
+.form-container, #form-container {
+    width: 600px;
+    margin-left: auto;
+	margin-right: auto;
+	background-color: rebeccapurple; 
+}
+header {
+	text-align: center;
+    font-family: Georgia;
+    height: 100px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(97, 0, 252, 0.95);
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+}
+header h1 {
+	color: white;
+	font-size: 50px;
+	font-weight: bolder;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+header a {
+	text-decoration: none;
+}
+#instruction {
+    font-family: Georgia;
+    font-size: 20px;
+    color: green;
+}
+.form-style-5{
+	max-width: 500px;
+	padding: 10px 20px;
+	background: #f4f7f8;
+	margin: 10px auto;
+	padding: 20px;
+	background: #f4f7f8;
+	border-radius: 8px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.form-style-5 fieldset{
+	border: none;
+}
+.form-style-5 legend {
+	font-size: 1.2em;
+	margin-bottom: 10px;
+}
+.form-style-5 label {
+	display: block;
+	margin-bottom: 8px;
+}
+.form-style-5 input[type="text"],
+.form-style-5 input[type="username"],
+.form-style-5 input[type="password"],
+.form-style-5 input[type="date"],
+.form-style-5 input[type="datetime"],
+.form-style-5 input[type="email"],
+.form-style-5 input[type="number"],
+.form-style-5 input[type="tel"],
+.form-style-5 input[type="search"],
+.form-style-5 input[type="time"],
+.form-style-5 input[type="url"],
+.form-style-5 textarea,
+.form-style-5 select {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	background: rgba(255,255,255,.1);
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	margin: 0;
+	outline: 0;
+	padding: 7px;
+	width: 100%;
+	box-sizing: border-box; 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box; 
+	background-color: #e8eeef;
+	color:#8a97a0;
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	margin-bottom: 30px;
+	
+}
+.form-style-5 input[type="text"]:focus,
+.form-style-5 input[type="date"]:focus,
+.form-style-5 input[type="datetime"]:focus,
+.form-style-5 input[type="email"]:focus,
+.form-style-5 input[type="tel"]:focus,
+.form-style-5 input[type="number"]:focus,
+.form-style-5 input[type="search"]:focus,
+.form-style-5 input[type="time"]:focus,
+.form-style-5 input[type="url"]:focus,
+.form-style-5 textarea:focus,
+.form-style-5 select:focus{
+	background: #d2d9dd;
+}
+.form-style-5 select {
+	-webkit-appearance: menulist-button;
+	height: 35px;
+}
+.form-style-5 .number {
+	background: rgba(97, 0, 252, 0.95);
+	color: #fff;
+	height: 30px;
+	width: 30px;
+	display: inline-block;
+	font-size: 0.8em;
+	margin-right: 4px;
+	line-height: 30px;
+	text-align: center;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+	border-radius: 15px 15px 15px 0px;
+}
+
+.form-style-5 input[type="submit"],
+.form-style-5 input[type="button"]
+{
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	position: relative;
+	display: block;
+	padding: 19px 39px 18px 39px;
+	color: #FFF;
+	margin: 0 auto;
+	background: rgba(105, 62, 173, 0.95);
+	font-size: 18px;
+	text-align: center;
+	font-style: normal;
+	width: 60%;
+	border: 1px solid rgba(97, 0, 252, 0.95);
+	border-width: 1px 1px 3px;
+	margin-bottom: 10px;
+	border-radius: 100px 100px 100px 100px;
+}
+.form-style-5 input[type="submit"]:hover,
+.form-style-5 input[type="button"]:hover
+{
+	background: rgba(97, 0, 252, 0.95);
+}
+
+footer {
+	display: block;
+	background-color: black;
+	color: white;
+	margin-top: 2px;
+	width: 100%;
+}
+
+.copyrights p {
+	padding-top: 10px;
+	height: 30px;
+	text-align: center;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-style: oblique;
+	font-size: 14px;
+}
+
+.copyrights a {
+	color: red;
+	text-decoration: none;
+}
+
+.copyrights a:focus {
+	color: greenyellow;
+}
+.notifier {
+	width: 500px;
+	display: block;
+	background-color: #DB3030;
+	color: #EBE7E7;
+	border-radius: 80px 80px 80px 80px;
+}
+.list-group-item{
+	list-style-position: center;
+} 
+.list-group-item {
+	text-decoration: none;
+	list-style-type: none;
+}
+h3>li.list-group-item {
+	color: #72C216
+}
+header>a>button {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 12px;
+	color: white;
+	background-color: #BB0707;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 50px;
+	height: 50px;
+	align-items: right;
+	text-align: center;
+	border-radius: 100px;
+	padding: 0;
+	border: none;
+	box-shadow: -1px 1px grey;
+}
