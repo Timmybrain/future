@@ -1,5 +1,12 @@
 <?php
 $page_title = "Dashboard";
+require "app/app.php";
+$future = new FX\CMS\Future();
+//whether it is admin
+$future->is_admin();
+//remove later to be a function!
+$future->admin_header($page_title);
+//
 require "includes/admin-navmenu.php";
 ?>
 <div class="card-panel">

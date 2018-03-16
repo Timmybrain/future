@@ -2,7 +2,7 @@
 <footer>
     <div class="card-panel footer-copyright center pink white-text">
         <p class="flow-text">&copy; <?= date('Y') ?> 
-        <a class="yellow-text" href="https://www.timmybrain.com">FutureX Media</a>
+        <a class="yellow-text" href="http://www.fxnigeria.com">FutureX Media</a>
         </p>
     </div>  
 </footer>

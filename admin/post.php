@@ -1,11 +1,18 @@
 <?php
+require "app/app.php";
+$future = new FX\CMS\Future();
+//is it admin?
+$future->is_admin();
+//if this is a post request?
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    require_once(__DIR__ . "/config/future.php");
-    (new Future())->save_content();
+    $future->save_content();
     exit;
 }
+//run through the article
 $page_title = "Articles";
-require "includes/admin-header.php";
+//
+$future->admin_header($page_title);
+//
 require "includes/admin-navmenu.php";
 ?>
 <div class="card-panel">
