@@ -515,10 +515,18 @@ class Future {
         <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="{$this->assets}/js/materialize.min.js"></script>
         <script src="{$this->assets}/ckeditor/ckeditor.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!-- bootstrap-css -->
+        <link rel="stylesheet" href="{$this->assets}/css/bootstrap.css">
+        <!-- //bootstrap-css -->
+        <!-- Custom CSS -->
+        <link href="{$this->assets}/css/style.css" rel='stylesheet' type='text/css' />
+        <!-- font CSS -->
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+        <!-- font-awesome icons -->
+        <link rel="stylesheet" href="css/font.css" type="text/css"/>
+        <link href="{$this->assets}/css/font-awesome.css" rel="stylesheet"> 
+        <!-- //font-awesome icons --> 
         <script src="{$this->assets}/summernote/summernote.min.js"></script>
         <script src="{$this->assets}/jquery-ui/jquery-ui.min.js"></script>
         
