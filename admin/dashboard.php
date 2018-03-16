@@ -1,6 +1,5 @@
 <?php
 $page_title = "Dashboard";
-require "includes/admin-header.php";
 require "includes/admin-navmenu.php";
 ?>
 <div class="card-panel">

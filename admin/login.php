@@ -1,5 +1,7 @@
 <?php
 $page_title = "Login";
+require "config/future.php";
+$future = new FX\CMS\Future();
 
 if(!empty($_POST['username']) && !empty($_POST['password'])) {
     $future->admin_authorize();
