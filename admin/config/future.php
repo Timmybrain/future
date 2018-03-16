@@ -1,5 +1,7 @@
 <?php
 //Welcome to Future 0.0.1
+namespace FX\CMS;
+
 class Future {
     const version = "0.0.1";
     public $view;
@@ -75,7 +77,7 @@ class Future {
 
         //constant
         $dbc = mysqli_connect($db_host, $db_user, $db_password, $db_name);
-        $db_conn = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_password);
+        $db_conn = new \PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_password);
 
         return $db_conn;
     }
@@ -269,13 +271,13 @@ class Future {
                 echo "<script>alert('Post Deleted!'); window.history.go(0);</script>";
             }
             else {
-                throw new PDOException("Error Processing Request", 1); 
+                throw new \PDOException("Error Processing Request", 1); 
             }
         }catch(PDOException $e) {
             $db->rollBack();
         }
     }
-
+    //set preference
     function set_preference($preference, $prefer_state, $action)
     {
         $que = ["INSERT INTO `preferences`(`preference`, `prefer_state`) VALUES(:prefer, :prefered)",
@@ -334,7 +336,7 @@ class Future {
         if ($stmt) {
             $stmt->execute(array(':requested' => $requested));
         }
-        $content = $stmt->fetch(PDO::FETCH_OBJ);
+        $content = $stmt->fetch(\PDO::FETCH_OBJ);
 
         if ( !empty($content) && $admin_use) {
             return $content;
@@ -376,7 +378,7 @@ class Future {
             ':id' => $this->e($id)
         ));
         }
-        $author = $stmt->fetch(PDO::FETCH_OBJ);
+        $author = $stmt->fetch(\PDO::FETCH_OBJ);
 
         return $author;
     }
@@ -411,7 +413,7 @@ class Future {
             $stmt->execute($array);
         }
 
-        $contents = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $contents = $stmt->fetchAll(\PDO::FETCH_OBJ);
         return $contents;
     }
     
@@ -455,9 +457,42 @@ class Future {
         return $prefer_state["prefer_state"];
     }
 
-    function set_theme(Type $var = null)
+    function set_theme($theme)
     {
-        # code...
+        if ($this->set_preference('theme',$theme,'change')) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
+
+    function admin_authorize()
+    {
+        $username = $_POST['username'];
+
+        $password = $_POST['password'];
+
+        $redirect = !empty($_POST['redirect_to']) ? $_POST['redirect_to'] : "dashboard.php";
+
+        $sql = "SELECT * FROM authors WHERE author_email = :username OR author_nick = :username AND author_password = SHA(:passkey)";
+
+        $stmt = $this->db()->prepare($sql);
+
+        if ($stmt) {
+            $stmt->execute(array ('username' => $username,':passkey' => $password));
+        }
+
+        $result = $stmt->fetch();
+
+        if ($stmt->rowCount() == 1 && !empty($result) && in_array($username, $result)) {
+            session_start();
+            $_SESSION['username'] = $result['author_nick'];
+            $_SESSION['author_data'] = $result;
+
+            header("Location: $redirect");
+        }
+    }
+
 
 }

@@ -2,7 +2,7 @@
 //import of the Future Class
 require str_replace("includes", "", __DIR__) . "config/future.php";
 //Instant of Future
-$future = new Future();
+$future = new FX\CMS\Future();
 $assets = $future->assets;
 //the page title manipulator
 $page_title = (isset($page_title)) ? $page_title : "Hello Timmy";

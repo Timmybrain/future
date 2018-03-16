@@ -4,7 +4,7 @@ $path = str_replace("Route", "", __DIR__);
 require ( $path . "admin/config/future.php");
 
 //require "admin/includes/blog-sanitizer.php";
-$future = new Future();
+$future = new FX\CMS\Future();
 
 //$path = str_replace("\\", "/", $path);
 $theme = $future->derive('theme');

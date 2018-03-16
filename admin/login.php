@@ -2,9 +2,9 @@
 $page_title = "Login";
 
 if(!empty($_POST['username']) && !empty($_POST['password'])) {
-    require "includes/admin-authorized.php";
+    $future->admin_authorize();
 }
-require "includes/admin-header.php";
+$future->admin_header($page_title);
 ?>
 
 <style>
