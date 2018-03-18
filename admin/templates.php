@@ -7,7 +7,7 @@ require "includes/admin-navmenu.php";
 
     <div class="row">   
         <div class="col s2 m2 l2 sidebar">
-            <?php require "includes/admin-sidebar.php"; ?>
+            <?= $future->admin_sidebar($page_title);?>
         </div>
 
         <div class="col s10 m10 l10"></div>

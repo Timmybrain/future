@@ -6,7 +6,7 @@ $future = new FX\CMS\Future();
 if(!empty($_POST['username']) && !empty($_POST['password'])) {
     $future->admin_authorize();
 }
-$future->admin_header($page_title);
+$future->public_header($page_title);
 ?>
 <body class="signup-body">
 		<div class="agile-signup">	
@@ -15,9 +15,9 @@ $future->admin_header($page_title);
 				<div class="grids-heading gallery-heading signup-heading">
 					<h2>Login</h2>
 				</div>
-				<form action="." method="post">
-					<input type="text" name="username" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}">
-					<input type="password" name="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+				<form action="./login.php" method="post" autocomplete="on">
+					<input type="text" name="username" value="Username">
+					<input type="password" name="password" value="Password">
 					<input type="submit" class="register" value="Login">
 				</form>
 				<div class="signin-text">
@@ -38,12 +38,12 @@ $future->admin_header($page_title);
 						<li><a href="#" class="twitter dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
 					</ul>
 				</div>
-				<a href="index.html">Back To Home</a>
+				<a href="/">Back To Home</a>
 			</div>
 			
 			<!-- footer -->
 			<div class="copyright">
-				<p>© <?=date('Y')?> FutureX Media All Rights Reserved</p>
+				<p>© <?=date('Y')?> FutureX Media Inc. All Rights Reserved</p>
 			</div>
 			<!-- //footer -->
 			

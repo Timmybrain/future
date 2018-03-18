@@ -186,6 +186,82 @@ class Future {
             return $result;
         }
     }
+    function admin_sidebar($page_title)
+    {
+        $sidebar_menus = array(
+        array(
+            'display' => 'Dashboard',
+            'script' => 'dashboard.php',
+            'icon' => 'fa fa-home nav_icon'
+        ),
+
+        array(
+            'display' => 'Articles',
+            'script' => 'post.php',
+            'icon' => 'fa fa-file-text-o nav_icon',
+        ),
+
+        array(
+            'display' => 'Comments',
+            'script' => 'comments.php',
+            'icon' => 'fa fa-comment nav_icon'
+        ),
+        array(
+            'display' => 'Media',
+            'script' => 'media.php',
+            'icon' => 'fa fa-image nav_icon'
+        ),
+        array(
+            'display' => 'Templates',
+            'script' => 'templates.php',
+            'icon' => 'fa fa-columns nav_icon'
+        ),
+        array(
+            'display' => 'Plugins',
+            'script' => 'plugins.php',
+            'icon' => 'fa fa-plug nav_icon'
+        ),
+
+        array(
+            'display' => 'Settings',
+            'script' => 'settings.php',
+            'icon' => 'fa fa-cog nav_icon'
+        )
+    );
+
+    //some manipulations to make adding more menu possible
+    echo '<nav class="main-menu">
+            <ul>
+        ';
+
+    foreach ($sidebar_menus as $menu) {
+        echo 
+        "<li " . ( ($page_title == $menu['display']) ? 'class="active"' : ''). ">" .
+        
+        "
+			<a href=\"./{$menu['script']}\">
+                <i class=\"{$menu['icon']}\"></i>
+                <span class=\"nav-text\">
+                    {$menu['display']}
+                </span>
+			</a>
+        </li>
+        ";
+    }
+    echo '
+            </ul>
+        </nav>';
+
+    }
+    function count_unread_comments(Type $var = null)
+    {
+        # code...
+    }
+
+    function total_comments(Type $var = null)
+    {
+        
+    }
 
     private function set_traffic($requested)
     {
@@ -494,7 +570,7 @@ class Future {
         }
     }
 
-    function admin_header($page_title = "Hello Future")
+    function public_header($page_title = "Hello Future", $meta="CMS")
     {
         $head = <<<EOD
     <!DOCTYPE html>
@@ -503,34 +579,86 @@ class Future {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="{$this->assets}/css/materialize.min.css">
         <link rel="stylesheet" type="text/css" href="{$this->assets}/css/single.min.css">
         <link rel="stylesheet" href="{$this->assets}/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="{$this->assets}/jquery-ui/jquery-ui.min.css">
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-        <link href="{$this->assets}/summernote/summernote.css" rel="stylesheet">
-        <title>$page_title</title>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="{$this->assets}/js/materialize.min.js"></script>
-        <script src="{$this->assets}/ckeditor/ckeditor.js"></script>
-        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <link href="{$this->assets}/css/font-awesome.css" rel="stylesheet">
         <!-- bootstrap-css -->
         <link rel="stylesheet" href="{$this->assets}/css/bootstrap.css">
         <!-- //bootstrap-css -->
         <!-- Custom CSS -->
         <link href="{$this->assets}/css/style.css" rel='stylesheet' type='text/css' />
         <!-- font CSS -->
-        <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
         <!-- font-awesome icons -->
-        <link rel="stylesheet" href="css/font.css" type="text/css"/>
-        <link href="{$this->assets}/css/font-awesome.css" rel="stylesheet"> 
+        <link rel="stylesheet" href="{$this->assets}css/font.css" type="text/css"/>
+        <title>$page_title</title>
+        <script src="{$this->assets}/js/materialize.min.js"></script>
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'> 
         <!-- //font-awesome icons --> 
-        <script src="{$this->assets}/summernote/summernote.min.js"></script>
         <script src="{$this->assets}/jquery-ui/jquery-ui.min.js"></script>
-        
+        <script src="{$this->assets}/js/jquery2.0.3.min.js"></script>
     </head>
+EOD;
+    echo $head;
+}
+    function admin_head($page_title = "Hello Future")
+    {
+        $head = <<<EOD
+    <!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<head>
+<title>$page_title</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Future - World Class Content Management System for now and future." />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- bootstrap-css -->
+<link rel="stylesheet" href="{$this->assets}/css/bootstrap.css">
+<!-- //bootstrap-css -->
+<!-- Custom CSS -->
+<link href="{$this->assets}/css/style.css" rel='stylesheet' type='text/css' />
+<!-- font CSS -->
+<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<!-- font-awesome icons -->
+<link rel="stylesheet" href="{$this->assets}/css/font.css" type="text/css"/>
+<link href="{$this->assets}/css/font-awesome.css" rel="stylesheet"> 
+<!-- //font-awesome icons -->
+<script src="{$this->assets}/js/jquery2.0.3.min.js"></script>
+<script src="{$this->assets}/js/modernizr.js"></script>
+<script src="{$this->assets}/js/jquery.cookie.js"></script>
+<script src="{$this->assets}/js/screenfull.js"></script>
+		<script>
+		$(function () {
+			$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+
+			if (!screenfull.enabled) {
+				return false;
+			}
+
+			
+
+			$('#toggle').click(function () {
+				screenfull.toggle($('#container')[0]);
+			});	
+		});
+		</script>
+<!-- charts -->
+<script src="{$this->assets}/js/raphael-min.js"></script>
+<script src="{$this->assets}/js/morris.js"></script>
+<link rel="stylesheet" href="{$this->assets}/css/morris.css">
+<!-- //charts -->
+<!--skycons-icons-->
+<script src="{$this->assets}/js/skycons.js"></script>
+<!--//skycons-icons-->
+</head>
+
 EOD;
     echo $head;
     }

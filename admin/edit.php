@@ -21,7 +21,7 @@ require "includes/admin-navmenu.php";
     <div class="row"> 
         <!-- This is the sidebar-->  
         <div class="col s2 m2 l2 sidebar">
-            <?php require "includes/admin-sidebar.php"; ?>
+            <?= $future->admin_sidebar($page_title);?>
         </div>
 
         <!--The main panel satrts from here.. -->

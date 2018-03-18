@@ -11,15 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 //run through the article
 $page_title = "Articles";
 //
-$future->admin_header($page_title);
+$future->admin_head($page_title);
 //
-require "includes/admin-navmenu.php";
 ?>
 <div class="card-panel">
     <div class="row"> 
         <!-- This is the sidebar-->  
         <div class="col s2 m2 l2 sidebar">
-            <?php require "includes/admin-sidebar.php"; ?>
+            <?= $future->admin_sidebar($page_title);?>
         </div>
 
         <!--The main panel starts from here.. -->
