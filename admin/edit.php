@@ -1,6 +1,8 @@
 <?php
 $page_title = "Editor";
-require "includes/admin-header.php";
+$future = new FX\CMS\Future();
+$future->admin_head($page_title);
+
 if (!empty($_GET['post'])) {
     $editable = $_GET['post'];
 
