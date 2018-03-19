@@ -1,7 +1,7 @@
 <?php
 $page_title = "Dashboard";
+//import future
 require "app/app.php";
-$future = new FX\CMS\Future();
 //whether it is admin
 $future->is_admin();
 //remove later to be a function!

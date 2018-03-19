@@ -1,7 +1,7 @@
 <?php
 $page_title = "Login";
+//import future
 require "app/app.php";
-$future = new FX\CMS\Future();
 
 if(!empty($_POST['username']) && !empty($_POST['password'])) {
     $future->admin_authorize();

@@ -603,15 +603,9 @@ class Future {
 EOD;
     echo $head;
 }
-    function admin_head($page_title = "Hello Future")
+    function admin_html_head($page_title = "Hello Future")
     {
         $head = <<<EOD
-    <!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <head>
 <title>$page_title</title>
@@ -664,3 +658,5 @@ EOD;
     }
 
 }
+//single instance philosophy
+$future = new Future();
