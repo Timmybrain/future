@@ -1,6 +1,5 @@
 <?php
 require "app/app.php";
-$future = new FX\CMS\Future();
 //is it admin?
 $future->is_admin();
 //if this is a post request?
@@ -10,24 +9,145 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 }
 //run through the article
 $page_title = "Articles";
-//
 $future->admin_html_head($page_title);
-//
-?>
-<div class="card-panel">
-    <div class="row"> 
-        <!-- This is the sidebar-->  
-        <div class="col s2 m2 l2 sidebar">
-            <?= $future->admin_sidebar($page_title);?>
-        </div>
+$future->admin_sidebar($page_title);
+$future->admin_nav_section();
 
-        <!--The main panel starts from here.. -->
-        <div class="col s10 m10 l10">
-            <?php require __DIR__ . "/controllers/postController.php"; ?>
-        </div>
-    </div>
-</div>
+$filter = !empty($_GET['sort']) ? $_GET['sort'] : "";
 
-<?php 
-require "includes/blog-footer.php" 
+if (!empty($filter) && $filter != "") {
+    $sql = "SELECT * FROM contents WHERE post_status = :filtered LIMIT 5";
+}
+else {
+    $sql = "SELECT * FROM contents";
+}
+
+$stmt = $future->db()->prepare($sql);
+
+if ($stmt) {
+    $stmt->execute(array(':filtered' => $filter));
+}
+
+$articles = $stmt->fetchAll();
+
+$total = " ( " .count($articles) . " )";
+
+$all = $pub = $dft = $trash = "";
+
+switch ($filter) {
+    case 'published':
+    $pub = $total;
+        break;
+
+    case 'draft':
+        $dft = $total;
+        break;
+
+    case 'trashed':
+        $trash = $total;
+        break;
+
+    default:
+        $all = $total;
+        break;
+}
+if(!empty($_GET['p']) && !empty($_GET['action'])) {
+    $post = $_GET['p'];
+    $action = $_GET['action'];
+
+    if ($action == 'trash') {
+        $future->set_content($post, "trashed");
+    }
+
+    elseif ($action == 'unpublish') {
+        $future->set_content($post, "draft");
+    }
+    elseif ($action == "delete") {
+        $future->del_content($_GET['p']);
+    }
+    elseif ($action === 'edit') {
+        header("Location: edit.php?post=$post");
+        exit;
+    }
+    else {
+        $future->set_content($post, $action);
+    }
+
+    
+}
 ?>
+		<div class="main-grid">
+			<div class="agile-grids">	
+				<div class="progressbar-heading grids-heading">
+						<h2><?=$page_title?></h2>
+					</div>
+
+				<!-- menu -->
+				<div class="banner">
+                    <div class="row">
+                        <span class="col-md-2"> <a type="button" class="btn btn-primary btn-lg" href="edit.php">Add New</a></span>
+                        <a class="col-md-2" href="?">All <?= $all ?></a>
+                        <a class="col-md-2" href="?sort=published">Published <?= $pub ?></a>
+                        <a class="col-md-2" href="?sort=draft">Draft <?= $dft ?></a>
+                        <a class="col-md-2" href="?sort=trashed">Trash <?= $trash ?></a>
+                    </div>
+                </div>
+                
+				<div class="blank">
+					<div class="blank-page">
+                            <?php
+                            foreach ($articles as $article) {
+                                if ($article['post_status'] == "published") {
+                                    $last_action = "unpublish";
+                                }
+                                elseif ($article['post_status'] == "trashed" && $filter == "trashed") {
+                                    $last_action = "delete";
+                                }
+                                else {
+                                    $last_action = "published";
+                                }
+
+                                if ($article['post_status'] == "trashed") {
+                                    $trash = "<i class='fa fa-send green-text'></i> <a class='green-text' href='?p=". $article['post_id'] .
+                                    "&amp;action=published'>restore</a>";
+                                }
+                                else {
+                                    $trash = "<i class='fa fa-remove text-danger'></i> <a class='text-danger' href='?p=" . $article['post_id']
+                                    . "&amp;action=trash'>trash</a>";
+                                }
+                                $edit  = "?p=" . $article['post_id']. "&amp;action=edit";
+                                $last  = "?p=" .$article['post_id'] . "&amp;action=" . $last_action;
+                                $view = $future->get_traffic($article['post_url']);
+                                ?>
+                                <div class="row mb40">
+                                    <div class="col-md-4">
+                                        <input type="checkbox" name="post_id" value="<?= $article['post_id']; ?>">
+                                            <span> <?= $article['post_title'] ?></a></span>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <i class="fa fa-eye"></i><a href="../<?=$article['post_url']?>"target="_blank"> view (<?=$view?>)</a> &nbsp;
+                                        <i class="fa fa-edit"></i> <a href="<?= $edit ?>"> edit</a> &nbsp;
+                                        <?= $trash ?> &nbsp;
+                                        <i class="fa fa-live"></i> <a href="<?= $last ?>"><?= $last_action ?> </a>
+                                    </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+					</div>
+			   </div>
+			</div>
+		</div>
+                        </div>
+                        </div>
+                        <div class="clearfix"></div>
+		<!-- footer -->
+		<div class="footer">
+			<p><?=$future->footer_credit()?></p>
+		</div>
+		<!-- //footer -->
+	</section>
+	<script src="<?=$future->assets?>/js/bootstrap.js"></script>
+	<script src="<?=$future->assets?>/js/proton.js"></script>
+</body>
+</html>
