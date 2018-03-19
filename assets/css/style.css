@@ -302,7 +302,8 @@ body a:hover{
 		}
 		.no-touch nav.main-menu li:hover>a,nav.main-menu li.active>a{color:#fff;background-color:#00acc1;}
 		.no-touch nav.main-menu li:hover ul,nav.main-menu li.active ul{width:210px}
-		nav.main-menu .nav-icon,
+        nav.main-menu .nav-icon,
+        i.fa.fa-user.nav_icon,
         i.fa.fa-cog.nav_icon,
         i.fa.fa-plug.nav_icon,
 		i.fa.fa-columns.nav_icon,

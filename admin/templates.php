@@ -1,7 +1,9 @@
 <?php
+require "app/app.php";
 $page_title = "Templates";
-require "includes/admin-header.php";
-require "includes/admin-navmenu.php";
+$future->admin_html_head($page_title);
+$future->admin_sidebar($page_title);
+$future->admin_nav_section();
 ?>
 <div class="card-panel">
 

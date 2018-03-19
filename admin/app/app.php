@@ -221,6 +221,12 @@ class Future {
         ),
 
         array(
+            'display' => 'Profile',
+            'script' => 'profile.php',
+            'icon' => 'fa fa-user nav_icon' 
+        ),
+
+        array(
             'display' => 'Settings',
             'script' => 'settings.php',
             'icon' => 'fa fa-cog nav_icon'

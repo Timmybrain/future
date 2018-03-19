@@ -1,31 +1,41 @@
 <?php
+require "app/app.php";
 $page_title = "Settings";
-require "includes/admin-header.php";
-require "includes/admin-navmenu.php";
+$future->admin_html_head($page_title);
+$future->admin_sidebar($page_title);
+$future->admin_nav_section();
 ?>
 
-<div class="card-panel">
+<div class="main-grid">
+			<div class="agile-grids">	
+				<div class="progressbar-heading grids-heading">
+						<h2><?=$page_title?></h2>
+					</div>
+				<!-- blank-page -->
+				<div class="banner">
+					<h2>
+						<a href="./">Admin</a>
+						<i class="fa fa-angle-right"></i>
+						<span><?=$page_title?></span>
+					</h2>
+				</div>
+				
+				<div class="blank">
+					<div class="blank-page">
 
-    <div class="row">   
-        <div class="col s2 m2 l2 sidebar">
-            <?= $future->admin_sidebar($page_title);?>
-        </div>
-
-        <div class="col s10 m10 l10"></div>
-            <div class="card-penal">
-                <p class="flow-text">
-                    All the tweaking will go ahead and happen here...
-                </p>
-
-            </div>
-        </div>
-
-</div>
-<?php require "includes/blog-footer.php" ?>
-<script>
-function i() {
-    if (confirm('Do you wish to logout?')) {
-        window.location.href = 'logout.php';   
-    }   
-}
-</script>
+					</div>
+			   </div>
+				<!-- //blank-page -->
+			</div>
+		</div>
+		
+		<!-- footer -->
+		<div class="footer">
+			<p><?=$future->footer_credit()?></p>
+		</div>
+		<!-- //footer -->
+	</section>
+	<script src="<?=$future->assets?>/js/bootstrap.js"></script>
+	<script src="<?=$future->assets?>/js/proton.js"></script>
+</body>
+</html>
