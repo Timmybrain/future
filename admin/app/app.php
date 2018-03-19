@@ -634,6 +634,8 @@ EOD;
 <link href="{$this->assets}/css/font-awesome.css" rel="stylesheet"> 
 <!-- //font-awesome icons -->
 <script src="{$this->assets}/js/jquery2.0.3.min.js"></script>
+<script src="{$this->assets}/summernote/summernote.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{$this->assets}/summernote\summernote.css">
 <script src="{$this->assets}/js/modernizr.js"></script>
 <script src="{$this->assets}/js/jquery.cookie.js"></script>
 <script src="{$this->assets}/js/screenfull.js"></script>
@@ -839,9 +841,9 @@ EOD;
 									</div>	
 								</a>
 								<ul class="dropdown-menu drp-mnu">
-									<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
-									<li> <a href="#"><i class="fa fa-user"></i> Profile</a> </li> 
-									<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+									<li> <a href="./settings.php"><i class="fa fa-cog"></i> Settings</a> </li> 
+									<li> <a href="./profile.php"><i class="fa fa-user"></i> Profile</a> </li> 
+									<li> <a href="./logout.php"><i class="fa fa-sign-out"></i> Logout</a> </li>
 								</ul>
 							</li>
 						</ul>

@@ -16,9 +16,9 @@ $future->admin_nav_section();
 				<!-- blank-page -->
 				<div class="banner">
 					<h2>
-						<a href="index.html">Home</a>
+						<a href="index.html">Admin</a>
 						<i class="fa fa-angle-right"></i>
-						<span>Blank</span>
+						<span><?=$page_title?></span>
 					</h2>
 				</div>
 				

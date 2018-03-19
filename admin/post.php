@@ -115,7 +115,7 @@ if(!empty($_GET['p']) && !empty($_GET['action'])) {
                                     $trash = "<i class='fa fa-remove text-danger'></i> <a class='text-danger' href='?p=" . $article['post_id']
                                     . "&amp;action=trash'>trash</a>";
                                 }
-                                $edit  = "?p=" . $article['post_id']. "&amp;action=edit";
+                                $edit  = "./edit.php?p=" . $article['post_id']. "&amp;action=edit";
                                 $last  = "?p=" .$article['post_id'] . "&amp;action=" . $last_action;
                                 $view = $future->get_traffic($article['post_url']);
                                 ?>

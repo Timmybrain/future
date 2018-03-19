@@ -4,9 +4,11 @@ require "app/app.php";
 $page_title = "Editor";
 //admin <head>
 $future->admin_html_head($page_title);
+$future->admin_sidebar($page_title);
+$future->admin_nav_section();
 
-if (!empty($_GET['post'])) {
-    $editable = $_GET['post'];
+if (!empty($_GET['p'])) {
+    $editable = $_GET['p'];
 
     $sql  = "SELECT * FROM contents WHERE post_id = :editable";
 
@@ -20,57 +22,64 @@ if (!empty($_GET['post'])) {
 }
 //checking the autosave
 ?>
-<div class="card-panel">
-    <div class="row"> 
-        <!-- This is the sidebar-->  
-        <div class="col s2 m2 l2 sidebar">
-            <?= $future->admin_sidebar($page_title);?>
-        </div>
+<div class="main-grid">
+			<div class="agile-grids">	
+				<div class="progressbar-heading grids-heading">
+						<h2><?=$page_title?></h2>
+					</div>
+				<!-- blank-page -->
+				<div class="banner">
+					<h2>
+						<a href="./">Admin</a>
+						<i class="fa fa-angle-right"></i>
+						<span><?=$page_title?></span>
+					</h2>
+				</div>
+                <div class="panel">
+                    <!--The main panel satrts from here..-->
+                    <form id="theForm">
+                        <p id="result"></p>
+                        <div class="form-group">
+                            <h2 class="text-primary">Post Title</h2>
+                            <input class="form-control" type="text" id="post_title" name="post_title" value="<?=@$post['post_title']; ?>" >
+                        </div>
 
-        <!--The main panel satrts from here.. -->
-        <div class="col s10 m10 l10">
-            <div class="row">
-                <!-- The main form for all the writing -->
-                <div class="col s12 m8 l8 hoverable z-depth-3">
-                <p id="result"></p>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 label-control"><?=$future->base_url?>/</label>
+                            <input type="text" class="form-control"  name="post_url" id="post_url" value="">
+                        </div>
 
-                <form id="theForm">
-                    <input type="text" id="post_title" name="post_title" value="<?=@$post['post_title']; ?>" >
-
-                    <div class="col s4 m4 l4">
-                        <?=$future->base_url?>/
-                    </div>
-
-                    <div class="col s8 m8 l8">
-                        <input type="text"  name="post_url" id="post_url" value="">
-                    </div>
-
-                    <div class="col s12">
+                            
                         <textarea id="summernote" name="post_body">
                             <?=@$post['post_body']; ?>
                         </textarea>
-                    </div>
-                    
-                    <input type="hidden" name="post_type" value="post">
-                    <input type="hidden" name="post_meta" value="Getting Started!">
-                    <input type="hidden" name="post_keywords" value="CMS, PHP, jQuery, CSS3, Materialize, Open Source">
-                </form>
-
+                        <input type="hidden" name="post_type" value="post">
+                        <input type="hidden" name="post_meta" value="Getting Started!">
+                        <input type="hidden" name="post_keywords" value="CMS, PHP, jQuery, CSS3, Materialize, Open Source">
+                    </form>
                 </div>
-                <!--The right bar for updating and others -->
-                <div class="col right s12 m4 l4">
-                    <div class="card-panel">
-                        <button class="btn waves-effect blue hoverable" id="saveAsDraft">Draft</button>
-                        <button class="btn red hoverable" id="saveAsPublished">Publish</button>
-
-                    </div>
+                <button class="btn btn-danger" id="saveAsDraft">Draft</button>
+                <button class="btn btn-primary" id="saveAsPublished">Publish</button>
                 </div>
             </div>
             </div>
         </div>
     </div>
-</div>
-<script>
+					</div>
+			   </div>
+				<!-- //blank-page -->
+			</div>
+		</div>
+		
+		<!-- footer -->
+		<div class="footer">
+			<p><?=$future->footer_credit()?></p>
+		</div>
+		<!-- //footer -->
+	</section>
+	<script src="<?=$future->assets?>/js/bootstrap.js"></script>
+    <script src="<?=$future->assets?>/js/proton.js"></script>
+    <script>
 $(document).ready(function() {
     //$('#summernote').summernote();
     $('#summernote').summernote({
@@ -105,10 +114,11 @@ function save_content(postStatus) {
 
     $.post("post.php", field, function (data, status) {
         if (status == "success") {
-            $("#result").text(data);
+            alert(data);
         }
     }, "text");
 }
 
 </script>
-<?php require "includes/blog-footer.php" ?>
+</body>
+</html>
