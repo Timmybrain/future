@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 //run through the article
 $page_title = "Articles";
 //
-$future->admin_head($page_title);
+$future->admin_html_head($page_title);
 //
 ?>
 <div class="card-panel">

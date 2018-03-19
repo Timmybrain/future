@@ -5,7 +5,7 @@ require "app/app.php";
 //whether it is admin
 $future->is_admin();
 //remove later to be a function!
-$future->admin_head($page_title);
+$future->admin_html_head($page_title);
 //
 ?>
 <body class="dashboard-page">
@@ -28,7 +28,7 @@ $future->admin_head($page_title);
 		</nav>
 		<section class="title-bar">
 			<div class="logo">
-				<h1><a href="index.html"><img src="<?=$future->assets?>/images/logo.png" alt="" />Future</a></h1>
+				<h1><a href="index.html"><img src="<?=$future->assets?>/images/logo.png" alt="Future CMS" /><?=$future::name?></a></h1>
 			</div>
 			<div class="full-screen">
 				<section class="full-top">

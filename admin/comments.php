@@ -5,9 +5,17 @@ $page_title = "Comments";
 $future->admin_html_head($page_title);
 $future->admin_sidebar($page_title);
 ?>
-<section class="title-bar">
+<body class="dashboard-page">
+<section class="wrapper scrollable">
+		<nav class="user-menu">
+			<a href="javascript:;" class="main-menu-access">
+			<i class="icon-proton-logo"></i>
+			<i class="icon-reorder"></i>
+			</a>
+		</nav>
+		<section class="title-bar">
 			<div class="logo">
-				<h1><a href="index.html"><img src="images/logo.png" alt="" />Colored</a></h1>
+				<h1><a href="index.html"><img src="<?=$future->assets?>/images/logo.png" alt="" /><?=$future::name?></a></h1>
 			</div>
 			<div class="full-screen">
 				<section class="full-top">
@@ -34,7 +42,7 @@ $future->admin_sidebar($page_title);
 										</div>
 									</li>
 									<li><a href="#">
-									   <div class="user_img"><img src="images/1.png" alt=""></div>
+									   <div class="user_img"><img src="<?=$future->assets?>/images/1.png" alt=""></div>
 									   <div class="notification_desc">
 										<p>Lorem ipsum dolor amet</p>
 										<p><span>1 hour ago</span></p>
@@ -42,7 +50,7 @@ $future->admin_sidebar($page_title);
 									   <div class="clearfix"></div>	
 									</a></li>
 									<li class="odd"><a href="#">
-										<div class="user_img"><img src="images/2.png" alt=""></div>
+										<div class="user_img"><img src="<?=$future->assets?>/images/2.png" alt=""></div>
 									   <div class="notification_desc">
 										<p>Lorem ipsum dolor amet </p>
 										<p><span>1 hour ago</span></p>
@@ -50,7 +58,7 @@ $future->admin_sidebar($page_title);
 									  <div class="clearfix"></div>	
 									</a></li>
 									<li><a href="#">
-									   <div class="user_img"><img src="images/3.png" alt=""></div>
+									   <div class="user_img"><img src="<?=$future->assets?>/images/3.png" alt=""></div>
 									   <div class="notification_desc">
 										<p>Lorem ipsum dolor amet </p>
 										<p><span>1 hour ago</span></p>
@@ -178,6 +186,39 @@ $future->admin_sidebar($page_title);
 				</div>
 			</div>
 			<div class="clearfix"> </div>
-        </section>
-        <?php
-require "includes/admin-comment-home.php";
+		</section>
+		<div class="main-grid">
+			<div class="agile-grids">	
+				<!-- blank-page -->
+				
+				<div class="banner">
+					<h2>
+						<a href="index.html">Home</a>
+						<i class="fa fa-angle-right"></i>
+						<span>Blank</span>
+					</h2>
+				</div>
+				
+				<div class="blank">
+					<div class="blank-page">
+						<p>
+						<?php 
+						require "includes/admin-comment-home.php";
+						?>
+						</p>
+					</div>
+			   </div>
+				<!-- //blank-page -->
+			</div>
+		</div>
+		
+		<!-- footer -->
+		<div class="footer">
+			<p><?=$future->footer_credit()?></p>
+		</div>
+		<!-- //footer -->
+	</section>
+	<script src="<?=$future->assets?>/js/bootstrap.js"></script>
+	<script src="<?=$future->assets?>/js/proton.js"></script>
+</body>
+</html>

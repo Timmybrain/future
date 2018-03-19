@@ -1,7 +1,9 @@
 <?php
+//import future
+require "app/app.php";
 $page_title = "Editor";
-$future = new FX\CMS\Future();
-$future->admin_head($page_title);
+//admin <head>
+$future->admin_html_head($page_title);
 
 if (!empty($_GET['post'])) {
     $editable = $_GET['post'];
@@ -16,7 +18,6 @@ if (!empty($_GET['post'])) {
 
     $post = $stmt->fetch();
 }
-require "includes/admin-navmenu.php";
 //checking the autosave
 ?>
 <div class="card-panel">

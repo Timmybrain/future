@@ -3,6 +3,7 @@
 namespace FX\CMS;
 
 class Future {
+    const name = "FUTURE";
     const version = "0.0.1";
     public $view;
     public $base_url;
@@ -14,9 +15,6 @@ class Future {
     {
         header("X-Powered-By: FutureX Media Nigeria");       
         date_default_timezone_set('Africa/Lagos');
-        //current direcory of the file
-        define('ABSPATH', dirname(dirname(dirname(__FILE__))));
-        define('DEBUG', true, true);
         $this->theme = strtolower($this->derive('theme'));
         $this->view = strtolower($this->derive('theme')) . "/views/" . strtolower($this->derive('theme'));
         $this->base_url = (!empty($_SERVER['REQUEST_SCHEME']) ? $_SERVER['REQUEST_SCHEME'] . ":" : "http:")."//{$_SERVER['HTTP_HOST']}";
@@ -492,7 +490,10 @@ class Future {
         $contents = $stmt->fetchAll(\PDO::FETCH_OBJ);
         return $contents;
     }
-    
+    function footer_credit(Type $var = null)
+    {
+        return "Hello Future " . date('Y');
+    }
     function __call($name, $params)
     {
         if(@$params[1] == null)  {
@@ -508,7 +509,9 @@ class Future {
         elseif ($name == "pull_pages") {
             $r = $this->pull_contents("page", @$param[0], $unpublished);
         }
-
+        else {
+            $r = null;
+        }
         return $r;
     }
 
