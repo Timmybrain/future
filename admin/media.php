@@ -7,35 +7,28 @@ $future->admin_nav_section();
 ?>
 
 <div class="main-grid">
-			<div class="agile-grids">	
-				<div class="progressbar-heading grids-heading">
-						<h2><?=$page_title?></h2>
-					</div>
-				<!-- blank-page -->
-				<div class="banner">
-					<h2>
-						<a href="./">Admin</a>
-						<i class="fa fa-angle-right"></i>
-						<span><?=$page_title?></span>
-					</h2>
-				</div>
-				
-				<div class="blank">
-					<div class="blank-page">
-                        <?php require "includes/media-manager.php" ?>
-					</div>
-			   </div>
-				<!-- //blank-page -->
+	<div class="agile-grids">	
+		<div class="progressbar-heading grids-heading">
+				<h2><?=$page_title?></h2>
 			</div>
+		<!-- blank-page -->
+		<div class="banner">
+			<h2>
+				<a href="./">Admin</a>
+				<i class="fa fa-angle-right"></i>
+				<span><?=$page_title?></span>
+			</h2>
 		</div>
 		
-		<!-- footer -->
-		<div class="footer">
-			<p><?=$future->footer_credit()?></p>
+		<div class="blank">
+			<div class="blank-page">
+				<?php require "includes/media-manager.php";?>
+			</div>
+			
 		</div>
-		<!-- //footer -->
-	</section>
-	<script src="<?=$future->assets?>/js/bootstrap.js"></script>
-	<script src="<?=$future->assets?>/js/proton.js"></script>
-</body>
-</html>
+		<!-- //blank-page -->
+	</div>
+</div>		
+<!-- footer -->		
+<?=$future->footer()?>
+	

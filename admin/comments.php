@@ -36,12 +36,5 @@ $future->admin_nav_section();
 		</div>
 		
 		<!-- footer -->
-		<div class="footer">
-			<p><?=$future->footer_credit()?></p>
-		</div>
-		<!-- //footer -->
-	</section>
-	<script src="<?=$future->assets?>/js/bootstrap.js"></script>
-	<script src="<?=$future->assets?>/js/proton.js"></script>
-</body>
-</html>
+		<?=$future->footer()?>
+		

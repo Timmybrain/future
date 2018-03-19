@@ -496,10 +496,7 @@ class Future {
         $contents = $stmt->fetchAll(\PDO::FETCH_OBJ);
         return $contents;
     }
-    function footer_credit(Type $var = null)
-    {
-        return "Hello Future " . date('Y');
-    }
+
     function __call($name, $params)
     {
         if(@$params[1] == null)  {
@@ -681,7 +678,7 @@ EOD;
 		</nav>
 		<section class="title-bar">
 			<div class="logo">
-				<h1><a href="index.html"><img src="{$this->assets}/images/logo.png" alt="" />Future</a></h1>
+				<h1><a href="./"><img src="{$this->assets}/images/logo.png" alt="" />Future</a></h1>
 			</div>
 			<div class="full-screen">
 				<section class="full-top">
@@ -856,6 +853,22 @@ EOD;
 
 EOD;
         echo $content;
+    }
+
+    function footer()
+    {
+        $footer = <<<EOD
+        <div class="footer">
+			<p>&copy; 2018 <a href="http://fxnigeria.com" title="FutureX Media Inc.">FutureX MEdia Inc.</a></p>
+		</div>
+		<!-- //footer -->
+	</section>
+	<script src="{$this->assets}/js/bootstrap.js"></script>
+	<script src="{$this->assets}/js/proton.js"></script>
+</body>
+</html>
+EOD;
+        return $footer;
     }
 
 }
