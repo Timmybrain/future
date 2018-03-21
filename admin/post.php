@@ -66,7 +66,7 @@ if(!empty($_GET['p']) && !empty($_GET['action'])) {
         $future->del_content($_GET['p']);
     }
     elseif ($action === 'edit') {
-        header("Location: edit.php?post=$post");
+        header("Location: edit.php?p=$post");
         exit;
     }
     else {
@@ -84,14 +84,15 @@ if(!empty($_GET['p']) && !empty($_GET['action'])) {
 
     <!-- menu -->
     <div class="banner">
-    <div class="row">
-    <span class="col-md-2"> <a type="button" class="btn btn-primary btn-lg" href="edit.php">Add New</a></span>
-    <a class="col-md-2" href="?">All <?= $all ?></a>
-    <a class="col-md-2" href="?sort=published">Published <?= $pub ?></a>
-    <a class="col-md-2" href="?sort=draft">Draft <?= $dft ?></a>
-    <a class="col-md-2" href="?sort=trashed">Trash <?= $trash ?></a>
+        <div class="row">
+            <span class="col-sm-2 col-md-2"> <a type="button" class="btn btn-primary btn-lg" href="edit.php">Add New</a></span>
+            <a class="col-sm-2 col-md-2" href="?">All <?= $all ?></a>
+            <a class="col-sm-2 col-md-2" href="?sort=published">Published <?= $pub ?></a>
+            <a class="col-sm-2 col-md-2" href="?sort=draft">Draft <?= $dft ?></a>
+            <a class="col-sm-2 col-md-2" href="?sort=trashed">Trash <?= $trash ?></a>
+        </div>
     </div>
-    </div>
+    <!-- /Menu ends -->
     <div class="blank-page">
     <?php
     foreach ($articles as $article) {

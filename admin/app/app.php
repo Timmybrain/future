@@ -348,7 +348,7 @@ class Future {
             $db = $this->db();
             $db->beginTransaction();
             if ($db->exec("DELETE FROM `contents` WHERE `post_id` = $id")) {
-                echo "<script>alert('Post Deleted!'); window.history.go(0);</script>";
+                echo "<script>alert('Post Deleted!'); window.history.go(-1);</script>";
             }
             else {
                 throw new \PDOException("Error Processing Request", 1); 
