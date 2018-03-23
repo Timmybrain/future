@@ -37,7 +37,7 @@ body a:hover{
 	.panel-group .panel-heading{border-bottom:0;padding:17px 15px}
 	.panel-group .panel-heading a{display:block}
 	.panel-group .panel-collapse{-webkit-box-shadow:0 -3px 0 0 transparent;box-shadow:0 -3px 0 0 transparent}
-	.panel-group .panel-collapse.in{-webkit-box-shadow:0 -3px 0 0 #76b6ec;box-shadow:0 -3px 0 0 #76b6ec}
+	.panel-group .panel-collapse.in{-webkit-box-shadow:0 -3px 0 0 #050505;box-shadow:0 -3px 0 0 #000000}
 	.panel-group .collapsing{height:0;-webkit-transition:all .35s ease;transition:all .35s ease}
 	.panel.panel-block .panel-heading{padding:20px;border:0}
 	.panel.panel-block .panel-heading:before,.panel.panel-block .panel-heading:after{content:" ";display:table}
