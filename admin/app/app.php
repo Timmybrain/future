@@ -619,27 +619,19 @@ EOD;
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Future - World Class Content Management System for now and future." />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- bootstrap-css -->
 <link rel="stylesheet" href="{$this->assets}/css/bootstrap.css">
-<!-- //bootstrap-css -->
-<!-- Custom CSS -->
 <link href="{$this->assets}/css/style.css" rel='stylesheet' type='text/css' />
-<!-- font CSS -->
 <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-<!-- font-awesome icons -->
 <link rel="stylesheet" href="{$this->assets}/css/font.css" type="text/css"/>
-<link href="{$this->assets}/css/font-awesome.css" rel="stylesheet"> 
-<!-- //font-awesome icons -->
+<link href="{$this->assets}/css/font-awesome.css" rel="stylesheet">
 <script src="{$this->assets}/js/jquery2.0.3.min.js"></script>
 <script src="{$this->assets}/js/modernizr.js"></script>
 <script src="{$this->assets}/ckeditor/ckeditor.js"></script>
 <script src="{$this->assets}/js/jquery.cookie.js"></script>
 <script src="{$this->assets}/js/screenfull.js"></script>
-<script src="{$this->assets}/js/mdb.min.js"></script>
-<script src="{$this->assets}/js/popper.min.js"></script>
-<script src="{$this->assets}/scss/mdb.scss"></script>
-<!-- Material Design Bootstrap -->
-<link href="{$this->assets}/css/mdb.min.css" rel="stylesheet">
+<script src="{$this->assets}/js/bootstrap-toggle.min.js"></script>
+<link href="{$this->assets}/css/bootstrap-toggle.css" rel="stylesheet" />
+<link rel="stylesheet" href="{$this->assets}/css/colored-style.css" />
 		<script>
 		$(function () {
 			$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);

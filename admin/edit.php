@@ -48,26 +48,24 @@ if (!empty($_GET['p'])) {
                             <label for="" class="col-sm-2 label-control"><?=$future->base_url?>/</label>
                             <input type="text" class="form-control"  name="post_url" id="post_url" value="">
                         </div>
-
-                        <textarea name="post_body" id="editor">
-                            <?=@$post['post_body']; ?>
-                        </textarea>
-
-                        <input type="hidden" name="post_type" value="post">
+                        <div class="form-group">
+                            <textarea name="post_body" id="editor">
+                                <?=@$post['post_body']; ?>
+                            </textarea>
+                        </div>
                         <input type="hidden" name="post_meta" value="Getting Started!">
                         <input type="hidden" name="post_keywords" value="CMS, PHP, jQuery, CSS3, Materialize, Open Source">
                     </form>
                 </div>
-
-                <div class="switch">
-                    <label>
-                        Blog
-                        <input type="checkbox" name="" checked="checked" id="">
-                        <span class="lever"></span>
-                        Page
-                    </label>
+                <div class="panel">
+                    <div class="checkbox-inline">
+                        <label>
+                            <input type="checkbox" name="post_type" checked data-toggle="toggle" data-on="Blog" data-off="Page" data-onstyle="success" data-offstyle="danger" >
+                        </label>
+                    </div>
                 </div>
-                
+
+                <div class="clear"></div>
                 <button class="btn btn-danger" id="saveAsDraft">Draft</button>
                 <button class="btn btn-primary" id="saveAsPublished">Publish</button>
                 </div>
