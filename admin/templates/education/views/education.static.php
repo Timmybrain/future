@@ -2,12 +2,11 @@
 <html>
 
 <head>
-	<title></title>
+	<title><?= (isset($page_title) ? $page_title . " | " : "") . $future->derive('site_title'); ?></title>
 	<!--/tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Instruction Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<meta name="keywords" content="Welcome to Education!" />
 	<script type="application/x-javascript">
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -18,11 +17,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		}
 	</script>
 	<!--//tags -->
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-	<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all">
-	<link rel="stylesheet" href="css/owl.theme.css" type="text/css" media="all">
-	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="<?=$future->theme_assets?>/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="<?=$future->theme_assets?>/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="<?=$future->theme_assets?>/css/owl.carousel.css" type="text/css" media="all">
+	<link rel="stylesheet" href="<?=$future->theme_assets?>/css/owl.theme.css" type="text/css" media="all">
+	<link href="<?=$future->theme_assets?>/css/font-awesome.css" rel="stylesheet">
 	<!-- //for bootstrap working -->
 	<link href="//fonts.googleapis.com/css?family=Work+Sans:200,300,400,500,600,700" rel="stylesheet">
 
@@ -35,8 +34,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="agileits_top_menu">
 		<div class="w3l_header_left">
 				<ul>
-					<li><i class="fa fa-phone" aria-hidden="true"></i> +456 123 7890</li>
-					<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:info@example.com">info@example.com</a></li>
+					<li><i class="fa fa-phone" aria-hidden="true"></i> <?=$future->derive('site_mobile')?></li>
+					<li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:<?=$future->derive('site_email')?>"><?=$future->derive('site_email')?></a></li>
 				</ul>
 			</div>
 			<div class="w3l_header_right">
@@ -490,7 +489,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="footer_w3ls">
 		<div class="container">
 					<div class="footer_bottom1">
-						<p>© 2018 Instruction. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+						<p>© <?=date('Y')?> Instruction. All rights reserved | Powered by <a href="http://fxnigeria.com">FutureX Media Inc.</a></p>
 					</div>
 		</div>
 	</div>
@@ -516,18 +515,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 	<!-- js -->
-	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="<?=$future->theme_assets?>/js/jquery-2.1.4.min.js"></script>
 
-	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="<?=$future->theme_assets?>/js/bootstrap.js"></script>
 	<!-- stats -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.countup.js"></script>
+	<script src="<?=$future->theme_assets?>/js/jquery.waypoints.min.js"></script>
+	<script src="<?=$future->theme_assets?>/js/jquery.countup.js"></script>
 	<script>
 		$('.counter').countUp();
 	</script>
 	<!-- //stats -->
 	<!-- owl carousel -->
-	<script src="js/owl.carousel.js"></script>
+	<script src="<?=$future->theme_assets?>/js/owl.carousel.js"></script>
 	<script>
 		$(document).ready(function () {
 			$("#owl-demo").owlCarousel({
