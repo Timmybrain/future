@@ -294,7 +294,7 @@
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										<img src="images/test1.jpg" alt="" />
+										<img src="<?=$future->theme_assets?>/images/test1.jpg" alt="" />
 									</div>
 									<div class="feedback-img-info">
 										<h5>Mary Jane</h5>
@@ -311,7 +311,7 @@
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										<img src="images/test3.jpg" alt="" />
+										<img src="<?=$future->theme_assets?>/images/test3.jpg" alt="" />
 									</div>
 									<div class="feedback-img-info">
 										<h5>Peter</h5>
@@ -328,7 +328,7 @@
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										<img src="images/test2.jpg" alt="" />
+										<img src="<?=$future->theme_assets?>/images/test2.jpg" alt="" />
 									</div>
 									<div class="feedback-img-info">
 										<h5>Steven</h5>
@@ -345,7 +345,7 @@
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										<img src="images/test3.jpg" alt="" />
+										<img src="<?=$future->theme_assets?>/images/test3.jpg" alt="" />
 									</div>
 									<div class="feedback-img-info">
 										<h5>Mary Jane</h5>
@@ -362,7 +362,7 @@
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										<img src="images/test2.jpg" alt="" />
+										<img src="<?=$future->theme_assets?>/images/test2.jpg" alt="" />
 									</div>
 									<div class="feedback-img-info">
 										<h5>Guptill</h5>
@@ -379,7 +379,7 @@
 								</div>
 								<div class="feedback-grids">
 									<div class="feedback-img">
-										<img src="images/test1.jpg" alt="" />
+										<img src="<?=$future->theme_assets?>/images/test1.jpg" alt="" />
 									</div>
 									<div class="feedback-img-info">
 										<h5> Wilson</h5>
@@ -403,7 +403,7 @@
 				<div class="news-w3row"> 
 					<div class="wthree-news-grids">
 						<div class="col-md-5 col-xs-5 datew3-agileits">
-							<img src="images/g7.jpg" class="img-responsive" alt=""/>
+							<img src="<?=$future->theme_assets?>/images/g7.jpg" class="img-responsive" alt=""/>
 						</div>
 						<div class="col-md-7 col-xs-7 datew3-agileits-info ">
 							<h5><a href="#" data-toggle="modal" data-target="#myModal">Sit amet justo vitae</a></h5>
@@ -416,7 +416,7 @@
 					
 					<div class="wthree-news-grids news-grids-mdl">
 						<div class="col-md-5 col-xs-5 datew3-agileits datew3-agileits-fltrt">
-							<img src="images/g10.jpg" class="img-responsive" alt=""/>
+							<img src="<?=$future->theme_assets?>/images/g10.jpg" class="img-responsive" alt=""/>
 						</div>
 						<div class="col-md-7 col-xs-7 datew3-agileits-info datew3-agileits-info-fltlft">
 							<h5><a href="#" data-toggle="modal" data-target="#myModal">Fusce scelerisque</a></h5>
@@ -466,8 +466,8 @@
 				<h3>Contact Info</h3>
 				<ul class="address">
 					<li><i class="fa fa-map-marker" aria-hidden="true"></i>8088 USA, Honey block, <span>New York City.</span></li>
-					<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:info@example.com">info@example.com</a></li>
-					<li><i class="fa fa-phone" aria-hidden="true"></i>+09187 8088 9436</li>
+					<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:<?=$future->derive('site_email')?>"><?=$future->derive('site_email')?></a></li>
+					<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:<?=$future->derive('site_mobile')?>"><?=$future->derive('site_mobile')?></a></li>
 				</ul>
 			</div>
 			<div class="clearfix"> </div>
