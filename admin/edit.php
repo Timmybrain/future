@@ -58,6 +58,16 @@ if (!empty($_GET['p'])) {
                         <input type="hidden" name="post_keywords" value="CMS, PHP, jQuery, CSS3, Materialize, Open Source">
                     </form>
                 </div>
+
+                <div class="switch">
+                    <label>
+                        Blog
+                        <input type="checkbox" name="" checked="checked" id="">
+                        <span class="lever"></span>
+                        Page
+                    </label>
+                </div>
+                
                 <button class="btn btn-danger" id="saveAsDraft">Draft</button>
                 <button class="btn btn-primary" id="saveAsPublished">Publish</button>
                 </div>
