@@ -49,10 +49,10 @@ if (!empty($_GET['p'])) {
                             <input type="text" class="form-control"  name="post_url" id="post_url" value="">
                         </div>
 
-                            
-                        <textarea id="summernote" name="post_body">
+                        <textarea name="post_body" id="editor">
                             <?=@$post['post_body']; ?>
                         </textarea>
+
                         <input type="hidden" name="post_type" value="post">
                         <input type="hidden" name="post_meta" value="Getting Started!">
                         <input type="hidden" name="post_keywords" value="CMS, PHP, jQuery, CSS3, Materialize, Open Source">
@@ -79,6 +79,14 @@ if (!empty($_GET['p'])) {
 	</section>
 	<script src="<?=$future->assets?>/js/bootstrap.js"></script>
     <script src="<?=$future->assets?>/js/proton.js"></script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+
     <script>
 $(document).ready(function() {
     //$('#summernote').summernote();

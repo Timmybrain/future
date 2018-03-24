@@ -634,6 +634,7 @@ EOD;
 <script src="{$this->assets}/summernote/summernote.min.js"></script>
 <link rel="stylesheet" type="text/css" href="{$this->assets}/summernote\summernote.css">
 <script src="{$this->assets}/js/modernizr.js"></script>
+<script src="{$this->assets}/ckeditor/ckeditor.js"></script>
 <script src="{$this->assets}/js/jquery.cookie.js"></script>
 <script src="{$this->assets}/js/screenfull.js"></script>
 		<script>

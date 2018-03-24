@@ -4672,4 +4672,8 @@ div#vmap {
 		width: 16%;
 	}
 }
+.ck-editor__editable.ck-rounded-corners,
+.ck-rounded-corners .ck-editor__editable {
+    height: 600px;
+}
 /*-- //responsive --*/

@@ -1,10 +1,7 @@
 <?php
 $path = str_replace("Route", "", __DIR__);
 //all we want to do is to manage all request
-require ( $path . "admin/config/future.php");
-
-//require "admin/includes/blog-sanitizer.php";
-$future = new FX\CMS\Future();
+require ( $path . "admin/app/app.php");
 
 //$path = str_replace("\\", "/", $path);
 $theme = $future->derive('theme');
