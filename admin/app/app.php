@@ -62,7 +62,7 @@ class Future {
             # code...
             $db_host = "localhost";
             $db_user = "realtimmybrain";
-            $db_password = "tcvJitBYQKaiea8h";
+            $db_password = "pE89kP9Xn2dG4T65";
             $db_name = "future";
         }
         else {
@@ -594,7 +594,7 @@ class Future {
         <link rel="stylesheet" href="{$this->assets}/css/bootstrap.css">
         <!-- //bootstrap-css -->
         <!-- Custom CSS -->
-        <link href="{$this->assets}/css/style.css" rel='stylesheet' type='text/css' />
+        <link href="{$this->assets}/css/colored-style.css" rel='stylesheet' type='text/css' />
         <!-- font CSS -->
         <!-- font-awesome icons -->
         <link rel="stylesheet" href="{$this->assets}css/font.css" type="text/css"/>
@@ -617,21 +617,23 @@ EOD;
 <title>$page_title</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Future - World Class Content Management System for now and future." />
+<meta name="keywords" content="" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link rel="stylesheet" href="{$this->assets}/css/bootstrap.css">
-<link href="{$this->assets}/css/style.css" rel='stylesheet' type='text/css' />
+<!-- bootstrap-css -->
+<link rel="stylesheet" href="{$this->assets}/colored/css/bootstrap.css">
+<!-- //bootstrap-css -->
+<!-- Custom CSS -->
+<link href="{$this->assets}/colored/css/style.css" rel='stylesheet' type='text/css' />
+<!-- font CSS -->
 <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{$this->assets}/css/font.css" type="text/css"/>
-<link href="{$this->assets}/css/font-awesome.css" rel="stylesheet">
-<script src="{$this->assets}/js/jquery2.0.3.min.js"></script>
-<script src="{$this->assets}/js/modernizr.js"></script>
-<script src="{$this->assets}/ckeditor/ckeditor.js"></script>
-<script src="{$this->assets}/js/jquery.cookie.js"></script>
-<script src="{$this->assets}/js/screenfull.js"></script>
-<script src="{$this->assets}/js/bootstrap-toggle.min.js"></script>
-<link href="{$this->assets}/css/bootstrap-toggle.css" rel="stylesheet" />
-<link rel="stylesheet" href="{$this->assets}/css/colored-style.css" />
+<!-- font-awesome icons -->
+<link rel="stylesheet" href="{$this->assets}/colored/css/font.css" type="text/css"/>
+<link href="{$this->assets}/colored/css/font-awesome.css" rel="stylesheet"> 
+<!-- //font-awesome icons -->
+<script src="{$this->assets}/colored/js/jquery2.0.3.min.js"></script>
+<script src="{$this->assets}/colored/js/modernizr.js"></script>
+<script src="{$this->assets}/colored/js/jquery.cookie.js"></script>
+<script src="{$this->assets}/colored/js/screenfull.js"></script>
 		<script>
 		$(function () {
 			$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
@@ -639,21 +641,18 @@ EOD;
 			if (!screenfull.enabled) {
 				return false;
 			}
-
-			
-
 			$('#toggle').click(function () {
 				screenfull.toggle($('#container')[0]);
 			});	
 		});
 		</script>
 <!-- charts -->
-<script src="{$this->assets}/js/raphael-min.js"></script>
-<script src="{$this->assets}/js/morris.js"></script>
-<link rel="stylesheet" href="{$this->assets}/css/morris.css">
+<script src="{$this->assets}/colored/js/raphael-min.js"></script>
+<script src="{$this->assets}/colored/js/morris.js"></script>
+<link rel="stylesheet" href="{$this->assets}/colored/css/morris.css">
 <!-- //charts -->
 <!--skycons-icons-->
-<script src="{$this->assets}/js/skycons.js"></script>
+<script src="{$this->assets}/colored/js/skycons.js"></script>
 <!--//skycons-icons-->
 </head>
 

@@ -601,7 +601,7 @@ $future->admin_html_head($page_title);
 		</div>
 		<!-- //footer -->
 	</section>
-	<script src="<?=$future->assets?>/js/bootstrap.js"></script>
-	<script src="<?=$future->assets?>/js/proton.js"></script>
+	<script src="<?=$future->assets?>/colored/js/bootstrap.js"></script>
+	<script src="<?=$future->assets?>/colored/js/proton.js"></script>
 </body>
 </html>

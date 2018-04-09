@@ -48,6 +48,6 @@ $future->public_header($page_title);
 			<!-- //footer -->
 			
 		</div>
-	<script src="js/proton.js"></script>
+	<script src="<?=$future->assets?>/js/proton.js"></script>
 </body>
 </html>
