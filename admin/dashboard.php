@@ -190,7 +190,7 @@ $future->admin_html_head($page_title);
 								<ul class="dropdown-menu drp-mnu">
 									<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li> 
 									<li> <a href="./profile.php"><i class="fa fa-user"></i> Profile</a> </li> 
-									<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
+									<li> <a href="./logout.php"><i class="fa fa-sign-out"></i> Logout</a> </li>
 								</ul>
 							</li>
 						</ul>

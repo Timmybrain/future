@@ -1,0 +1,703 @@
+/*
+	[Table of contents]
+
+	* Shortcodes		
+		- Blog Section
+			
+
+	* Responsive
+		- min-width: 1200
+		- min-width: 992
+		- min-width: 768
+		- min-width: 1441 to max-width: 1680
+		- min-width: 1367 to max-width: 1440
+		- min-width: 1200 to max-width: 1366
+		- min-width: 992 to max-width: 1199
+		- min-width: 768 to max-width: 991
+		- max-width: 991
+		- min-width: 768 to max-width: 991
+		- max-width: 767
+		- max-width: 639
+		- max-width: 479
+*/
+
+html[dir="rtl"] .header_s .top-header .top-left p i {
+	margin-left: 9px;
+	margin-right: 0;
+}
+html[dir="rtl"] .top-header .top-left p + p {
+	margin-left: 0;
+	margin-right: 22px;
+}
+html[dir="rtl"] .header_s .ownavigation .navbar-nav { 
+	padding-right: 0;
+}
+html[dir="rtl"] .header_s .ownavigation .submit-btn {
+	float: left;
+}
+html[dir="rtl"] .top-header .top-login {
+	float: left;
+}
+html[dir="rtl"] .top-header .top-login > p > i {
+	margin-left: 10px;
+	margin-right: 0;
+}
+html[dir="rtl"] .top-header .top-left p + p::before {
+	padding-left: 21px;
+	padding-right: 0;
+}
+html[dir="rtl"] .top-header .top-login .lang-dropdown .dropdown-menu {
+	left: 0;
+	right: auto;
+}
+
+html[dir="rtl"] .header_s2 .top-header .top-login {
+	float: right;
+}
+html[dir="rtl"] .header_s2 .search-block {
+	float: left;
+	margin-left: 0;
+	margin-right: 20px;
+}
+html[dir="rtl"] .header_s2 .search-block .input-group .form-control {
+	padding-left: 12px;
+	padding-right: 25px;
+}
+
+/* + Footer */
+/* - Top Footer */
+html[dir="rtl"] .widget-title::before { 
+	left: auto;
+	right: 0;
+}
+html[dir="rtl"] .widget_social ul,
+html[dir="rtl"] .widget_archive ul,
+html[dir="rtl"] .widget_categories ul {
+	padding-right: 0;
+}
+html[dir="rtl"] .widget_social ul li {
+	float: right;
+}
+html[dir="rtl"] .widget_social ul li + li {
+	margin-left: 0;
+	margin-right: 10px;
+}
+html[dir="rtl"] .top-footer .widget_categories > ul li a::before, 
+html[dir="rtl"] .top-footer .widget_link > ul li a::before {
+	float: right;
+	margin-left: 12px;
+	margin-right: 0;
+}
+html[dir="rtl"] .widget_latestposts .latest-content {
+	padding-left: 0;
+	padding-right: 89px;
+}
+html[dir="rtl"] .widget_latestposts .latest-content > a {
+	left: auto;
+	right: 0;
+}
+
+html[dir="rtl"] footer .bottom-footer .ownavigation.navbar .nav { 
+	padding-right: 0;
+}
+
+/* - Section Header */
+html[dir="rtl"] .section-header::before { 
+	left: auto;
+	right: 0;
+}
+
+html[dir="rtl"] .ow-pagination ul {
+	padding-right: 0;
+}
+
+/* - About Section */
+html[dir="rtl"] .about-details-box { 
+	padding-left: 0;
+	padding-right: 100px;
+}
+html[dir="rtl"] .about-details-box  > i {
+	left: auto;
+	right: 0;
+}
+
+html[dir="rtl"] .about-box {
+	padding-left: 0;
+	padding-right: 20px;
+}
+html[dir="rtl"] .about-box > h4 {
+	border-left: none;
+	border-right: 1px solid #b89b5e;
+	padding-left: 0;
+	padding-right: 20px;
+}
+
+/* - Work Section */
+html[dir="rtl"] .work-carousel.owl-theme .owl-controls,
+html[dir="rtl"] .work-carousel.owl-theme .owl-controls .owl-nav .owl-next { 
+	float: right;
+}
+
+/* - Services Section */
+html[dir="rtl"] .services-section .srv-tab {
+	padding-right: 0;
+}
+html[dir="rtl"] .services-content > p {
+	padding-left: 0;
+	padding-right: 28px;
+}
+html[dir="rtl"] .services-content > p::before {
+	left: auto;
+	right: 0;
+}
+html[dir="rtl"] .services-content > a {
+	margin-left: 0;
+	margin-right: 28px;
+}
+html[dir="rtl"] .services-content > a > i {
+	float: right;
+}
+
+/* - Faq and Latest Post Section */
+html[dir="rtl"] .faq-section .panel-heading h4 a {
+	padding-left: 20px;
+	padding-right: 0;
+}
+html[dir="rtl"] .faq-section .panel-heading h4 a::before {
+	left: 0;
+	right: auto;
+}
+html[dir="rtl"] .faq-section .panel-default .panel-collapse .panel-body {
+    padding-left: 0;
+    padding-right: 134px;
+}
+html[dir="rtl"] .faq-section .panel-default .panel-collapse .panel-body > i {
+	left: auto;
+	right: 0;
+}
+html[dir="rtl"] .latest-post-section .nav-tabs {
+	padding-right: 0;
+}
+html[dir="rtl"] .latest-post-section .nav-tabs > li {
+	float: right;
+}
+html[dir="rtl"] .latest-post-section .latest-post {
+	padding-left: 0;
+	padding-right: 170px;
+}
+html[dir="rtl"] .latest-post-section .latest-post > a {
+	left: auto;
+	right: 0;
+}
+
+/* - Team Member */
+html[dir="rtl"] .team-box > ul {
+	padding-right: 0;
+}
+
+html[dir="rtl"] .testimonial-box > ul {
+	padding-right: 0;
+}
+
+html[dir="rtl"] .our-practice-section .view-more > a > i {
+	margin-left: 0;
+	margin-right: 25px;
+}
+
+html[dir="rtl"] .book-appointment-form form .form-group .date span {
+	left: 20px;
+	right: auto;
+}
+html[dir="rtl"] .book-appointment-form form .form-group .bootstrap-select.btn-group .dropdown-toggle .filter-option {
+	text-align: right;
+}
+html[dir="rtl"] .book-appointment-form form .form-group .bootstrap-select.btn-group .dropdown-toggle .caret {
+	left: 30px;
+	right: auto;
+}
+
+html[dir="rtl"] .type-post .entry-content > a > i {
+	float: right;
+	margin-top: 3px;
+}
+
+html[dir="rtl"] .service-single-carousel.owl-theme .owl-controls .owl-nav {
+	display: inline-block;
+}
+html[dir="rtl"] .service-single-carousel.owl-theme .owl-controls .owl-nav .owl-prev {
+	float: left;
+}
+
+html[dir="rtl"] .widget_practice > ul {
+	padding-right: 0;
+}
+html[dir="rtl"] .widget_practice > ul > li > a::before {
+	float: right;
+	margin-right: 0;
+	margin-left: 14px;
+}
+
+html[dir="rtl"] .widget_brochures > a {
+	padding-left: 20px;
+	padding-right: 0;
+}
+html[dir="rtl"] .widget_brochures > a > i {
+	margin-left: 20px;
+	margin-right: 0;
+}
+html[dir="rtl"] .widget_brochures > a::before {
+	left: 0;
+	right: 40px;
+}
+
+html[dir="rtl"] .widget_brochures > a::after {
+	left: 24px;
+	right: auto;
+}
+
+/* - Blog */
+html[dir="rtl"] .type-post .entry-header > .post-date {
+	left: auto;
+	right: 20px;
+}
+html[dir="rtl"] .widget-area .widget_archive ul li a::before, 
+html[dir="rtl"] .widget-area .widget_categories ul li a::before {
+	float: right;
+	padding-right: 0;
+	padding-left: 10px;
+}
+html[dir="rtl"] .widget-area .tagcloud a {
+	margin-left: 7px;
+	margin-right: 0;
+}
+
+html[dir="rtl"] .type-post .entry-content blockquote {
+	padding-left: 0;
+	padding-right: 50px;
+}
+html[dir="rtl"] .type-post .entry-content blockquote > p {
+	padding-left: 0;
+	padding-right: 65px;
+}
+html[dir="rtl"] .type-post .entry-content blockquote > p::before {
+	left: auto;
+	right: 0;
+}
+html[dir="rtl"] .type-post .entry-content blockquote > p::after {
+	left: auto;
+	right: 10px;
+}
+html[dir="rtl"] .about-author {
+	padding-left: 40px;
+	padding-right: 140px;
+}
+html[dir="rtl"] .about-author i {
+	left: auto;
+	right: 30px;
+}
+html[dir="rtl"] .social-share > ul {
+	padding-right: 0;
+	margin-left: 0;
+	margin-right: 25px;
+}
+html[dir="rtl"] .social-share > ul > li + li {
+	margin-left: 0;
+	margin-right: 7px;
+}
+html[dir="rtl"] .social-share > .post-control,
+html[dir="rtl"] .social-share > .post-control > a {
+	float: left;
+}
+html[dir="rtl"] .social-share > .post-control > a:first-child {
+	margin-left: 0;
+}
+html[dir="rtl"] .social-share > .post-control > a:last-child {
+	margin-right: 0;
+}
+html[dir="rtl"] .social-share > .post-control > a > i {
+	float: left;
+	margin-top: 5px;
+}
+html[dir="rtl"] .social-share > .post-control > a:last-child > i {
+	float: right;
+}
+
+html[dir="rtl"] .comments-title::before {
+	left: auto;
+	right: 0;
+}
+html[dir="rtl"] .comment-list,
+html[dir="rtl"] .comment-list .children {
+	padding-right: 0;
+}
+html[dir="rtl"] .comment-body {
+	padding-left: 0;
+	padding-right: 104px;
+}
+html[dir="rtl"] .comment-author .avatar {
+	left: auto;
+	right: 0;
+	margin-right: 0;
+}
+html[dir="rtl"] .comment-metadata {
+	float: left;
+}
+html[dir="rtl"] .comment-list .children {
+	margin-left: 0;
+	margin-right: 15px;
+	padding-left: 0;
+	padding-right: 15px;
+}
+html[dir="rtl"] .comment-list .children > li {
+	padding-left: 0;
+	padding-right: 0.5em;
+}
+html[dir="rtl"] .comment-reply-title::before {
+	right: 0;
+}
+html[dir="rtl"] .contact-details,
+html[dir="rtl"] .appointment-section .sidebr > div {
+	border-left: none;
+	border-right: 4px solid #213455;
+}
+html[dir="rtl"] .appointment-section .sidebr > div > a i {
+	float: right;
+	margin-top: 3px;
+}
+
+/*------------------------------------------------------------------
+	- Responsive
+-------------------------------------------------------------------*/
+
+
+/* - min-width: 1200px */
+@media (min-width: 1200px) {
+	html[dir="rtl"] .newsletter-section .newsletter-box > p {
+		margin-left: 0;
+		margin-right: 67px;
+	}
+	html[dir="rtl"] .newsletter-section .newsletter-box > form {
+		float: left;
+	}
+	
+	/* - Widget : Categories */
+	html[dir="rtl"] .top-footer .widget_categories,
+	html[dir="rtl"] .top-footer .widget_link {
+		padding-left: 0;
+		padding-right: 40px;
+	}
+	
+	/* - Services Single */
+	html[dir="rtl"] .service-single .row {
+		margin-right: 0;
+		margin-left: -15px;
+	}
+}
+
+/* - min-width: 992 */
+@media (min-width: 992px) {
+	html[dir="rtl"] .header_s .ownavigation .submit-btn {
+		margin-left: 0;
+		margin-right: 25px;
+	}
+	html[dir="rtl"] .header_s .ownavigation .navbar-header {
+		float: right;
+	}
+	html[dir="rtl"] .header_s .ownavigation  .navbar-right {
+		float: left !important;
+		margin-right: 0;
+		margin-left: -15px;
+	}
+	html[dir="rtl"] .header_s .ownavigation.navbar-fixed-top  .navbar-right {
+		margin-left: 0;
+	}
+	html[dir="rtl"] .header_s1 .ownavigation .navbar-nav > li {
+		float: right;
+	}
+	html[dir="rtl"] .header_s .ownavigation .navbar-nav > li > a::before {
+		right: auto;
+		left: 0;
+	}
+	html[dir="rtl"] .ownavigation ul > li > .dropdown-menu {
+		right: 0; 
+		text-align: right;
+	}
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child > .dropdown-menu,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) > .dropdown-menu {
+		left: 0; 
+	} 
+	html[dir="rtl"] .ownavigation .navbar-nav > li:first-child {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	
+	html[dir="rtl"] .ownavigation ul > li > .dropdown-menu,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul ul ul ul ul ul ul ul	{
+		left: auto;
+	}
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul ul ul ul ul ul ul ul {
+		right: 100%;
+	}
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul ul ul ul ul ul ul {
+		left: 100%;
+	}
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation ul > li .dropdown-menu ul ul ul ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child > .dropdown-menu,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:last-child .dropdown-menu ul ul ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) > .dropdown-menu,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul ul ul ul ul,
+	html[dir="rtl"] .ownavigation .navbar-collapse > ul > li:nth-last-child(2) .dropdown-menu ul ul ul ul ul ul ul ul ul {
+		right: auto;
+	}
+	
+	html[dir="rtl"] .header_s2 .ownavigation .navbar-nav > li {
+		float: right;
+	}
+	
+	/* - Footer */
+	html[dir="rtl"] .bottom-footer .ownavigation .navbar-nav > li {
+		float: right;
+	}
+	html[dir="rtl"] .bottom-footer .ownavigation .navbar-nav > li:first-child {
+		margin-left: 20px;
+	}
+	html[dir="rtl"] footer .bottom-footer .ownavigation.navbar .navbar-nav > li:last-of-type {
+		margin-right: 20px;
+		margin-left: 0;
+	}
+	
+}
+
+/* - min-width: 768 */
+@media (min-width: 768px) {
+	/* + Header */
+	html[dir="rtl"] .top-header .top-left {
+		float: right;
+	}
+	html[dir="rtl"] .top-header .top-social { 
+		float: left;
+	}
+}
+
+/* - max-width: 1366 */
+@media (max-width: 1439px) {
+	/* - Features Section */
+	html[dir="rtl"] .feature-carousel.owl-theme .owl-controls .owl-nav [class*="owl-"]::before {
+		content: "\24"; 
+	}
+	html[dir="rtl"] .feature-carousel.owl-theme .owl-controls .owl-nav .owl-next::before {
+		content: "\23";
+	}
+}
+
+/* - max-width: 1365 */
+@media (max-width: 1365px) {
+	html[dir="rtl"] .client-carousel.owl-theme .owl-controls .owl-nav [class*="owl-"]::before {
+		content: "\f105";
+	}
+	html[dir="rtl"] .client-carousel.owl-theme .owl-controls .owl-nav .owl-next::before {
+		content: "\f104";
+	}
+}
+
+/* - max-width: 1200px */
+@media (max-width: 1200px) {
+	
+}
+
+/* - min-width: 992 to max-width: 1199 */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {	
+	html[dir="rtl"] .social-share > .post-control {
+		float: none;
+		width: auto;
+	}
+	html[dir="rtl"] .social-share > .post-control,  
+	html[dir="rtl"] .social-share > .post-control > a {
+		display: inline-block;
+	}
+	html[dir="rtl"] .comment-list .children {
+		margin-right: 0;
+	} 
+}
+
+/* - max-width: 991 */
+@media (max-width: 991px) {
+	html[dir="rtl"] .top-header .top-menu[class*="col-md-"] a i {
+		margin-left: 0;
+	}
+	html[dir="rtl"] .top-header .top-menu ul, 
+	html[dir="rtl"] .top-header .top-social ul {
+		padding-right: 0;
+	}
+	
+	html[dir="rtl"] .ownavigation .navbar-header {
+		float: none;
+	}
+	html[dir="rtl"] .ownavigation .navbar-header .navbar-brand {
+		float: right;
+	}
+	html[dir="rtl"] .ownavigation .navbar-toggle {
+		float: left;
+	}
+	html[dir="rtl"] .ownavigation #loginpanel {
+		right: auto;
+		left: 65px;
+	}
+	html[dir="rtl"] .ownavigation #slideit, 
+	html[dir="rtl"] .ownavigation #closeit {
+		right: 0;
+	}
+	html[dir="rtl"] .ownavigation .ddl-switch {
+		right: auto;
+		left: 0;
+	}
+	html[dir="rtl"] .header_s .submit-btn {
+		right: auto;
+		left: 103px;
+	}
+	/* - Nav Dropdown */
+	html[dir="rtl"] .ownavigation .dropdown-menu {
+		float: right;
+		padding-left: 0;
+		padding-right: 10px;
+		text-align: right;
+	}	
+	
+	html[dir="rtl"] footer .bottom-footer .ownavigation .navbar-toggle {
+		float: none;
+	}
+	html[dir="rtl"] .social-share > ul {
+		width: 100%;
+		margin-right: 0;
+	}
+	html[dir="rtl"] .social-share > .post-control {
+		float: none;
+		width: auto;
+	}
+	html[dir="rtl"] .social-share > .post-control,  
+	html[dir="rtl"] .social-share > .post-control > a {
+		display: inline-block;
+	}
+	html[dir="rtl"] .comment-list .children {
+		margin-right: 0;
+		padding-right: 0;
+	}
+	html[dir="rtl"] .type-post .entry-content blockquote {
+		padding-right: 0;
+	}
+}
+
+/* - min-width: 768 to max-width: 991 */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	
+}
+
+/* - max-width: 767 */
+@media (max-width: 767px) {	
+	html[dir="rtl"] .top-header .top-menu > a {
+		padding-left: 0;
+	}
+	html[dir="rtl"] .top-header .top-social {
+		padding-left: 15px;
+		padding-right: 0;
+	}
+	html[dir="rtl"] .top-header .top-search {
+		float: left;
+	}
+	html[dir="rtl"] .top-header .top-menu ul, 
+	html[dir="rtl"] .top-header .top-social ul, 
+	html[dir="rtl"] .top-header .top-menu ul.active, 
+	html[dir="rtl"] .top-header .top-social ul.active  {
+		left: auto;
+		right: 0;
+		padding: 10px 15px;
+		margin-right: 0;
+	}
+	html[dir="rtl"] .ownavigation #loginpanel {
+		left: 50px;
+	}
+	html[dir="rtl"] .header_s .submit-btn {
+		left: 93px;
+	}
+}
+
+/* -  max-width: 639 */
+@media (max-width: 639px) {
+	
+}
+
+/* -  max-width: 479 */
+@media (max-width: 479px) {
+	/* - Latest Post Section */
+	html[dir="rtl"] .latest-post-section .latest-post {
+		padding-left: 0;
+		padding-right: 120px;
+	}
+	html[dir="rtl"] .about-author {
+		padding-left: 20px;
+		padding-right: 120px;
+	}
+	html[dir="rtl"] .about-author i {
+		right: 15px;
+	}
+	html[dir="rtl"] .comment-body {
+		padding-right: 0;
+	}
+	html[dir="rtl"] .comment-meta {
+		padding-left: 0;
+		padding-right: 100px;
+	}
+}
