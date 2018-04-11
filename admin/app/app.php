@@ -10,6 +10,7 @@ class Future {
     public $theme;
     public $theme_assets;
     public $assets;
+    public $added_scripts;
 
     function __construct()
     {
@@ -78,6 +79,22 @@ class Future {
         $db_conn = new \PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_password);
 
         return $db_conn;
+    }
+
+    function add_script_to_head($list_of_scripts)
+    {
+        $this->added_scripts = [];
+
+        if (is_array($list_of_scripts)) {
+            foreach ($list_of_scripts as $script) {
+                $this->added_scripts []= $script;
+            }
+        }
+        else {
+            $this->added_scripts [] = $list_of_scripts;
+        }
+        
+        return $this->added_scripts;
     }
 
     function request_handler()
@@ -654,10 +671,37 @@ EOD;
 <!--skycons-icons-->
 <script src="{$this->assets}/colored/js/skycons.js"></script>
 <!--//skycons-icons-->
-</head>
-
 EOD;
+        if (!empty($this->added_scripts) && is_array($this->added_scripts)) {
+            foreach ($this->added_scripts as $script) {
+                $head .= "\n" . $script;
+            }
+        }
+
+        $head .= "\n</head>\n";
     echo $head;
+    }
+
+    function add_js($dir, $assets = TRUE)
+    {
+        if ($assets === TRUE) {
+            $add_js =  "<script src=\"{$this->assets}/$dir\"></script>";
+        }
+        else {
+            $add_js = "<script src=\"$assets/$dir\"></script>";
+        }
+        return $add_js;
+    }
+
+    function add_css($dir, $assets = TRUE)
+    {
+        if ($assets === TRUE) {
+            $add_css =  "<link rel=\"stylesheet\" href=\"{$this->assets}/$dir\" />";
+        }
+        else {
+            $add_css = "<link rel=\"stylesheet\" href=\"$assets/$dir\" />";
+        }
+        return $add_css;
     }
 
     function admin_nav_section(Type $var = null)
@@ -858,8 +902,8 @@ EOD;
 		</div>
 		<!-- //footer -->
 	</section>
-	<script src="{$this->assets}/js/bootstrap.js"></script>
-	<script src="{$this->assets}/js/proton.js"></script>
+	<script src="{$this->assets}/colored/js/bootstrap.js"></script>
+	<script src="{$this->assets}/colored/js/proton.js"></script>
 </body>
 </html>
 EOD;

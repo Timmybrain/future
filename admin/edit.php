@@ -3,6 +3,10 @@
 require "app/app.php";
 $page_title = "Editor";
 //admin <head>
+$f = $future;
+
+$links = [$f->add_js("ckeditor/ckeditor.js")];
+$future->add_script_to_head($links);
 $future->admin_html_head($page_title);
 $future->admin_sidebar($page_title);
 $future->admin_nav_section();
