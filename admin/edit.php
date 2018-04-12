@@ -91,23 +91,23 @@ if (!empty($_GET['p'])) {
 	</section>
 	<script src="<?=$future->assets?>/js/bootstrap.js"></script>
     <script src="<?=$future->assets?>/js/proton.js"></script>
+    
     <script>
+
         ClassicEditor
             .create( document.querySelector( '#editor' ) )
             .catch( error => {
                 console.error( error );
             } );
-    </script>
 
-    <script>
-$(document).ready(function() {
-    //$('#summernote').summernote();
-    $('#summernote').summernote({
-        height: 300,           // set editor height
-        minHeight: 500,       // set minimum height of editor
-        maxHeight: 1024,     // set maximum height of editor
-        focus: true         // set focus to editable area after initializing summernote
-    });
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                height: 300,           // set editor height
+                minHeight: 500,       // set minimum height of editor
+                maxHeight: 1024,     // set maximum height of editor
+                focus: true         // set focus to editable area after initializing summernote
+        });
+
     var post_title = $("input[type='text']#post_title").val();
     $("input[type='text']#post_url").val(post_title.replace(new RegExp(' ', 'gi'), "-"));
 
@@ -140,5 +140,6 @@ function save_content(postStatus) {
 }
 
 </script>
+
 </body>
 </html>

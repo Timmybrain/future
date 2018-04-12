@@ -588,7 +588,6 @@ class Future {
             session_start();
             $_SESSION['username'] = $result['author_nick'];
             $_SESSION['author_data'] = $result;
-
             header("Location: $redirect");
         }
     }
