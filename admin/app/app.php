@@ -592,6 +592,11 @@ class Future {
         }
     }
 
+    function update_user_profile(Type $var = null)
+    {
+        
+    }
+
     function public_header($page_title = "Hello Future", $meta="CMS")
     {
         $head = <<<EOD
