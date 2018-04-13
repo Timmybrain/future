@@ -985,7 +985,7 @@ EOD;
     {
         $footer = <<<EOD
         <div class="footer">
-			<p>&copy; 2018 <a href="http://fxnigeria.com" title="FutureX Media Inc.">FutureX MEdia Inc.</a></p>
+			<p>&copy; 2018 <a href="http://fxnigeria.com" title="FutureX Media Inc.">FutureX Media Inc.</a></p>
 		</div>
 		<!-- //footer -->
 	</section>
