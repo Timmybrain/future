@@ -1,13 +1,5 @@
 <?php
-
-$template = "
-<?php
-//a piece of code insertable into Future
-
-
-
-?>
-";
+require __DIR__ . "/admin/app/app.php";
 $action = $argv[1];
 $dir = $argv[2];
 $name = $argv[3];
