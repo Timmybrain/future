@@ -28,7 +28,7 @@ require dirname(__DIR__) . "/includes/umca.header.php";
 						<!-- Type Post -->
 						<article class="type-post">
 							<div class="entry-header">
-								<img src="<?=$future->theme_assets?>/images/blog-1.jpg" alt="Blog" />
+								<img src="<?=$f->media . "images/" . $article->post_img?>" alt="<?=$article->post_title?>" />
 								<div class="post-date"><a href="#">14 <span>OCT</span></a></div>
 							</div>
 							<h3 class="entry-title"><?=$article->post_title?></h3>

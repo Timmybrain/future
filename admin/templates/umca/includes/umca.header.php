@@ -1,3 +1,6 @@
+<?php
+$article = $future->pull_content($requested);
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
@@ -13,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<title> <?= (!empty($page_title) ? $page_title : @$post_title) . " - " . $future->derive('site_title')?></title>
+	<title> <?= (!empty($article->post_title) ? $article->post_title : @$post_title) . " - " . $future->derive('site_title')?></title>
 
 	<!-- Standard Favicon -->
 	<link rel="icon" type="image/x-icon" href="<?=$future->theme_assets?>/images/favicon.ico" />

@@ -496,10 +496,10 @@ class Future {
             return ($reverse) ? ucwords($lname . " ". $fname) : ucwords($fname . " ". $lname );
         }
         elseif ($letter_case === "upper") {
-            return ($reverse) ? ucwords($lname . " ". $fname) : ucwords($fname . " ". $lname );
+            return ($reverse) ? strtoupper($lname . " ". $fname) : strtoupper($fname . " ". $lname );
         }
         elseif ($letter_case == "lower") {
-            return ($reverse) ? ucwords($lname . " ". $fname) : ucwords($fname . " ". $lname );
+            return ($reverse) ? strtolower($lname . " ". $fname) : strtolower($fname . " ". $lname );
         }
         else {
             return false;

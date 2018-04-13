@@ -73,7 +73,7 @@ $(document).ready(function (e) {
             <form id="uploadForm" action="upload.php" method="post">
             <div id="targetOuter">
               <div id="targetLayer">
-                <img src="<?= $future->media . "images/". $future->get_author_pic_url(); ?>" width="200px" height="200px" class="upload-preview" />
+                <img src="<?= $future->media . "images/". $future->get_author_pic_url($_SESSION['author_data']->author_id); ?>" width="200px" height="200px" class="upload-preview" />
               </div>
               <img src="<?=$future->media . "images/photo.png"?>"  class="icon-choose-image" />
               <div class="icon-choose-image" >
@@ -101,8 +101,6 @@ $(document).ready(function (e) {
         <?php
         }
         ?>
-        <h3>Personal info</h3>
-        
         <form action="<?=$_SERVER['PHP_SELF']?>" method="post" class="form-horizontal" role="form">
           <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>

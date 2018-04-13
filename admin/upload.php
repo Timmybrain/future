@@ -9,7 +9,7 @@ $targetPath = dirname(__DIR__) . "/media/images/". $custom_name;
 if(move_uploaded_file($sourcePath,$targetPath)) {
     $future->set_author_pic_url($custom_name);
 ?>
-<img src="<?php echo $future->media . "images/". $future->get_author_pic_url(); ?>" width="200px" height="200px" class="upload-preview" />
+<img src="<?php echo $future->media . "images/". $future->get_author_pic_url($_SESSION['author_data']->author_id); ?>" width="200px" height="200px" class="upload-preview" />
 <?php
 }
 }
