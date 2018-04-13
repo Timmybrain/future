@@ -60,29 +60,7 @@
 							</div>
 						</aside>
 					</div><!-- Widget Latest Post -->
-					
-					<!-- Widget Latest Tweets -->
-					<!-- <div class="col-md-3 col-sm-6 col-xs-6">
-						<aside class="widget widget_latesttweets">
-							<h3 class="widget-title">LATEST TWEETS</h3>
-							<div class="latest-tweets-content">
-								<p>Seeking Farming Word Press Theme Check out Farmvilla on #themeforest <a href="#">https://t.co/CmPny6jrUi #envato</a></p>
-								<div class="post-meta">
-									<a href="#" title="Reply">Reply</a>
-									<a href="#" title="Retweet">Retweet</a>
-									<a href="#" title="Favorite">Favorite</a>
-								</div>
-							</div>
-							<div class="latest-tweets-content">
-								<p>Seeking organic food WordPress themeFood WordPress Theme on  <span>#themeforest #envato</span> <a href="#">https://t.co/CmPny6jrUi #envato</a></p>
-								<div class="post-meta">
-									<a href="#" title="Reply">Reply</a>
-									<a href="#" title="Retweet">Retweet</a>
-									<a href="#" title="Favorite">Favorite</a>
-								</div>
-							</div>
-						</aside>
-					</div> --><div class="col-md-3 col-sm-6 col-xs-6">
+					<div class="col-md-3 col-sm-6 col-xs-6">
 						<aside class="widget widget_latestposts">
 							<h3 class="widget-title">Upcoming Events</h3>
 							<div class="latest-content">

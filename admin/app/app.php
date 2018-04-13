@@ -129,6 +129,11 @@ class Future {
         return $requested;
     }
     
+    function request_array($requested)
+    {
+        $res = explode("/", $requested);
+        return $res;
+    }
     private $secret_key = "(#$&^OTAFXMBJEMDS^&$#)";
     private $hash = "";
 
@@ -482,6 +487,25 @@ class Future {
         return $author;
     }
 
+    function get_author_full_name($id, $letter_case = "sentence", $reverse = false)
+    {
+        $fname = $this->fetch_author($id)->author_fname;
+        $lname = $this->fetch_author($id)->author_lname;
+
+        if ($letter_case === "sentence") {     
+            return ($reverse) ? ucwords($lname . " ". $fname) : ucwords($fname . " ". $lname );
+        }
+        elseif ($letter_case === "upper") {
+            return ($reverse) ? ucwords($lname . " ". $fname) : ucwords($fname . " ". $lname );
+        }
+        elseif ($letter_case == "lower") {
+            return ($reverse) ? ucwords($lname . " ". $fname) : ucwords($fname . " ". $lname );
+        }
+        else {
+            return false;
+        }
+    }
+
     function pull_contents(string $type = null, int $limit = null, bool $unpublished = false)
     {
         $limit = $this->e($limit);
@@ -652,27 +676,9 @@ class Future {
             }
         }
     }
-    function get_author_pic_url()
+    function get_author_pic_url($id)
     {
-        $sql = "SELECT `author_pic_url` FROM `authors` WHERE `author_id` = :id";
-        $stmt = $this->db()->prepare($sql);
-        //
-        if ($stmt) {
-            $stmt->execute(
-                array(
-                    ':id' => $_SESSION['author_data']->author_id
-                )
-            );
-
-            if ($stmt->rowCount() === 1) {
-                $res = $stmt->fetch(\PDO::FETCH_OBJ);
-                return $res->author_pic_url;
-            }
-            else {
-                return false;
-            }
-        }
-
+        return $this->fetch_author($id)->author_pic_url;
     }
     function public_header($page_title = "Hello Future", $meta="CMS")
     {
