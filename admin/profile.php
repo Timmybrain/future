@@ -1,12 +1,49 @@
 <?php
 require "app/app.php";
 $page_title = "Profile";
-$future->is_admin();
-$future->admin_html_head($page_title);
-$future->admin_sidebar($page_title);
-$future->admin_nav_section();
-$user = $_SESSION['author_data'];
+$app->is_admin();
+$app->add_script_to_head([$f->add_css('colored/css/upload.css'), $f->add_js("jquery-1.9.1.js", "http://code.jquery.com")]);
+$app->admin_html_head($page_title);
+$app->admin_sidebar($page_title);
+$app->admin_nav_section();
+$user = $future->fetch_author($_SESSION['author_data']->author_id);
 ?>
+<script type="text/javascript">
+function showPreview(objFileInput) {
+    if (objFileInput.files[0]) {
+        var fileReader = new FileReader();
+        fileReader.onload = function (e) {
+            $("#targetLayer").html('<img src="'+e.target.result+'" width="200px" height="200px" class="upload-preview" />');
+			$("#targetLayer").css('opacity','0.7');
+			$(".icon-choose-image").css('opacity','0.5');
+        }
+		fileReader.readAsDataURL(objFileInput.files[0]);
+    }
+}
+
+$(document).ready(function (e) {
+	$("#uploadForm").on('submit',(function(e) {
+		e.preventDefault();
+		$.ajax({
+        	url: "upload.php",
+			type: "POST",
+			data:  new FormData(this),
+			beforeSend: function(){$("#body-overlay").show();},
+			contentType: false,
+    	    processData:false,
+			success: function(data)
+		    {
+			$("#targetLayer").html(data);
+			$("#targetLayer").css('opacity','1');
+			setInterval(function() {$("#body-overlay").hide(); },500);
+			},
+		  	error: function() 
+	    	{
+	    	} 	        
+	   });
+	}));
+});
+</script>
 <div class="main-grid">
 			<div class="agile-grids">	
 				<div class="progressbar-heading grids-heading">
@@ -30,52 +67,72 @@ $user = $_SESSION['author_data'];
       <!-- left column -->
       <div class="col-md-3">
         <div class="text-center">
-          <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
           <h6>Upload a different photo...</h6>
-          
-          <input type="file" class="form-control">
+          <div id="body-overlay"><div><img src="<?=$future->media . "images/loading.gif"?>" width="64px" height="64px"/></div></div>
+          <div class="bgColor">
+            <form id="uploadForm" action="upload.php" method="post">
+            <div id="targetOuter">
+              <div id="targetLayer">
+                <img src="<?= $future->media . "images/". $future->get_author_pic_url(); ?>" width="200px" height="200px" class="upload-preview" />
+              </div>
+              <img src="<?=$future->media . "images/photo.png"?>"  class="icon-choose-image" />
+              <div class="icon-choose-image" >
+              <input name="userImage" id="userImage" type="file" class="inputFile" onChange="showPreview(this);" />
+              </div>
+            </div>
+            <div>
+            <input type="submit" value="Upload Photo" class="btnSubmit" />
+            </form>
+          </div>
+          </div>
         </div>
       </div>
       
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
+        <?php
+        if ($future->update_user_profile($user->author_id)) {
+        ?>
         <div class="alert alert-success alert-dismissable">
           <a class="panel-close close" data-dismiss="alert">×</a> 
           <i class="fa fa-coffee"></i>
           Account details successfully updated!
         </div>
+        <?php
+        }
+        ?>
         <h3>Personal info</h3>
         
         <form action="<?=$_SERVER['PHP_SELF']?>" method="post" class="form-horizontal" role="form">
           <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="<?=$user['author_fname']?>">
+              <input name="fname" class="form-control" type="text" value="<?=$user->author_fname?>">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Last name:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="<?=$user['author_lname']?>">
+              <input name="lname" class="form-control" type="text" value="<?=$user->author_lname?>">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="<?=$user['author_email']?>">
+              <input name="email" class="form-control" type="text" value="<?=$user->author_email?>">
 			</div>
 		  </div>
 		  <div class="form-group">
             <label class="col-lg-3 control-label">Short Bio:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="<?=$user['author_bio']?>">
+              <input name="mybio" class="form-control" type="text" value="<?=$user->author_bio?>">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Time Zone:</label>
             <div class="col-lg-8">
               <div class="ui-select">
-                <select id="user_time_zone" class="form-control">
+                <select name="timezone" id="user_time_zone" class="form-control">
                   <option timeZoneId="1" gmtAdjustment="GMT-12:00" useDaylightTime="0" value="-12">(GMT-12:00) International Date Line West</option>
                   <option timeZoneId="2" gmtAdjustment="GMT-11:00" useDaylightTime="0" value="-11">(GMT-11:00) Midway Island, Samoa</option>
                   <option timeZoneId="3" gmtAdjustment="GMT-10:00" useDaylightTime="0" value="-10">(GMT-10:00) Hawaii</option>
@@ -165,25 +222,25 @@ $user = $_SESSION['author_data'];
           <div class="form-group">
             <label class="col-md-3 control-label">Username:</label>
             <div class="col-md-8">
-              <input class="form-control" type="text" value="<?=$user['author_nick']?>" disabled>
+              <input name="username" class="form-control" type="text" value="<?=$user->author_nick?>" disabled>
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Password:</label>
             <div class="col-md-8">
-              <input class="form-control" type="password" value="">
+              <input name="password" class="form-control" type="password" value="">
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Confirm password:</label>
             <div class="col-md-8">
-              <input class="form-control" type="password" value="">
+              <input name="cpassword" class="form-control" type="password" value="">
             </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">
-              <input type="button" class="btn btn-primary" value="Save Changes">
+              <input type="submit" class="btn btn-primary" value="Save Changes">
               <span></span>
               <input type="reset" class="btn btn-default" value="Cancel">
             </div>
@@ -200,4 +257,4 @@ $user = $_SESSION['author_data'];
 		</div>
 		
 		<!-- footer -->
-			<p><?=$future->footer()?>
+		<?=$future->footer()?>

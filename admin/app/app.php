@@ -11,6 +11,7 @@ class Future {
     public $theme_assets;
     public $assets;
     public $added_scripts;
+    public $media;
 
     function __construct()
     {
@@ -19,8 +20,9 @@ class Future {
         $this->theme = strtolower($this->derive('theme'));
         $this->view = strtolower($this->derive('theme')) . "/views/" . strtolower($this->derive('theme'));
         $this->base_url = (!empty($_SERVER['REQUEST_SCHEME']) ? $_SERVER['REQUEST_SCHEME'] . ":" : "http:")."//{$_SERVER['HTTP_HOST']}";
-        $this->theme_assets = $this->base_url . "/admin/templates/" . $this->theme ."/assets/";
+        $this->theme_assets = $this->base_url . "/admin/templates/" . $this->theme ."/assets";
         $this->assets = "//" . $_SERVER['HTTP_HOST'] . "/assets";
+        $this->media = "//" . $_SERVER['HTTP_HOST'] . '/media/';
     }
 
     function is_admin()
@@ -582,21 +584,96 @@ class Future {
             $stmt->execute(array ('username' => $username,':passkey' => $password));
         }
 
-        $result = $stmt->fetch();
+        $result = $stmt->fetch(\PDO::FETCH_OBJ);
 
-        if ($stmt->rowCount() == 1 && !empty($result) && in_array($username, $result)) {
+        if ($stmt->rowCount() == 1 && !empty($result)) {
             session_start();
-            $_SESSION['username'] = $result['author_nick'];
+            $_SESSION['username'] = $result->author_nick;
             $_SESSION['author_data'] = $result;
             header("Location: $redirect");
         }
     }
-
-    function update_user_profile(Type $var = null)
+    function is_post_request()
     {
-        
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    //..
+    function update_user_profile($id)
+    {
+        if ($this->is_post_request() && $_POST['password'] === $_POST['cpassword']) {
+            $sql = "UPDATE `authors` SET `author_email`= :email,`author_fname`= :fname,`author_lname`= :lname,`author_bio`= :mybio,`author_timezone`= :timezone,`author_password`= SHA(:pass) WHERE `author_id`= :id";
+            //stmt
+            $stmt = $this->db()->prepare($sql);
+            //
+            if ($stmt) {
+                $stmt->execute(
+                    array(
+                    ':email' => $_POST['email'],
+                    ':fname' => $_POST['fname'],
+                    'lname' => $_POST['lname'],
+                    ':mybio' => $_POST['mybio'],
+                    ':timezone' => $_POST['timezone'],
+                    ':pass' => $_POST['password'],
+                    ':id' => $id
+                ));
+
+                if ($stmt->rowCount() === 1) {
+                    return $_SESSION['author_data'] = $this->fetch_author($id);
+                }
+            }
+        }
+        else {
+            return false;
+        }  
     }
 
+    function set_author_pic_url($custom_name)
+    {
+        $sql = "UPDATE `authors` SET `author_pic_url` = :pic_url WHERE `author_id` = :id";
+        $stmt = $this->db()->prepare($sql);
+        if ($stmt) {
+            $stmt->execute(
+                array(
+                    ':pic_url' => $custom_name,
+                    ':id' => $_SESSION['author_data']->author_id
+                )
+            );
+
+            if ($stmt->rowCount() === 1) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    function get_author_pic_url()
+    {
+        $sql = "SELECT `author_pic_url` FROM `authors` WHERE `author_id` = :id";
+        $stmt = $this->db()->prepare($sql);
+        //
+        if ($stmt) {
+            $stmt->execute(
+                array(
+                    ':id' => $_SESSION['author_data']->author_id
+                )
+            );
+
+            if ($stmt->rowCount() === 1) {
+                $res = $stmt->fetch(\PDO::FETCH_OBJ);
+                return $res->author_pic_url;
+            }
+            else {
+                return false;
+            }
+        }
+
+    }
     function public_header($page_title = "Hello Future", $meta="CMS")
     {
         $head = <<<EOD
@@ -917,3 +994,5 @@ EOD;
 }
 //single instance philosophy
 $future = new Future();
+$f = $future;
+$app = $future;

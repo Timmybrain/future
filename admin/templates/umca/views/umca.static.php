@@ -1,64 +1,7 @@
-<!DOCTYPE html>
-<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
-
-<!-- Mirrored from premiumlayers.net/demo/html/max#/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Jan 2018 22:13:53 GMT -->
-<head>
-	<meta charset="utf-8">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<meta name="description" content="">
-	
-	<meta name="author" content="United Missionary Church Of Africa Chapel Tanke">
-
-	<title>Home - United Missionary Church Of Africa Chapel Tanke</title>
-
-	<script type="text/javascript" src="<?=$future->theme_assets?>/extensions/revolution.extension.slideanims.min.js"></script>
-
-	<!-- Standard Favicon -->
-	<link rel="icon" type="image/x-icon" href="<?=$future->theme_assets?>/images/favicon.jpg" />
-	
-	<!-- For iPhone 4 Retina display: -->
-	<link rel="apple-touch-icon-precomposed" href="<?=$future->theme_assets?>/images/apple-touch-icon-114x114-precomposed.png">
-	
-	<!-- For iPad: -->
-	<link rel="apple-touch-icon-precomposed" href="<?=$future->theme_assets?>/images/apple-touch-icon-72x72-precomposed.html">
-	
-	<!-- For iPhone: -->
-	<link rel="apple-touch-icon-precomposed" href="<?=$future->theme_assets?>/images/apple-touch-icon-57x57-precomposed.png">	
-	
-	<!-- Library - Google Font Familys -->
-	<link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900|Vollkorn:400,400i,700,700i" rel="stylesheet">
-	
-	<link rel="stylesheet" type="text/css" href="<?=$future->theme_assets?>/revolution/css/settings.css">
-	<link rel="stylesheet" type="text/css" href="<?=$future->theme_assets?>/revolution/fonts/font-awesome/css/font-awesome.css">
-	<link rel="stylesheet" type="text/css" href="<?=$future->theme_assets?>/revolution/fonts/font-awesome/css/font-awesome.min.css">
-	
-	<!-- RS5.3 Layers and Navigation Styles -->
-	<link rel="stylesheet" type="text/css" href="<?=$future->theme_assets?>/revolution/css/layers.css">
-	<link rel="stylesheet" type="text/css" href="<?=$future->theme_assets?>/revolution/css/navigation.css">
-		
-	<!-- Library -->
-    <link href="<?=$future->theme_assets?>/css/lib.css" rel="stylesheet">
-    <link href="<?=$future->theme_assets?>/css/flags.css" rel="stylesheet">
-	
-	<!-- Custom - Common CSS -->
-	<link href="<?=$future->theme_assets?>/css/plugins.css" rel="stylesheet">
-	<link href="<?=$future->theme_assets?>/css/elements.css" rel="stylesheet">	
-	<link href="<?=$future->theme_assets?>/css/rtl.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="<?=$future->theme_assets?>/style.css">
-		
-	<!--[if lt IE 9]>
-		<script src="js/html5/respond.min.js"></script>
-    <![endif]-->
-	
-</head>
-
+<?php
+$post_title = "Home";
+require dirname(__DIR__) . "/includes/umca.header.php";
+?>
 <body data-offset="200" data-spy="scroll" data-target=".ownavigation">
 	
 	<!-- Loader -->

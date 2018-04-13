@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<title>Mens' Fellowship - United Missionary Church Of Africa</title>
+	<title> <?= (!empty($page_title) ? $page_title : @$post_title) . " - " . $future->derive('site_title')?></title>
 
 	<!-- Standard Favicon -->
 	<link rel="icon" type="image/x-icon" href="<?=$future->theme_assets?>/images/favicon.ico" />
@@ -38,7 +38,7 @@
 	<link href="<?=$future->theme_assets?>/css/plugins.css" rel="stylesheet">
 	<link href="<?=$future->theme_assets?>/css/elements.css" rel="stylesheet">	
 	<link href="<?=$future->theme_assets?>/css/rtl.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="<?=$future->theme_assets?>/style.css">
 		
 	<!--[if lt IE 9]>
 		<script src="js/html5/respond.min.js"></script>
