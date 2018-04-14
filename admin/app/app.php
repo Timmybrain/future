@@ -10,7 +10,8 @@ class Future {
     public $theme;
     public $theme_assets;
     public $assets;
-    public $added_scripts;
+    public $head_added_scripts;
+    public $foot_added_scripts;
     public $media;
 
     function __construct()
@@ -85,18 +86,34 @@ class Future {
 
     function add_script_to_head($list_of_scripts)
     {
-        $this->added_scripts = [];
+        $this->head_added_scripts = [];
 
         if (is_array($list_of_scripts)) {
             foreach ($list_of_scripts as $script) {
-                $this->added_scripts []= $script;
+                $this->head_added_scripts []= $script;
             }
         }
         else {
-            $this->added_scripts [] = $list_of_scripts;
+            $this->head_added_scripts [] = $list_of_scripts;
         }
         
-        return $this->added_scripts;
+        return $this->head_added_scripts;
+    }
+
+    function add_script_to_footer($list_of_scripts)
+    {
+        $this->foot_added_scripts = [];
+
+        if (is_array($list_of_scripts)) {
+            foreach ($list_of_scripts as $script) {
+                $this->foot_added_scripts []= $script;
+            }
+        }
+        else {
+            $this->foot_added_scripts [] = $list_of_scripts;
+        }
+        
+        return $this->foot_added_scripts;
     }
 
     function request_handler()
@@ -759,8 +776,8 @@ EOD;
 <script src="{$this->assets}/colored/js/skycons.js"></script>
 <!--//skycons-icons-->
 EOD;
-        if (!empty($this->added_scripts) && is_array($this->added_scripts)) {
-            foreach ($this->added_scripts as $script) {
+        if (!empty($this->head_added_scripts) && is_array($this->head_added_scripts)) {
+            foreach ($this->head_added_scripts as $script) {
                 $head .= "\n" . $script;
             }
         }

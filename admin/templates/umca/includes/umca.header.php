@@ -73,4 +73,4 @@ $article = $future->pull_content($requested);
 		<?php
 		require "umca.navmenu.php";
 		 ?>
-	</header><!-- Header Section /- -->	
+	</header><!-- Header Section /- -->
