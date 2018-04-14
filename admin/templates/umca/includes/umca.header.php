@@ -64,13 +64,7 @@ $article = $future->pull_content($requested);
 						<p><i class="fa fa-phone"></i> Mobile: <a href="tel:+234-703-3661-965"> +234-703-3661-965</a></p>
 					</div>
 					<div class="top-login">
-						<p><i class="fa fa-user"></i><a href="#" title="Login">Login</a></p>
-						
-						<!--form class="lang-dropdown">
-							<div class="form-group">
-								<div id="basic" data-input-name="country"></div>
-							</div>
-						</form-->
+						<p><i class="fa fa-user"></i><a href="./admin/login.php" title="Login">Login</a></p>
 					</div>
 				</div><!-- Container /- -->
 			</div><!-- Top Header /- -->
