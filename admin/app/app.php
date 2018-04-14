@@ -70,10 +70,10 @@ class Future {
         }
         else {
             //the originals
-            $db_host = '';
-            $db_user = '';
-            $db_password = '';
-            $db_name = '';
+            $db_host = 'db734211079.db.1and1.com';
+            $db_user = 'dbo734211079';
+            $db_password = 'Muslimat2018$!';
+            $db_name = 'db734211079';
         }
 
         //constant
