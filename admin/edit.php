@@ -3,7 +3,7 @@
 require "app/app.php";
 $page_title = "Editor";
 //admin <head>
-$links = [$f->add_js("ckeditor/ckeditor.js"), $f->add_css('ckeditor/style.css')];
+$links = [$f->add_js("ckeditor/ckeditor.js")];
 $future->add_script_to_head($links);
 $future->admin_html_head($page_title);
 $future->admin_sidebar($page_title);
@@ -45,7 +45,6 @@ if (!empty($_GET['p'])) {
 
             <textarea id="editor1">
                 <h1>Hello world!</h1>
-                <p>I'm an instance of <a href="https://ckeditor.com">CKEditor</a>.</p>
             </textarea>
 
              <script>
