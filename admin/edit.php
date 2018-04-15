@@ -3,7 +3,7 @@
 require "app/app.php";
 $page_title = "Editor";
 //admin <head>
-$links = [$f->add_js("ckeditor.4.9.1/ckeditor.js")];
+$links = [$f->add_js("ckeditor.4.9.1/ckeditor.js"), $f->add_css('custom/css/switch.css'), $f->add_css('custom/css/upload.css'), $f->add_js("jquery-1.9.1.js", "http://code.jquery.com")];
 $future->add_script_to_head($links);
 $future->admin_html_head($page_title);
 $future->admin_sidebar($page_title);
@@ -28,8 +28,7 @@ if (!empty($_GET['p'])) {
     <div class="agile-grids">	
         <div class="progressbar-heading grids-heading">
                 <h2><?=$page_title?></h2>
-            </div>
-
+        </div>
 
             
         <!-- blank-page -->
@@ -41,45 +40,16 @@ if (!empty($_GET['p'])) {
             </h2>
         </div>
 
-        <form action="">
+        <div class="blank-page">
 
-            <textarea id="editor1">
-                <h1>Hello world!</h1>
-            </textarea>
-
-             <script>
-                // Replace the <textarea id="editor1"> with a CKEditor
-                // instance, using default configuration.
-                CKEDITOR.replace( 'editor1' );
-            </script>
-        </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
-	</div>
+        </div>
 </div>
+        
+<script>
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace( 'editor1');
+</script>
 <!-- footer -->
 <?php
 $future->footer()

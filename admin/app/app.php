@@ -787,7 +787,6 @@ EOD;
 <!--//skycons-icons-->
 
 <!-- Additional Scripts -->
-<script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
 {$this->hook($this->head_added_scripts)}
 <!-- //Additional Scripts -->
 </head>\n
