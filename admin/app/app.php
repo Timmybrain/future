@@ -116,6 +116,16 @@ class Future {
         return $this->foot_added_scripts;
     }
 
+    function hook($var) {
+        $report = "";
+        if (!empty($var) && is_array($var)) {
+            foreach ($var as $script) {
+                $report .= "\n". $script;
+            }
+            return $report;
+        }
+    }
+
     function request_handler()
     {
         $grab = !empty($_GET['url']) ? $_GET['url'] : "";
@@ -775,15 +785,9 @@ EOD;
 <!--skycons-icons-->
 <script src="{$this->assets}/colored/js/skycons.js"></script>
 <!--//skycons-icons-->
+{$this->hook($this->head_added_scripts)}
 EOD;
-        if (!empty($this->head_added_scripts) && is_array($this->head_added_scripts)) {
-            foreach ($this->head_added_scripts as $script) {
-                $head .= "\n" . $script;
-            }
-        }
-
-        $head .= "\n</head>\n";
-    echo $head;
+        echo $head;
     }
 
     function add_js($dir, $assets = TRUE)
@@ -821,7 +825,7 @@ EOD;
 		</nav>
 		<section class="title-bar">
 			<div class="logo">
-				<h1><a href="./"><img src="{$this->assets}/images/logo.png" alt="" />Future</a></h1>
+				<h1><a href="./"><img src="{$this->assets}/colored/images/logo.png" alt="" />Future</a></h1>
 			</div>
 			<div class="full-screen">
 				<section class="full-top">
@@ -848,7 +852,7 @@ EOD;
 										</div>
 									</li>
 									<li><a href="#">
-									   <div class="user_img"><img src="{$this->assets}/images/1.png" alt=""></div>
+									   <div class="user_img"><img src="{$this->assets}/colored/images/1.png" alt=""></div>
 									   <div class="notification_desc">
 										<p>Lorem ipsum dolor amet</p>
 										<p><span>1 hour ago</span></p>
@@ -856,7 +860,7 @@ EOD;
 									   <div class="clearfix"></div>	
 									</a></li>
 									<li class="odd"><a href="#">
-										<div class="user_img"><img src="{$this->assets}/images/2.png" alt=""></div>
+										<div class="user_img"><img src="{$this->assets}/colored/images/2.png" alt=""></div>
 									   <div class="notification_desc">
 										<p>Lorem ipsum dolor amet </p>
 										<p><span>1 hour ago</span></p>
@@ -864,7 +868,7 @@ EOD;
 									  <div class="clearfix"></div>	
 									</a></li>
 									<li><a href="#">
-									   <div class="user_img"><img src="{$this->assets}/images/3.png" alt=""></div>
+									   <div class="user_img"><img src="{$this->assets}/colored/images/3.png" alt=""></div>
 									   <div class="notification_desc">
 										<p>Lorem ipsum dolor amet </p>
 										<p><span>1 hour ago</span></p>
@@ -1007,11 +1011,12 @@ EOD;
 		<!-- //footer -->
 	</section>
 	<script src="{$this->assets}/colored/js/bootstrap.js"></script>
-	<script src="{$this->assets}/colored/js/proton.js"></script>
+    <script src="{$this->assets}/colored/js/proton.js"></script>
+    {$this->hook($this->foot_added_scripts)}
 </body>
 </html>
 EOD;
-        return $footer;
+        echo $footer;
     }
 
 }

@@ -41,8 +41,19 @@ if (!empty($_GET['p'])) {
             </h2>
         </div>
 
+        <form action="">
 
+            <textarea id="editor1">
+                <h1>Hello world!</h1>
+                <p>I'm an instance of <a href="https://ckeditor.com">CKEditor</a>.</p>
+            </textarea>
 
+             <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor1' );
+            </script>
+        </form>
 
 
 
@@ -70,7 +81,8 @@ if (!empty($_GET['p'])) {
                 
 	</div>
 </div>
-		
 <!-- footer -->
-<?=$future->footer()?>
+<?php
+$future->footer()
+?>
 <!-- //footer -->

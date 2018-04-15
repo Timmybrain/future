@@ -28,7 +28,7 @@ $future->admin_html_head($page_title);
 		</nav>
 		<section class="title-bar">
 			<div class="logo">
-				<h1><a href="index.html"><img src="<?=$future->assets?>/images/logo.png" alt="Future CMS" /><?=$future::name?></a></h1>
+				<h1><a href="index.html"><img src="<?=$future->assets?>/colored/images/logo.png" alt="Future CMS" /><?=$future::name?></a></h1>
 			</div>
 			<div class="full-screen">
 				<section class="full-top">
