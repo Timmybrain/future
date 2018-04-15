@@ -13,6 +13,8 @@
                     <h1>Hello World!</h1>
                 </textarea>
             </div>
+
+            <!-- panel footer -->
             <div class="panel-footer">
                 <div class="row">
                     <!-- The Page/Blog button -->
@@ -36,7 +38,10 @@
                             </div>
                         </div>
                     </div>
+                    <!-- The url text-input -->
+
                 </div>
+                <!-- // panel footer ends -->
             </div>
         </div>
     </div>

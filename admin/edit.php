@@ -3,7 +3,9 @@
 require "app/app.php";
 $page_title = "Editor";
 //admin <head>
-$links = [$f->add_js("ckeditor.4.9.1/ckeditor.js"), $f->add_css('custom/css/switch.css'), $f->add_css('custom/css/upload.css'), $f->add_js("jquery-1.9.1.js", "http://code.jquery.com")];
+$links = [$f->add_js("ckeditor.4.9.1/ckeditor.js"), $f->add_css('custom/css/switch.css'), 
+        $f->add_css('custom/css/upload.css'), $f->add_js("jquery-1.9.1.js", "http://code.jquery.com"),
+        $f->add_js('custom/js/upload.js')];
 $future->add_script_to_head($links);
 $future->admin_html_head($page_title);
 $future->admin_sidebar($page_title);
