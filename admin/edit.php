@@ -68,9 +68,9 @@ if (!empty($_GET['p'])) {
             <div class="panel-footer">
                 <div class="row">
                     <!-- The Page/Blog button -->
-                    <div class="col-md-3 row">
-                        <div class="col-md-3 col-sm-3">page:</div>
-                        <div class="col-md-9 col-sm-9">
+                    <div class="col-md-4 row">
+                        <div class="col-md-4 col-sm-4"><b>PAGE</b>:</div>
+                        <div class="col-md-8 col-sm-8">
                             <label class="switch">
                                 <input type="checkbox" name="post_type">
                                 <span class="slider round"></span>
@@ -80,10 +80,10 @@ if (!empty($_GET['p'])) {
                     <!-- //The Page/Blog button -->
 
                     <!-- The url text-input -->
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-md-2">url:</label>
-                            <div class="col-md-10">
+                            <label for="example-text-input" class="col-md-3"><b>URL</b>:</label>
+                            <div class="col-md-9">
                                 <input class="form-control" name="post_url" type="text"  id="post_url_box">
                             </div>
                         </div>
@@ -118,19 +118,19 @@ if (!empty($_GET['p'])) {
         <!-- Category Panel -->
 
         <div class="panel panel-primary">
-        <div class="panel-heading"><h5>Categories</h5></div>
-        <div class="panel-body">
-        <?php
-        foreach ($categories as $category) {
-            ?>
-            <input type="checkbox" name="<?=$category->category_id?>" id=""> <?=$category->category_name?>
-            <?php
-        }
-        ?>
-        </div>
+            <div class="panel-heading"><h5>Categories</h5></div>
+            <div class="panel-body">
+                <?php
+                foreach ($categories as $category) {
+                    ?>
+                    <input type="checkbox" name="<?=$category->category_id?>" id=""> <?=$category->category_name?>
+                    <?php
+                }
+                ?>
+            </div>
         <div class="panel-footer">
-        <div id="add_category_cavas"></div>
-        <button class="btn btn-primary" id="add_category_button">Add Category</button> 
+            <div id="add_category_cavas"></div>
+            <button class="btn btn-primary" id="add_category_button">Add Category</button> 
         </div>
         </div>
         <!-- //Category Panel-->
@@ -175,6 +175,7 @@ if (!empty($_GET['p'])) {
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
     CKEDITOR.replace( 'editor1');
+
 </script>
 <!-- footer -->
 <?php
