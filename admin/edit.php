@@ -98,7 +98,9 @@ if (!empty($_GET['p'])) {
 
     <!-- 4 of 12 -->
     <div class="col-md-4">
-        <div class="panel panel-success">
+    <!-- Side Panel -->
+        <!-- The Publisher Panel -->
+        <div class="panel panel-primary">
             <div class="panel-heading"><h5>Publish</h5></div>
             <div class="panel-body">
             <div class="form-group">
@@ -106,17 +108,32 @@ if (!empty($_GET['p'])) {
             <input type="datetime" class="form-control" name="post_date" id="post_date">
             </div>
             </div>
+            <div class="panel-footer">
+             <button class="btn btn-primary">Publish</button>
+            </div>
         </div>
+        <!-- //The Publisher Panel -->
+
+        <!-- Category Panel -->
+
+        <div class="panel panel-primary">
+        <div class="panel-heading"><h5>Categories</h5></div>
+        <div class="panel-body">
         
-        <!-- Side Panel -->
-        <div class="panel panel-danger">
-            
-            <div class="text-center">
+        </div>
+        <div class="panel-footer">
+        Add Category
+        </div>
+        </div>
+        <!-- //Category Panel-->
+        
+        <div class="panel panel-primary">
             <!-- Panel Heading -->
             <div class="panel-heading">
                 <h5>Featured Image</h5>
             </div>
 
+            <div class="text-center">
             <div id="body-overlay"><div>
                 <!-- Panel Heading -->
                   <img src="<?=$future->media . "images/loading.gif"?>" width="64px" height="64px"/>

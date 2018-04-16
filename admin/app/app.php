@@ -155,7 +155,22 @@ class Future {
         }
         return $requested;
     }
-    
+
+    function fetch_categories(Type $var = null)
+    {
+        $sql = "SELECT * FROM categories";
+        //
+        $stmt = $this->db()->prepare($sql);
+        //
+        if ($stmt) {
+            $stmt->execute();
+        }
+        else {
+            exit;
+        }
+        return $stmt->fetch(\PDO::FETCH_OBJ);
+    }
+
     function request_array($requested)
     {
         $res = explode("/", $requested);
@@ -707,6 +722,7 @@ class Future {
     {
         return $this->fetch_author($id)->author_pic_url;
     }
+
     function public_header($page_title = "Hello Future", $meta="CMS")
     {
         $head = <<<EOD
