@@ -22,7 +22,7 @@ $future->admin_html_head($page_title);
 				</form>
 				<div class="signin-text">
 					<div class="text-left">
-						<p><a href="#"> Forgot Password? </a></p>
+						<p><a href="./forgot-password.php"> Forgot Password? </a></p>
 					</div>
 					<div class="text-right">
 						<p><a href="signup.html"> Create New Account</a></p>

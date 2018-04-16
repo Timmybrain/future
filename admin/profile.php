@@ -2,7 +2,7 @@
 require "app/app.php";
 $page_title = "Profile";
 $app->is_admin();
-$app->add_script_to_head([$f->add_css('colored/css/upload.css'), $f->add_js("jquery-1.9.1.js", "http://code.jquery.com"),
+$app->add_script_to_head([$f->add_css('custom/css/upload.css'), $f->add_js("jquery-1.9.1.js", "http://code.jquery.com"),
 $f->add_js('custom/js/upload.js')]);
 $app->admin_html_head($page_title);
 $app->admin_sidebar($page_title);
