@@ -98,13 +98,31 @@ if (!empty($_GET['p'])) {
 
     <!-- 4 of 12 -->
     <div class="col-md-4">
-        <div class="text-center">
-            <h6>Featured Image</h6>
-            <div id="body-overlay">
-                <div>
+        <div class="panel panel-success">
+            <div class="panel-heading"><h5>Publish</h5></div>
+            <div class="panel-body">
+            <div class="form-group">
+            <label for="postDate">Post Date:</label>
+            <input type="datetime" class="form-control" name="post_date" id="post_date">
+            </div>
+            </div>
+        </div>
+        
+        <!-- Side Panel -->
+        <div class="panel panel-danger">
+            
+            <div class="text-center">
+            <!-- Panel Heading -->
+            <div class="panel-heading">
+                <h5>Featured Image</h5>
+            </div>
+
+            <div id="body-overlay"><div>
+                <!-- Panel Heading -->
                   <img src="<?=$future->media . "images/loading.gif"?>" width="64px" height="64px"/>
                 </div>
             </div>
+
           <div class="bgColor">
             <form id="uploadForm" action="upload.php" method="post">
             <div id="targetOuter">
@@ -122,7 +140,7 @@ if (!empty($_GET['p'])) {
           </div>
           </div>
         </div>
-
+        </div>
     </div>
 </div>
 <!-- The SECTION -->

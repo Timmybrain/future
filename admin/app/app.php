@@ -31,7 +31,7 @@ class Future {
         session_start();
         $redirect_to = $_SERVER['SCRIPT_NAME'];
         $goto_address = "login.php?redirect_to=" . $redirect_to;
-        if(empty($_SESSION['username'])) {
+        if( empty($_SESSION['username']) || empty($_SESSION['author_data'])) {
             header("Location: $goto_address");
             exit;
         }
