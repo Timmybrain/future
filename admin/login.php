@@ -6,7 +6,7 @@ require "app/app.php";
 if(!empty($_POST['username']) && !empty($_POST['password'])) {
     $future->admin_authorize();
 }
-$future->public_header($page_title);
+$future->admin_html_head($page_title);
 ?>
 <body class="signup-body">
 		<div class="agile-signup">	
@@ -16,8 +16,8 @@ $future->public_header($page_title);
 					<h2>Login</h2>
 				</div>
 				<form action="./login.php" method="post" autocomplete="on">
-					<input type="text" name="username" value="Username">
-					<input type="password" name="password" value="Password">
+					<input type="text" name="username" placeholder="Username">
+					<input type="password" name="password" placeholder="Password">
 					<input type="submit" class="register" value="Login">
 				</form>
 				<div class="signin-text">

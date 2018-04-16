@@ -8,11 +8,14 @@
                     <input type="text" class="form-control round" placeholder="Post Title">
                 </div>
             </div>
+
+            <!-- CKEDITOR container -->
             <div class="panel-body">
                 <textarea name="" id="editor1">
                     <h1>Hello World!</h1>
                 </textarea>
             </div>
+            <!-- //CKEDITOR container -->
 
             <!-- panel footer -->
             <div class="panel-footer">
@@ -49,8 +52,31 @@
 
     <!-- 4 of 12 -->
     <div class="col-md-4">
+        <div class="text-center">
+            <h6>Featured Image</h6>
+            <div id="body-overlay">
+                <div>
+                  <img src="<?=$future->media . "images/loading.gif"?>" width="64px" height="64px"/>
+                </div>
+            </div>
+          <div class="bgColor">
+            <form id="uploadForm" action="upload.php" method="post">
+            <div id="targetOuter">
+              <div id="targetLayer">
+                <img src="<?= $future->media . "images/". $future->get_author_pic_url($_SESSION['author_data']->author_id); ?>" width="200px" height="200px" class="upload-preview" />
+              </div>
+              <img src="<?=$future->media . "images/photo.png"?>"  class="icon-choose-image" />
+              <div class="icon-choose-image" >
+              <input name="userImage" id="userImage" type="file" class="inputFile" onChange="showPreview(this);" />
+              </div>
+            </div>
+            <div>
+            <input type="submit" value="Upload Photo" class="btnSubmit" />
+            </form>
+          </div>
+          </div>
+        </div>
 
     </div>
-    
 </div>
 <!-- The SECTION -->
