@@ -155,10 +155,9 @@ class Future {
         }
         return $requested;
     }
-
-    function fetch_categories(Type $var = null)
+    function Select_All($table, $fetchAll = false, $object = false)
     {
-        $sql = "SELECT * FROM categories";
+        $sql = "SELECT * FROM " . $table;
         //
         $stmt = $this->db()->prepare($sql);
         //
@@ -168,7 +167,23 @@ class Future {
         else {
             exit;
         }
-        return $stmt->fetch(\PDO::FETCH_OBJ);
+        if ($object && $fetchAll) {
+            return $stmt->fetchAll(\PDO::FETCH_OBJ);
+        }
+        elseif ($fetchAll && !$object) {
+            return $stmt->fetchAll();
+        }
+        elseif (!$fetchAll && $object) {
+            return $stmt->fetch(\PDO::FETCH_OBJ);
+        }
+        elseif (!$fetchAll && !$object) {
+            return $stmt->fetch();
+        }
+    }
+    function fetch_categories()
+    {
+        $result = $this->select_All("categories", true, true);
+        return $result;
     }
 
     function request_array($requested)
@@ -252,52 +267,7 @@ class Future {
     }
     function admin_sidebar($page_title)
     {
-        $sidebar_menus = array(
-        array(
-            'display' => 'Dashboard',
-            'script' => 'dashboard.php',
-            'icon' => 'fa fa-home nav_icon'
-        ),
-
-        array(
-            'display' => 'Articles',
-            'script' => 'post.php',
-            'icon' => 'fa fa-file-text-o nav_icon',
-        ),
-
-        array(
-            'display' => 'Comments',
-            'script' => 'comments.php',
-            'icon' => 'fa fa-comment nav_icon'
-        ),
-        array(
-            'display' => 'Media',
-            'script' => 'media.php',
-            'icon' => 'fa fa-image nav_icon'
-        ),
-        array(
-            'display' => 'Templates',
-            'script' => 'templates.php',
-            'icon' => 'fa fa-columns nav_icon'
-        ),
-        array(
-            'display' => 'Plugins',
-            'script' => 'plugins.php',
-            'icon' => 'fa fa-list-ul nav_icon'
-        ),
-
-        array(
-            'display' => 'Profile',
-            'script' => 'profile.php',
-            'icon' => 'fa fa-user nav_icon' 
-        ),
-
-        array(
-            'display' => 'Settings',
-            'script' => 'settings.php',
-            'icon' => 'fa fa-cog nav_icon'
-        )
-    );
+        $sidebar_menus = $this->Select_All('sidebar_menus', true, false);
 
     //some manipulations to make adding more menu possible
     echo '<nav class="main-menu">
@@ -515,17 +485,7 @@ class Future {
 
     function fetch_author($id)
     {
-        $sql = "SELECT * FROM authors WHERE author_id = :id";
-
-        $stmt = $this->db()->prepare($sql);
-
-        if($stmt) {
-            $stmt->execute(array(
-            ':id' => $this->e($id)
-        ));
-        }
-        $author = $stmt->fetch(\PDO::FETCH_OBJ);
-
+        $author = $this->Select_All("authors WHERE `author_id` = $id", false, true);
         return $author;
     }
 

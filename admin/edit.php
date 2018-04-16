@@ -11,6 +11,7 @@ $future->add_script_to_head($links);
 $future->admin_html_head($page_title);
 $future->admin_sidebar($page_title);
 $future->admin_nav_section();
+$categories = $f->fetch_categories();
 
 if (!empty($_GET['p'])) {
     $editable = $_GET['p'];
@@ -119,10 +120,17 @@ if (!empty($_GET['p'])) {
         <div class="panel panel-primary">
         <div class="panel-heading"><h5>Categories</h5></div>
         <div class="panel-body">
-        
+        <?php
+        foreach ($categories as $category) {
+            ?>
+            <input type="checkbox" name="<?=$category->category_id?>" id=""> <?=$category->category_name?>
+            <?php
+        }
+        ?>
         </div>
         <div class="panel-footer">
-        Add Category
+        <div id="add_category_cavas"></div>
+        <button class="btn btn-primary" id="add_category_button">Add Category</button> 
         </div>
         </div>
         <!-- //Category Panel-->
