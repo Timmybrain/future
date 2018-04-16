@@ -155,7 +155,8 @@ class Future {
         }
         return $requested;
     }
-    function Select_All($table, $fetchAll = false, $object = false)
+    //the SELECT_ALL function
+    private function Select_All($table, $fetchAll = false, $object = false)
     {
         $sql = "SELECT * FROM " . $table;
         //
