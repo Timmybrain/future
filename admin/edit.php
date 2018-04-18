@@ -105,9 +105,19 @@ if (!empty($_GET['p'])) {
             <div class="panel-heading"><h5>Publish</h5></div>
             <div class="panel-body">
             <div class="form-group">
-            <label for="postDate">Post Date:</label>
-            <input type="datetime" class="form-control" name="post_date" id="post_date">
+            <label for="post_status"><i class="fa fa-key"></i> Status</label>
+            <b>Draft</b> <a href="#edit">Edit</a>
             </div>
+
+            <div class="form-group">
+            <label for="postDate"><i class="fa fa-calendar"></i> Publish:</label> <b>immediately</b> <a href="#edit">Edit</a>
+            <!--input type="datetime" class="form-control" name="post_date" id="post_date"-->
+            </div>
+
+            <div class="form-group">
+            <label for=""><i class="fa fa-eye"></i> Visibility:</label> <b>public</b> <a href="#change">Change</a>
+            </div>
+
             </div>
             <div class="panel-footer">
              <button class="btn btn-primary">Publish</button>
