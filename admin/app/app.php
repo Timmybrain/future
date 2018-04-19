@@ -612,7 +612,7 @@ class Future {
         $stmt = $this->db()->prepare($sql);
 
         if ($stmt) {
-            $stmt->execute(array ('username' => $username,':passkey' => $password));
+            $stmt->execute(array('username' => $username,':passkey' => $password));
         }
 
         $result = $stmt->fetch(\PDO::FETCH_OBJ);
