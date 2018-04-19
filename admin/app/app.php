@@ -684,90 +684,63 @@ class Future {
         return $this->fetch_author($id)->author_pic_url;
     }
 
-    function public_header($page_title = "Hello Future", $meta="CMS")
-    {
-        $head = <<<EOD
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="{$this->assets}/css/materialize.min.css">
-        <link rel="stylesheet" type="text/css" href="{$this->assets}/css/single.min.css">
-        <link rel="stylesheet" href="{$this->assets}/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{$this->assets}/jquery-ui/jquery-ui.min.css">
-        <link href="{$this->assets}/css/font-awesome.css" rel="stylesheet">
-        <!-- bootstrap-css -->
-        <link rel="stylesheet" href="{$this->assets}/css/bootstrap.css">
-        <!-- //bootstrap-css -->
-        <!-- Custom CSS -->
-        <link href="{$this->assets}/css/colored-style.css" rel='stylesheet' type='text/css' />
-        <!-- font CSS -->
-        <!-- font-awesome icons -->
-        <link rel="stylesheet" href="{$this->assets}css/font.css" type="text/css"/>
-        <title>$page_title</title>
-        <script src="{$this->assets}/js/materialize.min.js"></script>
-        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-        <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'> 
-        <!-- //font-awesome icons --> 
-        <script src="{$this->assets}/jquery-ui/jquery-ui.min.js"></script>
-        <script src="{$this->assets}/js/jquery2.0.3.min.js"></script>
-    </head>
-EOD;
-    echo $head;
-}
     function admin_html_head($page_title = "Hello Future")
     {
         $head = <<<EOD
-<!DOCTYPE html>
-<head>
-<title>$page_title</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- bootstrap-css -->
-<link rel="stylesheet" href="{$this->assets}/colored/css/bootstrap.css">
-<!-- //bootstrap-css -->
-<!-- Custom CSS -->
-<link href="{$this->assets}/colored/css/style.css" rel='stylesheet' type='text/css' />
-<!-- font CSS -->
-<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-<!-- font-awesome icons -->
-<link rel="stylesheet" href="{$this->assets}/colored/css/font.css" type="text/css"/>
-<link href="{$this->assets}/colored/css/font-awesome.css" rel="stylesheet"> 
-<!-- //font-awesome icons -->
-<script src="{$this->assets}/colored/js/jquery2.0.3.min.js"></script>
-<script src="{$this->assets}/colored/js/modernizr.js"></script>
-<script src="{$this->assets}/colored/js/jquery.cookie.js"></script>
-<script src="{$this->assets}/colored/js/screenfull.js"></script>
-		<script>
-		$(function () {
-			$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+            <!DOCTYPE html>
+            <head>
+            <title>$page_title</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <meta name="keywords" content="" />
+            <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+            <!-- bootstrap-css -->
+            <link rel="stylesheet" href="{$this->assets}/colored/css/bootstrap.css">
+            <!-- //bootstrap-css -->
+            <!-- Custom CSS -->
+            <link href="{$this->assets}/colored/css/style.css" rel='stylesheet' type='text/css' />
+            <!-- font CSS -->
+            <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+            <!-- font-awesome icons -->
+            <link rel="stylesheet" href="{$this->assets}/colored/css/font.css" type="text/css"/>
+            <link href="{$this->assets}/colored/css/font-awesome.css" rel="stylesheet"> 
+            <!-- //font-awesome icons -->
+            <script src="{$this->assets}/colored/js/jquery2.0.3.min.js"></script>
+            <script src="{$this->assets}/colored/js/modernizr.js"></script>
+            <script src="{$this->assets}/colored/js/jquery.cookie.js"></script>
+            <script src="{$this->assets}/colored/js/screenfull.js"></script>
+                    <script>
+                    $(function () {
+                        $('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
 
-			if (!screenfull.enabled) {
-				return false;
-			}
-			$('#toggle').click(function () {
-				screenfull.toggle($('#container')[0]);
-			});	
-		});
-		</script>
-<!-- charts -->
-<script src="{$this->assets}/colored/js/raphael-min.js"></script>
-<script src="{$this->assets}/colored/js/morris.js"></script>
-<link rel="stylesheet" href="{$this->assets}/colored/css/morris.css">
-<!-- //charts -->
-<!--skycons-icons-->
-<script src="{$this->assets}/colored/js/skycons.js"></script>
-<!--//skycons-icons-->
+                        if (!screenfull.enabled) {
+                            return false;
+                        }
+                        $('#toggle').click(function () {
+                            screenfull.toggle($('#container')[0]);
+                        });	
+                    });
+                    </script>
 
-<!-- Additional Scripts -->
-{$this->hook($this->head_added_scripts)}
-<!-- //Additional Scripts -->
-</head>\n
-<body>\n
+            <!-- charts -->
+            <script src="{$this->assets}/colored/js/raphael-min.js"></script>
+            <script src="{$this->assets}/colored/js/morris.js"></script>
+            <link rel="stylesheet" href="{$this->assets}/colored/css/morris.css">
+            <!-- //charts -->
+
+            <!--skycons-icons-->
+            <script src="{$this->assets}/colored/js/skycons.js"></script>
+            <!--//skycons-icons-->
+
+            <!--Jquery 3.3.1 -->
+            <script src="{$this->assets}/node_modules/jquery/dist/jquery.min.js"></script>
+            <!--// Jquery 3.3.1 -->
+            
+            <!-- Additional Scripts -->
+            {$this->hook($this->head_added_scripts)}
+            <!-- //Additional Scripts -->
+            </head>\n
+            <body>\n
 EOD;
         echo $head;
     }

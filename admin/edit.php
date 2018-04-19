@@ -183,6 +183,16 @@ if (!empty($_GET['p'])) {
 <script>
     CKEDITOR.replace( 'editor1');
 </script>
+
+<script>
+$(document).ready(function () {
+    $("#add_category_button").click( function () {
+        
+        //alert("Jquery can fly!");
+    });
+})
+
+</script>
 <!-- footer -->
 <?php
 $future->footer()
