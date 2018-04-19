@@ -603,7 +603,11 @@ class Future {
 
         $redirect = !empty($_POST['redirect_to']) ? $_POST['redirect_to'] : "dashboard.php";
 
-        $sql = "SELECT * FROM authors WHERE author_email = :username OR author_nick = :username AND author_password = SHA(:passkey)";
+        $sql = "SELECT * FROM `authors` 
+                WHERE `author_email` = :username 
+                AND `author_password` = SHA(:passkey)
+                OR author_nick = :username 
+                AND `author_password` = SHA(:passkey)";
 
         $stmt = $this->db()->prepare($sql);
 
@@ -617,6 +621,7 @@ class Future {
             session_start();
             $_SESSION['username'] = $result->author_nick;
             $_SESSION['author_data'] = $result;
+            //var_dump($result);
             header("Location: $redirect");
         }
     }
@@ -735,7 +740,7 @@ class Future {
             <!--Jquery 3.3.1 -->
             <script src="{$this->assets}/node_modules/jquery/dist/jquery.min.js"></script>
             <!--// Jquery 3.3.1 -->
-            
+
             <!-- Additional Scripts -->
             {$this->hook($this->head_added_scripts)}
             <!-- //Additional Scripts -->

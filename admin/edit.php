@@ -138,7 +138,10 @@ if (!empty($_GET['p'])) {
                 ?>
             </div>
         <div class="panel-footer">
-            <div id="add_category_cavas"></div>
+            <div id="add_category_cavas">
+                <input type="text" name="input_new_category" id="input_new_category" />
+                <button class="btn btn-danger" id="save_category_button">Save</button>
+            </div>
             <button class="btn btn-primary" id="add_category_button">Add Category</button> 
         </div>
         </div>
@@ -186,9 +189,21 @@ if (!empty($_GET['p'])) {
 
 <script>
 $(document).ready(function () {
+    $("#add_category_cavas").hide();
+
     $("#add_category_button").click( function () {
-        
-        //alert("Jquery can fly!");
+        $("#add_category_cavas").show();
+    });
+
+    $("#save_category_button").click( function () {
+        var fields = {};
+        fields['new_category'] = $("input_new_category").val();
+
+        $.post("test.php", fields, function (data, status) {
+        if (status == "success") {
+            alert(data);
+        }
+    }, "text");
     });
 })
 
