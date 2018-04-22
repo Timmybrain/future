@@ -489,6 +489,12 @@ class Future {
         $author = $this->Select_All("authors WHERE `author_id` = $id", false, true);
         return $author;
     }
+    //fetch all authors -- only for administrators
+    function fetch_authors()
+    {
+        $authors = $this->Select_All("authors", true, true);
+        return $authors;
+    }
 
     function get_author_full_name($id, $letter_case = "sentence", $reverse = false)
     {
