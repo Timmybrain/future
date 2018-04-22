@@ -495,6 +495,30 @@ class Future {
         $authors = $this->Select_All("authors", true, true);
         return $authors;
     }
+    function notify()
+    {
+        foreach ($_COOKIE as $key => $value) {
+            if(!empty($value)) {
+                switch ($key) {
+                    case 'success':
+                        echo "<div class='notifier success'> $value </div>";
+                        break;
+
+                    case 'warning':
+                        echo "<div class='notifier warning'> $value </div>";
+                        break;
+
+                    case 'danger':
+                        echo "<div class='notifier danger'> $value </div>";
+                        break;
+                    
+                    default:
+                        # code...
+                        break;
+                }
+            }
+        }
+    }
 
     function get_author_full_name($id, $letter_case = "sentence", $reverse = false)
     {
@@ -514,7 +538,7 @@ class Future {
             return false;
         }
     }
-
+    
     function pull_contents(string $type = null, int $limit = null, bool $unpublished = false)
     {
         $limit = $this->e($limit);
