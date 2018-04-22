@@ -25,13 +25,22 @@ $users = $future->fetch_authors();
 				
 				<div class="blank">
 					<div class="blank-page">
-						<p>
+                        <div class="list-group">
 						<?php
 						foreach ($users as $user) {
-                            echo "<li>$user->author_fname</li>";
+                            ?>
+                            <li href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1"><?=$app->get_author_full_name($user->author_id)?></h5>
+                                
+                            </div>
+                            <p class="mb-1"><?=$user->author_bio?></p>
+                            <small><a href="./user-edit.php?user=<?=$app->encrypt($user->author_email)?>">Edit Profile</a></small>
+                            </li>
+
+                            <?php
                         }
 						?>
-						</p>
 					</div>
 			   </div>
 				<!-- //blank-page -->

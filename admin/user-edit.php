@@ -7,7 +7,9 @@ $f->add_js('custom/js/upload.js')]);
 $app->admin_html_head($page_title);
 $app->admin_sidebar($page_title);
 $app->admin_nav_section();
-$user = $future->fetch_author($_SESSION['author_data']->author_id);
+$nick = !empty($_GET['user']) ? $app->decrypt($_GET['user']) : $_SESSION['author_data']->author_nick;
+$user = $future->fetch_author($nick);
+$id = $user->author_id;
 ?>
 <div class="main-grid">
 			<div class="agile-grids">	
@@ -38,7 +40,7 @@ $user = $future->fetch_author($_SESSION['author_data']->author_id);
             <form id="uploadForm" action="upload.php" method="post">
             <div id="targetOuter">
               <div id="targetLayer">
-                <img src="<?= $future->media . "images/". $future->get_author_pic_url($_SESSION['author_data']->author_id); ?>" width="200px" height="200px" class="upload-preview" />
+                <img src="<?= $future->media . "images/". $future->get_author_pic_url($id); ?>" width="200px" height="200px" class="upload-preview" />
               </div>
               <img src="<?=$future->media . "images/photo.png"?>"  class="icon-choose-image" />
               <div class="icon-choose-image" >
@@ -56,7 +58,7 @@ $user = $future->fetch_author($_SESSION['author_data']->author_id);
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
         <?php
-        if ($future->update_user_profile($user->author_id)) {
+        if ($future->update_user_profile($id)) {
         ?>
         <div class="alert alert-success alert-dismissable">
           <a class="panel-close close" data-dismiss="alert">×</a> 
@@ -220,4 +222,5 @@ $user = $future->fetch_author($_SESSION['author_data']->author_id);
 		</div>
 		
 		<!-- footer -->
-		<?=$future->footer()?>
+    <?=$future->footer()?>
+  */

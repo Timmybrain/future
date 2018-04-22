@@ -156,31 +156,7 @@ class Future {
         return $requested;
     }
     //the SELECT_ALL function
-    private function Select_All($table, $fetchAll = false, $object = false)
-    {
-        $sql = "SELECT * FROM " . $table;
-        //
-        $stmt = $this->db()->prepare($sql);
-        //
-        if ($stmt) {
-            $stmt->execute();
-        }
-        else {
-            exit;
-        }
-        if ($object && $fetchAll) {
-            return $stmt->fetchAll(\PDO::FETCH_OBJ);
-        }
-        elseif ($fetchAll && !$object) {
-            return $stmt->fetchAll();
-        }
-        elseif (!$fetchAll && $object) {
-            return $stmt->fetch(\PDO::FETCH_OBJ);
-        }
-        elseif (!$fetchAll && !$object) {
-            return $stmt->fetch();
-        }
-    }
+    
     function fetch_categories()
     {
         $result = $this->select_All("categories", true, true);
@@ -192,7 +168,7 @@ class Future {
         $res = explode("/", $requested);
         return $res;
     }
-    private $secret_key = "(#$&^OTAFXMBJEMDS^&$#)";
+    private $secret_key = "}#$&^OTAFXMBJEMDS^&$#~9{";
     private $hash = "";
 
     //encrypt the data
@@ -206,7 +182,7 @@ class Future {
     function decrypt($data)
     {
         $data = base64_decode($data);
-        return mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $this->secret_key, $data, MCRYPT_MODE_ECB);
+        return rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $this->secret_key, $data, MCRYPT_MODE_ECB), "\0");
     }
 
     function match($prefer, $state = 'Yes')
@@ -484,9 +460,44 @@ class Future {
         return $input;
     }
 
+    //select All
+    private function Select_All($table, $fetchAll = false, $object = false)
+    {
+        $sql = "SELECT * FROM " . $table;
+        //
+        $stmt = $this->db()->prepare($sql);
+        //
+        if ($stmt) {
+            $stmt->execute();
+        }
+        else {
+            exit;
+        }
+        if ($object && $fetchAll) {
+            return $stmt->fetchAll(\PDO::FETCH_OBJ);
+        }
+        elseif ($fetchAll && !$object) {
+            return $stmt->fetchAll();
+        }
+        elseif (!$fetchAll && $object) {
+            return $stmt->fetch(\PDO::FETCH_OBJ);
+        }
+        elseif (!$fetchAll && !$object) {
+            return $stmt->fetch();
+        }
+    }
+    //fetch 1 author
     function fetch_author($id)
     {
-        $author = $this->Select_All("authors WHERE `author_id` = $id", false, true);
+        $sql = "SELECT * FROM `authors` WHERE `author_email` = :id OR `author_id` = :id OR `author_nick` = :id";
+        $stmt = $this->db()->prepare($sql);
+
+        if ($stmt) {
+            $stmt->execute(
+                array(':id' => $id)
+            );
+        }
+        $author = $stmt->fetch(\PDO::FETCH_OBJ);
         return $author;
     }
     //fetch all authors -- only for administrators
