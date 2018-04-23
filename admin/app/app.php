@@ -16,7 +16,8 @@ class Future {
 
     function __construct()
     {
-        header("X-Powered-By: FutureX Media Nigeria");       
+        ob_start();
+        header("X-Powered-By: FutureX Media Incorporated");       
         date_default_timezone_set('Africa/Lagos');
         $this->theme = strtolower($this->derive('theme'));
         $this->view = strtolower($this->derive('theme')) . "/views/" . strtolower($this->derive('theme'));
