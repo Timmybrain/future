@@ -159,7 +159,8 @@ class Future {
     
     function fetch_categories()
     {
-        $result = $this->select_All("categories", true, true);
+        $sql = "SELECT * FROM `categories`";
+        $result = $this->select_All($sql, true, true);
         return $result;
     }
 
@@ -244,7 +245,7 @@ class Future {
     }
     function admin_sidebar($page_title)
     {
-        $sidebar_menus = $this->Select_All('sidebar_menus', true, false);
+        $sidebar_menus = $this->Select_All("SELECT * FROM sidebar_menus", true, false);
 
     //some manipulations to make adding more menu possible
     echo '<nav class="main-menu">
@@ -461,10 +462,8 @@ class Future {
     }
 
     //select All
-    private function Select_All($table, $fetchAll = false, $object = false)
+    private function Select_All($sql, $fetchAll = false, $object = false)
     {
-        $sql = "SELECT * FROM " . $table;
-        //
         $stmt = $this->db()->prepare($sql);
         //
         if ($stmt) {
@@ -489,7 +488,10 @@ class Future {
     //fetch 1 author
     function fetch_author($id)
     {
-        $sql = "SELECT * FROM `authors` WHERE `author_email` = :id OR `author_id` = :id OR `author_nick` = :id";
+        $sql = "SELECT * FROM `authors`
+        LEFT JOIN `user_levels`
+        ON authors.authority = user_levels.level_auth
+        WHERE `author_email` = :id OR `author_id` = :id OR `author_nick` = :id";
         $stmt = $this->db()->prepare($sql);
 
         if ($stmt) {
@@ -503,7 +505,10 @@ class Future {
     //fetch all authors -- only for administrators
     function fetch_authors()
     {
-        $authors = $this->Select_All("authors", true, true);
+        $sql = "SELECT * FROM `authors` 
+        LEFT JOIN `user_levels`
+        ON authors.authority = user_levels.level_auth";
+        $authors = $this->Select_All($sql, true, true);
         return $authors;
     }
     function notify()

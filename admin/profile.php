@@ -48,4 +48,4 @@ $users = $future->fetch_authors();
 		</div>
 		
 		<!-- footer -->
-		<?=$future->footer()?>
+		<?=$future->footer();?>
