@@ -45,6 +45,7 @@ $id = $user->author_id;
               <img src="<?=$future->media . "images/photo.png"?>"  class="icon-choose-image" />
               <div class="icon-choose-image" >
               <input name="userImage" id="userImage" type="file" class="inputFile" onChange="showPreview(this);" />
+              <input name="current_edit_id" type="hidden" value="<?=$id?>" />
               </div>
             </div>
             <div>

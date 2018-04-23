@@ -711,7 +711,7 @@ class Future {
         }  
     }
 
-    function set_author_pic_url($custom_name)
+    function set_author_pic_url($custom_name, $id)
     {
         $sql = "UPDATE `authors` SET `author_pic_url` = :pic_url WHERE `author_id` = :id";
         $stmt = $this->db()->prepare($sql);
@@ -719,7 +719,7 @@ class Future {
             $stmt->execute(
                 array(
                     ':pic_url' => $custom_name,
-                    ':id' => $_SESSION['author_data']->author_id
+                    ':id' => $id
                 )
             );
 
