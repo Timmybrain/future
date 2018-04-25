@@ -188,7 +188,7 @@ class Future {
         $res = explode("/", $requested);
         return $res;
     }
-    private $secret_key = "}#$&^OTAFXMBJEMDS^&$#~9{";
+    private $secret_key = "UiVoPBD0tAFXjEm9WATCHOUT";
     private $hash = "";
 
     //encrypt the data

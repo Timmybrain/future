@@ -216,6 +216,8 @@ function update_categories_list(the_categories) {
         $("#list_of_categories").append(`<input type="checkbox" name="` + element.category_name + `">` + element.category_name + `<br />`);
     });
 }
+
+
 </script>
 <!-- footer -->
 <?php
