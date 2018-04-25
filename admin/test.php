@@ -1,5 +1,5 @@
 <?php
+require "app/app.php";
+//make a new category
 
-foreach ($_POST as $key => $value) {
-    echo "$key => $value"; 
-}
+echo $future->make_category($_POST['new_category']);

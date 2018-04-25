@@ -156,13 +156,31 @@ class Future {
         }
         return $requested;
     }
-    //the SELECT_ALL function
-    
+    //get all the categories
     function fetch_categories()
     {
-        $sql = "SELECT * FROM `categories`";
+        $sql = "SELECT `category_id`, `category_name` FROM `categories`";
         $result = $this->select_All($sql, true, true);
         return $result;
+    }
+
+    function make_category($new_category)
+    {
+        if ($this->is_post_request()) {
+            $sql = "INSERT INTO `categories`(category_name) VALUES (:new)";
+            //the db object!
+            $stmt = $this->db()->prepare($sql);
+            //is it establish?
+            if ($stmt) {
+                $stmt->execute(array(':new' => $new_category));
+            }
+            if ($stmt->rowCount() === 1) {
+                return json_encode($this->fetch_categories());
+            }
+            else {
+                return "baba, I don't understand o!";
+            }
+        }
     }
 
     function request_array($requested)

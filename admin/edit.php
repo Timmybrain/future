@@ -129,20 +129,17 @@ if (!empty($_GET['p'])) {
         <div class="panel panel-primary">
             <div class="panel-heading"><h5>Categories</h5></div>
             <div class="panel-body">
-                <?php
-                foreach ($categories as $category) {
-                    ?>
-                    <input type="checkbox" name="<?=$category->category_id?>" id=""> <?=$category->category_name?>
-                    <?php
-                }
-                ?>
+                <div id="list_of_categories">
+                </div>
             </div>
         <div class="panel-footer">
+            <button class="btn btn-primary" id="add_category_button">Add Category</button>
+
             <div id="add_category_cavas">
                 <input type="text" name="input_new_category" id="input_new_category" />
-                <button class="btn btn-danger" id="save_category_button">Save</button>
+                <button type="submit" class="btn btn-danger" id="save_category_button">Save</button>
             </div>
-            <button class="btn btn-primary" id="add_category_button">Add Category</button> 
+
         </div>
         </div>
         <!-- //Category Panel-->
@@ -189,24 +186,36 @@ if (!empty($_GET['p'])) {
 
 <script>
 $(document).ready(function () {
+    var the_categories = <?=json_encode($categories)?>;
+    update_categories_list(the_categories);
+
     $("#add_category_cavas").hide();
 
     $("#add_category_button").click( function () {
-        $("#add_category_cavas").show();
+        $("#add_category_cavas").toggle();
     });
 
     $("#save_category_button").click( function () {
+        //alert($("#input_new_category").val());
         var fields = {};
-        fields['new_category'] = $("input_new_category").val();
+        fields['new_category'] = $("#input_new_category").val();
 
         $.post("test.php", fields, function (data, status) {
         if (status == "success") {
-            alert(data);
+            update_categories_list(data);
+            $("#input_new_category").val("");
+            $("#add_category_cavas").hide();
         }
-    }, "text");
+    }, "json");
     });
-})
+});
 
+function update_categories_list(the_categories) {
+    $("#list_of_categories").html("");
+    the_categories.forEach(element => {
+        $("#list_of_categories").append(`<input type="checkbox" name="` + element.category_name + `">` + element.category_name + `<br />`);
+    });
+}
 </script>
 <!-- footer -->
 <?php
