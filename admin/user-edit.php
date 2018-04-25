@@ -11,6 +11,9 @@ $nick = !empty($_GET['user']) ? $app->decrypt($_GET['user']) : $_SESSION['author
 $user = $future->fetch_author($nick);
 $id = $user->author_id;
 ?>
+<script>
+alert("<?=$nick?>");
+</script>
 <div class="main-grid">
 			<div class="agile-grids">	
 				<div class="progressbar-heading grids-heading">
