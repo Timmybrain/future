@@ -71,7 +71,7 @@ if (!empty($_GET['p'])) {
                         <div class="col-md-4 col-sm-4"><b>PAGE</b>:</div>
                         <div class="col-md-8 col-sm-8">
                             <label class="switch">
-                                <input type="checkbox" name="post_type">
+                                <input id="post_typed" type="checkbox" name="post_type">
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -119,7 +119,7 @@ if (!empty($_GET['p'])) {
 
             </div>
             <div class="panel-footer">
-             <button class="btn btn-primary">Publish</button>
+             <button id="publish_post_button" class="btn btn-primary">Publish</button>
             </div>
         </div>
         <!-- //The Publisher Panel -->
@@ -160,9 +160,7 @@ if (!empty($_GET['p'])) {
           <div class="bgColor">
             <form id="uploadForm" action="upload.php" method="post">
             <div id="targetOuter">
-              <div id="targetLayer">
-                <img src="<?= $future->media . "images/". $future->get_author_pic_url($_SESSION['author_data']->author_id); ?>" width="200px" height="200px" class="upload-preview" />
-              </div>
+              <div id="targetLayer"></div>
               <img src="<?=$future->media . "images/photo.png"?>"  class="icon-choose-image" />
               <div class="icon-choose-image" >
               <input name="userImage" id="userImage" type="file" class="inputFile" onChange="showPreview(this);" />
@@ -208,15 +206,51 @@ $(document).ready(function () {
         }
     }, "json");
     });
+
+    $("#post_title").on('blur', generate_url);
+
+    $("#publish_post_button").click( function () {
+        var this_post = {
+            'post_title' : $("#post_title").val(),
+            'post_body' : $("#editor1").val(),
+            'post_image' : $("#post_image").attr('src'),
+            'post_categories': selected_categories(),
+            'post_type': post_type()
+
+        };
+        if (confirm("Are you sure you want to go live?")) {
+            console.log(this_post['post_type']);
+        }
+    });
 });
 
 function update_categories_list(the_categories) {
     $("#list_of_categories").html("");
     the_categories.forEach(element => {
-        $("#list_of_categories").append(`<input type="checkbox" name="` + element.category_name + `">` + element.category_name + `<br />`);
+        $("#list_of_categories").append(`<input class="post_category" type="checkbox" name="` + element.category_id + `">` + element.category_name + `<br />`);
     });
 }
 
+function selected_categories () {
+    var categories = $(".post_category").toArray();
+    var selected = [];
+    for (const input_c of categories) {
+        if (input_c.checked) {
+            selected.push(input_c.name)
+        }   
+    }
+    return selected;
+}
+
+function post_type() {
+    var post_type = $("input#post_typed");
+    if (post_type[0].checked == true) {
+        return "page";
+    }
+    else {
+        return "post";
+    }
+ }
 
 </script>
 <!-- footer -->

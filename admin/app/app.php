@@ -198,7 +198,7 @@ class Future {
         return base64_encode($data);
     }
 
-    //decrypt the data
+    //decrMCRYPT_CAST_256
     function decrypt($data)
     {
         $data = base64_decode($data);
