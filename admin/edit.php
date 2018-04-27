@@ -57,9 +57,7 @@ if (!empty($_GET['p'])) {
 
             <!-- CKEDITOR container -->
             <div class="panel-body">
-                <textarea name="" id="editor1">
-                    <h1>Hello World!</h1>
-                </textarea>
+                <textarea name="" id="editor"></textarea>
             </div>
             <!-- //CKEDITOR container -->
 
@@ -83,7 +81,7 @@ if (!empty($_GET['p'])) {
                         <div class="form-group row">
                             <label for="example-text-input" class="col-md-3"><b>URL</b>:</label>
                             <div class="col-md-9">
-                                <input class="form-control" name="post_url" type="text"  id="post_url_box">
+                                <span id="post_url_box"></span>
                             </div>
                         </div>
                     </div>
@@ -92,6 +90,30 @@ if (!empty($_GET['p'])) {
                 </div>
                 <!-- // panel footer ends -->
             </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="form-group row">
+                    <div class="col-md-2">
+                        <label for="meta_title">SEO Title:</label>
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control round" name="meta_title" id="seo_meta_title">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel-body">
+                <label for="">Meta Description:</label>
+                <textarea name="meta_decription" cols="30" rows="10" id="meta_description"></textarea>
+            </div>
+
+            <div class="panel-footer">
+                <label for="keywords">Keywords:</label>
+                <input type="text" name="keywords" id="the_keywords">
+            </div>
+
         </div>
     </div>
     <!-- // 8 of 12 -->
@@ -105,7 +127,7 @@ if (!empty($_GET['p'])) {
             <div class="panel-body">
             <div class="form-group">
             <label for="post_status"><i class="fa fa-key"></i> Status</label>
-            <b>Draft</b> <a href="#edit">Edit</a>
+            <span id="my_post_status"><b>Draft<b></span> <a href="#edit" id="edit_status">Edit</a>
             </div>
 
             <div class="form-group">
@@ -114,12 +136,14 @@ if (!empty($_GET['p'])) {
             </div>
 
             <div class="form-group">
-            <label for=""><i class="fa fa-eye"></i> Visibility:</label> <b>public</b> <a href="#change">Change</a>
+            <label for=""><i class="fa fa-eye"></i> Visibility:</label> 
+            <b id="post_visibility">public</b> <a id="change_visibility">Change</a>
             </div>
 
             </div>
-            <div class="panel-footer">
-             <button id="publish_post_button" class="btn btn-primary">Publish</button>
+            <div class="panel-footer row">
+            <div class="col-sm-6"><button id="save_as_draft" class="btn btn-secondary">Save as Draft</button></div>
+             <div class="col-md-6"><button id="publish_post_button" class="btn btn-danger">Publish</button></div>
             </div>
         </div>
         <!-- //The Publisher Panel -->
@@ -179,7 +203,7 @@ if (!empty($_GET['p'])) {
 </div>
 </div>        
 <script>
-    CKEDITOR.replace( 'editor1');
+    CKEDITOR.replace( 'editor');
 </script>
 
 <script>
@@ -206,24 +230,31 @@ $(document).ready(function () {
         }
     }, "json");
     });
-
-    $("#post_title").on('blur', generate_url);
-
+    //$()
     $("#publish_post_button").click( function () {
         var this_post = {
             'post_title' : $("#post_title").val(),
-            'post_body' : $("#editor1").val(),
+            'post_body' : $("#editor").val(),
             'post_image' : $("#post_image").attr('src'),
             'post_categories': selected_categories(),
-            'post_type': post_type()
-
+            'post_type': post_type(),
+            'post_status': 'published',
+            'post_meta_desc' : $("#meta_description").val(),
+            'post_meta_title' : $("#seo_meta_title").val(),
+            'post_keywords' : $("#the_keywords").val(),
+            'post_visibility' : $("#post_visibility").text()
         };
-        if (confirm("Are you sure you want to go live?")) {
-            console.log(this_post['post_type']);
+        if (confirm("Are you sure you want to go live?")) {           
+            $.post("save.php", this_post, function (data, status) {
+                if (status == "success") {
+                    console.log(data);
+                }
+            }, "json");
         }
     });
 });
 
+//functions
 function update_categories_list(the_categories) {
     $("#list_of_categories").html("");
     the_categories.forEach(element => {
@@ -251,7 +282,6 @@ function post_type() {
         return "post";
     }
  }
-
 </script>
 <!-- footer -->
 <?php

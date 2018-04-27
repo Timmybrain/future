@@ -330,30 +330,66 @@ class Future {
         return $content;
     }
 
+    function generate_url($post_title)
+    {
+        $unwanted = ["-", '"', "'", "<", ">", "$", "&", "%", "#", "!"];
+        foreach ($unwanted as $value) {
+            if (strpos($post_title, $value)) {
+                $post_title = str_replace($value, "", $post_title);
+            }
+        }
+        return str_replace("--", "-", str_replace(" ", "-", $post_title));
+    }
+
+    function generate_image_url($long_story)
+    {
+        $storied = explode("/", $long_story);
+
+        return $storied[count($storied) - 1];
+    }
+
+    function meta_describe($post_meta)
+    {
+        if (empty($post_meta)) {
+            return "This is not good empty";
+        }
+        else {
+            return $post_meta;
+        }
+    }
+
     function save_content()
     {
-        $status = $_POST['post_status'];
-        if ($_SERVER['REQUEST_METHOD'] == "POST"):
 
-            $sql = ["INSERT INTO `contents`(`post_url`, `post_title`, `post_body`, `author_id`, `post_meta`, `post_keywords`, `post_type`, `post_status`) VALUES (:post_url, :post_title, :post_body, :author, :post_meta, :keywords, :post_type, :post_status)"];
+        if ($this->is_post_request()):
+            echo $this->generate_url($_POST['post_title']);
+            $sql = ["INSERT INTO `contents`(`post_url`, `post_title`, `post_subtitle`, `post_body`, `post_img`, `author_id`,
+            `post_meta`, `post_keywords`, `post_type`, `post_status`, `post_visibility`) VALUES (:post_url, :post_title, :post_meta_title,
+            :post_body,:post_image, :author, :post_meta, :post_keywords, :post_type, :post_status, :post_visible)"];
 
             $stmt = $this->db()->prepare($sql[0]);
 
             if ($stmt) {
                 $stmt->execute(array(
-                    ':post_url' => $_POST['post_url'],
+                    ':post_url' => $this->generate_url($_POST['post_title']),
                     ':post_title' => $_POST['post_title'],
                     ':post_body' => $_POST['post_body'],
-                    ':author' => 1,
-                    ':post_meta' => $_POST['post_meta'],
-                    ':keywords' => $_POST['post_keywords'],
+                    ':post_meta_title' => $this->meta_describe($_POST['post_meta_title']),
+                    ':post_image' => $this->generate_image_url($_POST['post_image']),
+                    ':author' => $_SESSION['author_data']->author_id,
+                    ':post_meta' => $_POST['post_meta_desc'],
+                    ':post_keywords' => $_POST['post_keywords'],
                     ':post_type' => $_POST['post_type'],
-                    ':post_status' => $_POST['post_status']
-
+                    ':post_status' => $_POST['post_status'],            
+                    ':post_visible' => $_POST['post_visibility']
                 ));
-
                 if ($stmt->rowCount() == 1) {
-                    echo "Successfully saved as $status";
+                    $response = array (
+                        'post_status' => $_POST['post_status'],
+                        'post_url' => $this->generate_url($_POST['post_title']),
+                        'meta_desc' => $this->meta_describe($_POST['post_meta_title'])
+                    );
+                    return json_encode($response);
                 }
             }
 
