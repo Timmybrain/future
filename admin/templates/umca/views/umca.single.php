@@ -1,6 +1,8 @@
 <?php
 $article = $future->pull_content($requested);
 $post_title = $article->post_title;
+$dateTime = DateTime::createFromFormat('Y-m-d h:i:s', $article->post_date);
+$txt_month = $f->calender('short')[ intval($dateTime->format("m") - 1)];
 require dirname(__DIR__) . "/includes/umca.header.php";
 ?>
 	<div class="main-container">
@@ -35,7 +37,7 @@ require dirname(__DIR__) . "/includes/umca.header.php";
 								<?php
 							}
 							?>
-								<div class="post-date"><a href="#">14 <span>OCT</span></a></div>
+								<div class="post-date"><a href="#"><?=$dateTime->format("d")?><span><?=$txt_month?></span></a></div>
 							</div>
 							<h3 class="entry-title"><?=$article->post_title?></h3>
 							<div class="entry-meta">

@@ -247,7 +247,8 @@ $(document).ready(function () {
         if (confirm("Are you sure you want to go live?")) {           
             $.post("save.php", this_post, function (data, status) {
                 if (status == "success") {
-                    console.log(data);
+                    alert("Successfully" + data.post_status);
+                    $("#post_url_box").append("<a href='<?=$f->base_url?>/" + data.post_url + "'><?=$f->base_url?>" + data.post_url + "</a>");
                 }
             }, "json");
         }

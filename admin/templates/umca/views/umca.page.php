@@ -33,7 +33,9 @@ require dirname(__DIR__) . "/includes/umca.header.php";
 								<?php
 								if (!empty($article->post_img)) {
 									?>
-									<img src="<?=$f->media . "images/" . $article->post_img?>" alt="<?=$article->post_title?>" />
+									<center>
+										<img src="<?=$f->media . "images/" . $article->post_img?>" alt="<?=$article->post_title?>" />
+									</center>
 									<?php
 								}
 								?>
