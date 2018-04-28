@@ -26,3 +26,11 @@ elseif($future->request_type($requested) === 'page') {
     require "$path/admin/templates/$theme/views/$theme.page.php";
     exit;
 }
+elseif (empty($f->pull_content($requested)) && !$f->index($requested) ) {
+    require  "$path/admin/templates/$theme/views/$theme.404.php";
+    exit;
+}
+elseif ($f->index()) {
+    require  "$path/admin/templates/$theme/views/$theme.static.php";
+    exit;
+}

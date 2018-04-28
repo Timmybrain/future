@@ -203,7 +203,7 @@ if (!empty($_GET['p'])) {
 </div>
 </div>        
 <script>
-    CKEDITOR.replace( 'editor');
+    var editor = CKEDITOR.replace( 'editor');
 </script>
 
 <script>
@@ -234,7 +234,7 @@ $(document).ready(function () {
     $("#publish_post_button").click( function () {
         var this_post = {
             'post_title' : $("#post_title").val(),
-            'post_body' : $("#editor").val(),
+            'post_body' : CKEDITOR.instances.editor.getData(),
             'post_image' : $("#post_image").attr('src'),
             'post_categories': selected_categories(),
             'post_type': post_type(),

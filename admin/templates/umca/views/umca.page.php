@@ -1,4 +1,6 @@
 <?php
+$article = $future->pull_content($requested);
+$post_title = $article->post_title;
 require dirname(__DIR__) . "/includes/umca.header.php";
 ?>
 	<div class="main-container">
@@ -7,7 +9,7 @@ require dirname(__DIR__) . "/includes/umca.header.php";
 		<div class="container-fluid no-left-padding no-right-padding page-banner">
 			<!-- Container -->
 			<div class="container">
-				<h3>OUR FELLOWSHIPS</h3>
+				<h3><?=$post_title?></h3>
 				<ol class="breadcrumb">
 					<li><a href="index.html">Home</a></li>
 					<li class="active">Fellowships</li>
@@ -22,31 +24,25 @@ require dirname(__DIR__) . "/includes/umca.header.php";
 				<div class="container">
 					<!-- Section Header -->
 					<div class="section-header text-center">
-						<h3>OUR FELLOWSHIPS</h3>
-					</div><!-- Section Header /- -->
-					<!-- Nav tabs -->
-					<ul class="nav nav-tabs srv-tab" role="tablist">
-						<li role="presentation" class="active">
-							<a href="mensFellowships.html" title="Men's Fellowship">
-								<span><i><img src="<?=$future->theme_assets?>/images/services-icon-1.png" alt="Icon" /></i>MEN'S FELLOWSHIP</span>
-							</a>
-						</li>
-						<li role="presentation">
-							<a href="ladiesFellowship.html" title="Ladies Fellowship">
-								<span><i><img src="<?=$future->theme_assets?>/images/services-icon-1.png" alt="Icon" /></i>LADIES FELLOWSHIP</span>
-							</a>
-						</li>
-						<li role="presentation">
-							<a href="foyca.html" title="Foyca">
-								<span><i><img src="<?=$future->theme_assets?>/images/services-icon-1.png" alt="Icon" /></i>FOYCA (FELLOWSHIP)</span>
-							</a>
-						</li>
-						<li role="presentation">
-							<a href="youthFellowship.html" title="Youth Fellowship">
-								<span><i><img src="<?=$future->theme_assets?>/images/services-icon-1.png" alt="Icon" /></i>YOUTH FELLOWSHIP</span>
-							</a>
-						</li>
-					</ul>
+						<h3><?=$post_title?></h3>
+					</div>
+
+					<div class="main-container">
+						<div class="container" style="box-shadow: 3px 3px 5px #999;margin-bottom: 10px;margin: 1px solid grey;padding: 20px;border: 1px solid #e3e3e3;font-size: 17px; ">
+							<div class="entry-header">
+								<?php
+								if (!empty($article->post_img)) {
+									?>
+									<img src="<?=$f->media . "images/" . $article->post_img?>" alt="<?=$article->post_title?>" />
+									<?php
+								}
+								?>
+							</div>
+							
+							<div class="entry-content">
+								<?=$article->post_body?>
+							</div>
+						</div>					
 				</div><!-- Container /- -->			
 		</main>
 	

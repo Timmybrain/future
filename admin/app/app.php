@@ -14,6 +14,59 @@ class Future {
     public $foot_added_scripts;
     public $media;
 
+    function index($url = "")
+    {
+        $urls = ['/', 'index', '/Route/web.php', 'home'];
+        if (empty($url)) {
+            return true;
+        }
+        elseif (!empty($url) && in_array($url, $urls)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function request_handler()
+    {
+        $grab = !empty($_GET['url']) ? $_GET['url'] : "";
+        $requested = $this->clean_request($grab);
+
+        //looking through the url in the browser
+        if (empty($requested) && !$this->index()) {
+            $option_url = $_SERVER['REQUEST_URI'];
+            //$option_url = str_replace("/Route/web.php", "", $option_url);
+            if (!empty($option_url)) {
+                $requested = $option_url;
+            }
+            else {
+                //do nothing
+                $requested = "/";
+            }
+        }
+        //fancy way to handle comment and other front-end posting
+        $exts = ["/post", ".php", ".html", ".htm", ".txt", ".md", ".doc", ".pdf"];
+        foreach ($exts as $ext) {
+            $requested = $this->omit_ext($requested, $ext);
+        }
+        return $requested;
+    }
+
+    function omit_ext($requested, $ext)
+    {
+        $minus = strlen($ext) * -1;
+
+        if (substr($requested, $minus) == $ext) {
+            $request = substr($requested, 0, $minus);
+            return $request;
+        }
+        else {
+            return $requested;
+        }
+
+    }
+
     function __construct()
     {
         ob_start();
@@ -127,35 +180,6 @@ class Future {
         }
     }
 
-    function request_handler()
-    {
-        $grab = !empty($_GET['url']) ? $_GET['url'] : "";
-        $requested = $this->clean_request($grab);
-
-        //looking through the url in the browser
-        if (empty($requested) && $_SERVER['PHP_SELF'] != "/index.php") {
-            $option_url = $_SERVER['PHP_SELF'];
-            $option_url = str_replace("/Route/web.php", "", $option_url);
-            if (!empty($option_url)) {
-                $requested = $option_url;
-            }
-            else {
-                //do nothing
-                $requested = "Home";
-            }
-        }
-
-        //fancy way to handle comment and other front-end posting
-        $posted = false;
-        if (substr($requested, -5) === "/post") {
-            $posted = true;
-            $requested = substr($requested, 0, -5);
-        }
-        if(substr($requested,-5) === ".html") {
-            $requested = substr($requested, 0, -5);
-        }
-        return $requested;
-    }
     //get all the categories
     function fetch_categories()
     {
@@ -332,13 +356,13 @@ class Future {
 
     function generate_url($post_title)
     {
-        $unwanted = ["-", '"', "'", "<", ">", "$", "&", "%", "#", "!"];
+        $unwanted = ['"', "'", "<", ">", "$", "&", "%", "#", "!", "(", ")", ",", "/", ":", "*", "^"];
         foreach ($unwanted as $value) {
             if (strpos($post_title, $value)) {
                 $post_title = str_replace($value, "", $post_title);
             }
         }
-        return str_replace("--", "-", str_replace(" ", "-", $post_title));
+        return strtolower(str_replace("--", "-", str_replace(" ", "-", $post_title)));
     }
 
     function generate_image_url($long_story)
@@ -362,16 +386,16 @@ class Future {
     {
 
         if ($this->is_post_request()):
-            echo $this->generate_url($_POST['post_title']);
             $sql = ["INSERT INTO `contents`(`post_url`, `post_title`, `post_subtitle`, `post_body`, `post_img`, `author_id`,
             `post_meta`, `post_keywords`, `post_type`, `post_status`, `post_visibility`) VALUES (:post_url, :post_title, :post_meta_title,
             :post_body,:post_image, :author, :post_meta, :post_keywords, :post_type, :post_status, :post_visible)"];
-
+            //
             $stmt = $this->db()->prepare($sql[0]);
-
+            //the url
+            $url = $this->generate_url($_POST['post_title']);
             if ($stmt) {
                 $stmt->execute(array(
-                    ':post_url' => $this->generate_url($_POST['post_title']),
+                    ':post_url' => $url,
                     ':post_title' => $_POST['post_title'],
                     ':post_body' => $_POST['post_body'],
                     ':post_meta_title' => $this->meta_describe($_POST['post_meta_title']),
@@ -384,9 +408,12 @@ class Future {
                     ':post_visible' => $_POST['post_visibility']
                 ));
                 if ($stmt->rowCount() == 1) {
+                    //sending picked categories to db
+                    $this->link_post_with_categories($url, $_POST['post_categories']);
+                    //response to update the interface
                     $response = array (
                         'post_status' => $_POST['post_status'],
-                        'post_url' => $this->generate_url($_POST['post_title']),
+                        'post_url' => $url,
                         'meta_desc' => $this->meta_describe($_POST['post_meta_title'])
                     );
                     return json_encode($response);
@@ -394,6 +421,34 @@ class Future {
             }
 
         endif;
+    }
+
+    function get_post_categories()
+    {
+        $sql = "SELECT recipes.name, categories.category_name
+        FROM contents
+        LEFT JOIN posts_categories
+        ON categories.category_id = posts_categories.category_id
+        LEFT JOIN categories
+        ON posts_categories.categ_id = categories._id";
+    }
+
+    function link_post_with_categories($url, $categories)
+    {
+        $sql = "INSERT INTO `posts_categories`(`category_id`, `post_id`) VALUES (:category_id, :post_id)";
+
+        $stmt = $this->db()->prepare($sql);
+
+        $post_id = ($this->pull_content($url, true))->post_id;
+
+        foreach ($categories as $category) {
+            $stmt->execute(
+                array(
+                    ':category_id' => $category,
+                    ':post_id' => $post_id 
+                )
+            );
+        }
     }
 
     function set_content($post, $action)
@@ -476,7 +531,7 @@ class Future {
         }
     }
 
-    private $query = "SELECT * FROM `contents` WHERE `post_url` = :requested";
+    private $query = "SELECT * FROM `contents`";
 
     function pull_content($requested, $admin_use = false)
     {
