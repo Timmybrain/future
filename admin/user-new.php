@@ -1,15 +1,12 @@
 <?php
 require "app/app.php";
-$page_title = "Edit Profile";
+$page_title = "New User";
 $app->is_admin();
 $app->add_script_to_head([$f->add_css('custom/css/upload.css'), $f->add_js("jquery-1.9.1.js", "http://code.jquery.com"),
 $f->add_js('custom/js/upload.js')]);
 $app->admin_html_head($page_title);
 $app->admin_sidebar($page_title);
 $app->admin_nav_section();
-$nick = !empty($_GET['user']) ? $app->decrypt($_GET['user']) : $_SESSION['author_data']->author_nick;
-$user = $future->fetch_author($nick);
-$id = $user->author_id;
 ?>
 <div class="main-grid">
 			<div class="agile-grids">	
@@ -40,12 +37,11 @@ $id = $user->author_id;
             <form id="uploadForm" action="upload.php" method="post">
             <div id="targetOuter">
               <div id="targetLayer">
-                <img src="<?= $future->media . "images/". $future->get_author_pic_url($id); ?>" width="200px" height="200px" class="upload-preview" />
               </div>
               <img src="<?=$future->media . "images/photo.png"?>"  class="icon-choose-image" />
               <div class="icon-choose-image" >
               <input name="userImage" id="userImage" type="file" class="inputFile" onChange="showPreview(this);" />
-              <input name="current_edit_id" type="hidden" value="<?=$id?>" />
+              <input name="current_edit_id" type="hidden" value="new" />
               </div>
             </div>
             <div>
@@ -59,39 +55,41 @@ $id = $user->author_id;
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
         <?php
-        if ($future->update_user_profile($id)) {
-        ?>
-        <div class="alert alert-success alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a> 
-          <i class="fa fa-coffee"></i>
-          Account details successfully updated!
-        </div>
-        <?php
+        if ($f->is_post_request()) {
+          if ($future->update_user_profile("new")) {
+          ?>
+          <div class="alert alert-success alert-dismissable">
+            <a class="panel-close close" data-dismiss="alert">×</a> 
+            <i class="fa fa-coffee"></i>
+            New account created! 
+          </div>
+          <?php
+          }
         }
         ?>
         <form action="<?=$_SERVER['PHP_SELF']?>" method="post" class="form-horizontal" role="form">
           <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>
             <div class="col-lg-8">
-              <input name="fname" class="form-control" type="text" value="<?=$user->author_fname?>">
+              <input name="fname" class="form-control" type="text" value="">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Last name:</label>
             <div class="col-lg-8">
-              <input name="lname" class="form-control" type="text" value="<?=$user->author_lname?>">
+              <input name="lname" class="form-control" type="text" value="">
             </div>
           </div>
           <div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
-              <input name="email" class="form-control" type="text" value="<?=$user->author_email?>">
-			</div>
-		  </div>
+              <input name="email" class="form-control" type="text" value="">
+            </div>
+          </div>
 		  <div class="form-group">
             <label class="col-lg-3 control-label">Short Bio:</label>
             <div class="col-lg-8">
-              <input name="mybio" class="form-control" type="text" value="<?=$user->author_bio?>">
+              <input name="mybio" class="form-control" type="text" value="">
             </div>
           </div>
           <div class="form-group">
@@ -188,8 +186,23 @@ $id = $user->author_id;
           <div class="form-group">
             <label class="col-md-3 control-label">Username:</label>
             <div class="col-md-8">
-              <input name="username" class="form-control" type="text" value="<?=$user->author_nick?>" disabled>
+              <input name="username" class="form-control" type="text">
             </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Authority:</label>
+            <div class="col-lg-8">
+              <div class="ui-select">
+                <select name="authority" id="user_time_zone" class="form-control">
+            <?php
+            $levels = $f->pull_user_levels();
+            foreach ($levels as $level) {
+              echo "<option value=\"$level->level_auth\">$level->level_title</option>";
+            }
+            ?>
+            </select>
+            </div>
+          </div>
           </div>
           <div class="form-group">
             <label class="col-md-3 control-label">Password:</label>
@@ -224,3 +237,4 @@ $id = $user->author_id;
 		
 		<!-- footer -->
     <?=$future->footer()?>
+  */

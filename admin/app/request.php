@@ -4,7 +4,7 @@ class  Request
 {
     function index($url = "")
     {
-        $urls = ['/', 'index', '/Route/web.php', 'home'];
+        $urls = ['/', 'index', '/index', '/Route/web.php', '/home'];
         if (empty($url)) {
             return true;
         }
@@ -21,7 +21,7 @@ class  Request
         $grab = !empty($_GET['url']) ? $_GET['url'] : $_SERVER['REQUEST_URI'];
         $requested = $this->clean_request($grab);
         //fancy way to handle comment and other front-end posting
-        $exts = ["/post", ".php", ".html", ".htm", ".txt", ".md", ".doc", ".pdf"];
+        $exts = ["/post", ".php", ".html", ".htm", ".txt", ".md", ".doc", ".pdf", ".bml", ".py"];
         foreach ($exts as $ext) {
             $requested = $this->omit_ext($requested, $ext);
         }

@@ -539,9 +539,9 @@ class Future extends Request {
     function fetch_author($id)
     {
         $sql = "SELECT * FROM `authors`
-        LEFT JOIN `user_levels`
-        ON authors.authority = user_levels.level_auth
-        WHERE `author_email` = :id OR `author_id` = :id OR `author_nick` = :id";
+            LEFT JOIN `user_levels`
+            ON authors.authority = user_levels.level_auth
+            WHERE `author_email` = :id OR `author_id` = :id OR `author_nick` = :id";
         $stmt = $this->db()->prepare($sql);
 
         if ($stmt) {
@@ -759,6 +759,9 @@ class Future extends Request {
                 $stmt->execute($entry);
                 if ($id != 'new' && $stmt->rowCount() === 1) {
                     return $_SESSION['author_data'] = $this->fetch_author($id);
+                }
+                elseif ($stmt->rowCount() === 1 && $id == "new" ) {
+                    header("Location: ./profile.php");
                 }
             }
         }

@@ -50,7 +50,7 @@ $users = $future->fetch_authors();
 		<script>
 		$(document).ready(function () { 
 			$("#new_user_button").click(function () { 
-				window.location.href = "./user-edit.php?user=new";
+				window.location.href = "./user-new.php";
 			 });
 		 });
 		</script>
