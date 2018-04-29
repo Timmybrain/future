@@ -11,7 +11,7 @@ $future->admin_html_head($page_title);
 $future->admin_sidebar($page_title);
 $future->admin_nav_section();
 $categories = $f->fetch_categories();
-
+$post = "";
 if (!empty($_GET['p'])) {
     $editable = $_GET['p'];
 
@@ -77,10 +77,10 @@ if (!empty($_GET['p'])) {
                     <!-- //The Page/Blog button -->
 
                     <!-- The url text-input -->
-                    <div class="col-md-4">
+                    <div class="col-md-8">
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-md-3"><b>URL</b>:</label>
-                            <div class="col-md-9">
+                            <label for="example-text-input" class="col-md-2"><b>URL</b>:</label>
+                            <div class="col-md-10">
                                 <span id="post_url_box"></span>
                             </div>
                         </div>
@@ -127,7 +127,7 @@ if (!empty($_GET['p'])) {
             <div class="panel-body">
             <div class="form-group">
             <label for="post_status"><i class="fa fa-key"></i> Status</label>
-            <span id="my_post_status"><b>Draft<b></span> <a href="#edit" id="edit_status">Edit</a>
+            <span id="my_post_status"><b>Draft</b></span> <a href="#edit" id="edit_status">Edit</a>
             </div>
 
             <div class="form-group">
@@ -136,15 +136,15 @@ if (!empty($_GET['p'])) {
             </div>
 
             <div class="form-group">
-            <label for=""><i class="fa fa-eye"></i> Visibility:</label> 
-            <b id="post_visibility">public</b> <a id="change_visibility">Change</a>
+                <label for=""><i class="fa fa-eye"></i> Visibility:</label> 
+                <b id="post_visibility">public</b> <a id="change_visibility">Change</a>
             </div>
+</div>
+        <div class="panel-footer">
+            <button id="save_as_draft" class="btn btn-primary left">Draft</button>
+            <button id="publish_post_button" class="btn btn-success right">Publish</button>
+        </div>
 
-            </div>
-            <div class="panel-footer row">
-            <div class="col-sm-6"><button id="save_as_draft" class="btn btn-secondary">Save as Draft</button></div>
-             <div class="col-md-6"><button id="publish_post_button" class="btn btn-danger">Publish</button></div>
-            </div>
         </div>
         <!-- //The Publisher Panel -->
 
@@ -157,7 +157,7 @@ if (!empty($_GET['p'])) {
                 </div>
             </div>
         <div class="panel-footer">
-            <button class="btn btn-primary" id="add_category_button">Add Category</button>
+            <button class="btn btn-dark" id="add_category_button">Add Category</button>
 
             <div id="add_category_cavas">
                 <input type="text" name="input_new_category" id="input_new_category" />
@@ -210,7 +210,8 @@ if (!empty($_GET['p'])) {
 $(document).ready(function () {
     var the_categories = <?=json_encode($categories)?>;
     update_categories_list(the_categories);
-
+    //for editing!
+    var editable = <?=json_encode($post)?>;
     $("#add_category_cavas").hide();
 
     $("#add_category_button").click( function () {
@@ -233,6 +234,12 @@ $(document).ready(function () {
     //$()
     $("#publish_post_button").click( function () {
         var this_post = {
+            <?php
+            if (!empty($post)) {
+                echo "'post_id': {$post['post_id']},\n";
+            }
+            ?>
+            'action': what_action(editable),
             'post_title' : $("#post_title").val(),
             'post_body' : CKEDITOR.instances.editor.getData(),
             'post_image' : $("#post_image").attr('src'),
@@ -244,15 +251,29 @@ $(document).ready(function () {
             'post_keywords' : $("#the_keywords").val(),
             'post_visibility' : $("#post_visibility").text()
         };
-        if (confirm("Are you sure you want to go live?")) {           
+        
+        if (confirm("Are you sure you want to go live?")) { 
             $.post("save.php", this_post, function (data, status) {
                 if (status == "success") {
-                    alert("Successfully" + data.post_status);
-                    $("#post_url_box").append("<a href='<?=$f->base_url?>/" + data.post_url + "'><?=$f->base_url?>" + data.post_url + "</a>");
+                    alert("Successfully " + data.post_status);
+                    $("#post_url_box").html("<a href='<?=$f->base_url?>/" + data.post_url + "'><?=$f->base_url?>/" + data.post_url + "</a>");
                 }
             }, "json");
         }
     });
+    if (editable != '') {
+        CKEDITOR.instances.editor.setData(editable.post_body);
+        $("#post_title").val(editable.post_title);
+        $("#post_url_box").append("<a href='<?=$f->base_url?>/" + editable.post_url + "'><?=$f->base_url?>/" + editable.post_url + "</a>");
+        $("#targetLayer").html('<img src="<?=$f->media?>/images/' + editable.post_img + '" id="post_image" width="200px" height="200px" class="upload-preview" />');
+        $("#my_post_status").html("<b>" + editable.post_status +"</b>");
+        $("#publish_post_button").text("Update");
+        $("#meta_description").val(editable.post_meta);
+        $("#seo_meta_title").val(editable.post_subtitle)
+        if (editable.post_type == "page") {
+            $("input#post_typed")[0].checked = true;
+        }
+    }
 });
 
 //functions
@@ -262,16 +283,27 @@ function update_categories_list(the_categories) {
         $("#list_of_categories").append(`<input class="post_category" type="checkbox" name="` + element.category_id + `">` + element.category_name + `<br />`);
     });
 }
-
+//to know
+function what_action(editable) { 
+    if (editable != '') {
+        return 'update';
+    }
+    else {
+        return 'insert';
+    }
+ }
 function selected_categories () {
     var categories = $(".post_category").toArray();
     var selected = [];
     for (const input_c of categories) {
         if (input_c.checked) {
-            selected.push(input_c.name)
+            selected.push(input_c.name);
         }   
     }
-    return selected;
+    if (selected.length == 0) {
+        selected.push('empty');
+    }
+    return selected;    
 }
 
 function post_type() {

@@ -308,13 +308,15 @@ class Future extends Request {
         if ($this->is_post_request()):
             $sql = ["INSERT INTO `contents`(`post_url`, `post_title`, `post_subtitle`, `post_body`, `post_img`, `author_id`,
             `post_meta`, `post_keywords`, `post_type`, `post_status`, `post_visibility`) VALUES (:post_url, :post_title, :post_meta_title,
-            :post_body,:post_image, :author, :post_meta, :post_keywords, :post_type, :post_status, :post_visible)"];
+            :post_body,:post_image, :author, :post_meta, :post_keywords, :post_type, :post_status, :post_visible)",
+            "UPDATE `contents` SET `post_url`= :post_url,`post_title`= :post_title,`post_subtitle`=:post_meta_title,
+            `post_body`=:post_body,`post_img`=:post_image,`author_id`= :author, `post_meta`= :post_meta,
+            `post_keywords`= :post_keywords,`post_type`=:post_type,`post_status`= :post_status,`post_visibility`= :post_visible
+            WHERE `post_id` = :post_id"];
             //
-            $stmt = $this->db()->prepare($sql[0]);
-            //the url
             $url = $this->generate_url($_POST['post_title']);
-            if ($stmt) {
-                $stmt->execute(array(
+            //all entry
+            $basic = array(
                     ':post_url' => $url,
                     ':post_title' => $_POST['post_title'],
                     ':post_body' => $_POST['post_body'],
@@ -326,8 +328,20 @@ class Future extends Request {
                     ':post_type' => $_POST['post_type'],
                     ':post_status' => $_POST['post_status'],            
                     ':post_visible' => $_POST['post_visibility']
-                ));
-                if ($stmt->rowCount() == 1) {
+            );
+
+            if ($_POST['action'] == 'insert') {
+                $stmt = $this->db()->prepare($sql[0]);
+            }
+            elseif ($_POST['action'] == 'update') {
+                $basic[':post_id'] = $_POST['post_id'];
+                $stmt = $this->db()->prepare($sql[1]);
+                
+            }
+            //the url
+            
+            if ($stmt) {
+                if ($stmt->execute($basic)) {
                     //sending picked categories to db
                     $this->link_post_with_categories($url, $_POST['post_categories']);
                     //response to update the interface
@@ -337,6 +351,9 @@ class Future extends Request {
                         'meta_desc' => $this->meta_describe($_POST['post_meta_title'])
                     );
                     return json_encode($response);
+                }
+                else {
+                    return "Could not execute query!";
                 }
             }
 
@@ -362,12 +379,12 @@ class Future extends Request {
         $post_id = ($this->pull_content($url, true))->post_id;
 
         foreach ($categories as $category) {
-            $stmt->execute(
-                array(
-                    ':category_id' => $category,
-                    ':post_id' => $post_id 
-                )
-            );
+            if ($category != 'empty') {
+                $stmt->execute(array(':category_id' => $category,':post_id' => $post_id));
+            }
+            else {
+                continue;
+            }
         }
     }
 
