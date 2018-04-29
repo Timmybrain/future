@@ -18,21 +18,8 @@ class  Request
 
     function request_handler()
     {
-        $grab = !empty($_GET['url']) ? $_GET['url'] : "";
+        $grab = !empty($_GET['url']) ? $_GET['url'] : $_SERVER['REQUEST_URI'];
         $requested = $this->clean_request($grab);
-
-        //looking through the url in the browser
-        if (empty($requested) && !$this->index()) {
-            $option_url = $_SERVER['REQUEST_URI'];
-            //$option_url = str_replace("/Route/web.php", "", $option_url);
-            if (!empty($option_url)) {
-                $requested = $option_url;
-            }
-            else {
-                //do nothing
-                $requested = "/";
-            }
-        }
         //fancy way to handle comment and other front-end posting
         $exts = ["/post", ".php", ".html", ".htm", ".txt", ".md", ".doc", ".pdf"];
         foreach ($exts as $ext) {

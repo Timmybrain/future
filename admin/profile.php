@@ -20,7 +20,9 @@ $users = $future->fetch_authors();
 						<a href="index.html">Admin</a>
 						<i class="fa fa-angle-right"></i>
 						<span><?=$page_title?></span>
+						<button id="new_user_button" title="New User" type="button" class="btn btn-dark">New User</button>
 					</h2>
+					
 				</div>
 				
 				<div class="blank">
@@ -45,6 +47,13 @@ $users = $future->fetch_authors();
 				<!-- //blank-page -->
 			</div>
 		</div>
+		<script>
+		$(document).ready(function () { 
+			$("#new_user_button").click(function () { 
+				window.location.href = "./user-edit.php?user=new";
+			 });
+		 });
+		</script>
 		
 		<!-- footer -->
 		<?=$future->footer();?>

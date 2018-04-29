@@ -532,6 +532,9 @@ class Future extends Request {
             return $stmt->fetch();
         }
     }
+    function pull_user_levels() {
+        return $this->Select_All("SELECT * FROM `user_levels`", true, true);
+    }
     //fetch 1 author
     function fetch_author($id)
     {
@@ -558,6 +561,7 @@ class Future extends Request {
         $authors = $this->Select_All($sql, true, true);
         return $authors;
     }
+
     function notify()
     {
         foreach ($_COOKIE as $key => $value) {
@@ -723,23 +727,37 @@ class Future extends Request {
     function update_user_profile($id)
     {
         if ($this->is_post_request() && $_POST['password'] === $_POST['cpassword']) {
-            $sql = "UPDATE `authors` SET `author_email`= :email,`author_fname`= :fname,`author_lname`= :lname,`author_bio`= :mybio,`author_timezone`= :timezone,`author_password`= SHA(:pass) WHERE `author_id`= :id";
-            //stmt
-            $stmt = $this->db()->prepare($sql);
-            //
-            if ($stmt) {
-                $stmt->execute(
-                    array(
-                    ':email' => $_POST['email'],
-                    ':fname' => $_POST['fname'],
-                    'lname' => $_POST['lname'],
-                    ':mybio' => $_POST['mybio'],
-                    ':timezone' => $_POST['timezone'],
-                    ':pass' => $_POST['password'],
-                    ':id' => $id
-                ));
+            $sql = ["UPDATE `authors` SET `author_email`= :email,`author_fname`= :fname,
+            `author_lname`= :lname,`author_bio`= :mybio,`author_timezone`= :timezone,
+            `author_password` = SHA(:pass) WHERE `author_id`= :id",
+            "INSERT INTO `authors`(`author_email`, `author_nick`, `author_fname`, `author_lname`, 
+            `author_bio`, `authority`, `author_pic_url`, `author_timezone`, `author_password`) 
+            VALUES (:email, :nick, :fname, :lname, :mybio, :auth, :pic_url, :timezone, SHA(:pass))"];
+            
+            //the entry
+            $entry = array(
+                ':email' => $_POST['email'],
+                ':fname' => $_POST['fname'],
+                'lname' => $_POST['lname'],
+                ':mybio' => $_POST['mybio'],
+                ':timezone' => $_POST['timezone'],
+                ':pass' => $_POST['password']
+            );
 
-                if ($stmt->rowCount() === 1) {
+            if ($id == 'new') {
+                $stmt = $this->db()->prepare($sql[1]);
+                $entry[':nick'] = $_POST['username'];
+                $entry[':auth'] = $_POST['authority'];
+                $entry[':pic_url'] = $this->generate_image_url($_POST['pic_url']);
+            }
+            else {
+                $entry[':id'] = $id;
+                $stmt = $this->db()->prepare($sql[0]);
+            }
+            //if the $stmt is true
+            if ($stmt) {
+                $stmt->execute($entry);
+                if ($id != 'new' && $stmt->rowCount() === 1) {
                     return $_SESSION['author_data'] = $this->fetch_author($id);
                 }
             }
@@ -771,7 +789,13 @@ class Future extends Request {
     }
     function get_author_pic_url($id)
     {
-        return $this->fetch_author($id)->author_pic_url;
+        if ($id != 'new') {
+            return $this->fetch_author($id)->author_pic_url;
+        }
+        else {
+            return "future-logo.png";
+        }
+        
     }
 
     function admin_html_head($page_title = "Hello Future")
