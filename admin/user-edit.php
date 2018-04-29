@@ -7,7 +7,7 @@ $f->add_js('custom/js/upload.js')]);
 $app->admin_html_head($page_title);
 $app->admin_sidebar($page_title);
 $app->admin_nav_section();
-$nick = !empty($_GET['user']) ? $app->decrypt($_GET['user']) : $_SESSION['author_data']->author_nick;
+$nick = !empty($_GET['user']) ? $_GET['user'] : $_SESSION['author_data']->author_nick;
 $user = $future->fetch_author($nick);
 $id = $user->author_id;
 ?>

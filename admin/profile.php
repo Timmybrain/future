@@ -36,7 +36,7 @@ $users = $future->fetch_authors();
                                 <h5 class="mb-1"><?=$app->get_author_full_name($user->author_id)?> <small class="left"><?=$user->level_title?></small></h5>
                             </div>
                             <p class="mb-1"><?=$user->author_bio?></p>
-                            <small><a href="./user-edit.php?user=<?=$app->encrypt($user->author_email)?>">Edit Profile</a></small>
+                            <small><a href="./user-edit.php?user=<?=$user->author_nick?>">Edit Profile</a></small>
                             </li>
 
                             <?php

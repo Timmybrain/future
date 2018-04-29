@@ -41,7 +41,6 @@ $app->admin_nav_section();
               <img src="<?=$future->media . "images/photo.png"?>"  class="icon-choose-image" />
               <div class="icon-choose-image" >
               <input name="userImage" id="userImage" type="file" class="inputFile" onChange="showPreview(this);" />
-              <input name="current_edit_id" type="hidden" value="new" />
               </div>
             </div>
             <div>
@@ -186,14 +185,15 @@ $app->admin_nav_section();
           <div class="form-group">
             <label class="col-md-3 control-label">Username:</label>
             <div class="col-md-8">
-              <input name="username" class="form-control" type="text">
+              <input name="username" id="userName" class="form-control" type="text">
             </div>
           </div>
+          <input name="pic_url" type="hidden" id="hidden_image" value="">
           <div class="form-group">
             <label class="col-lg-3 control-label">Authority:</label>
             <div class="col-lg-8">
               <div class="ui-select">
-                <select name="authority" id="user_time_zone" class="form-control">
+                <select name="authority" class="form-control">
             <?php
             $levels = $f->pull_user_levels();
             foreach ($levels as $level) {
@@ -234,6 +234,16 @@ $app->admin_nav_section();
 				<!-- //blank-page -->
 			</div>
 		</div>
+
+    <script>
+    $(document).ready(function () {
+      $("#userName").click( function () {
+        var image = $("#post_image").attr('src');
+        $("input#hidden_image").val(image);
+        console.log(image);
+      });
+    });
+    </script>
 		
 		<!-- footer -->
     <?=$future->footer()?>
