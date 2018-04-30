@@ -234,14 +234,15 @@ class Future extends Request {
         </nav>';
 
     }
-    function fetch_comments($post = null)
+    function fetch_comments($post_id = null)
     {
-        if ($post == null) {
+        if ($post_id == null) {
             $sql = "SELECT * FROM `comments`";
             return $this->Select_All($sql, true, true);
         }
-        elseif (is_int($post)) {
-            $sql = "SELECT * FROM `comments` WHERE `post_id` = :id";
+        else {
+            $sql = "SELECT * FROM `comments` WHERE `post_id` = :id AND `comment_status` = 'approved'";
+            return $this->Select_All($sql, true, true, array(':id' => $post_id));
         }
 
     }
@@ -249,7 +250,7 @@ class Future extends Request {
     function new_comment($post_id)
     {
         if (!empty($_POST['commentor_email'])) {
-            $sql = "INSERT INTO `comments`(`post_id`, `commentor`, `commentor_email`, `commentor_phone`, `commentor_ip`, `comment_body`, `comment_status`) 
+            $sql = "INSERT INTO `comments` (`post_id`, `commentor`, `commentor_email`, `commentor_phone`, `commentor_ip`, `comment_body`) 
             VALUES (:post_id, :commentor, :com_email, :com_phone, :com_ip, :com_body)";
             $stmt = $this->db()->prepare($sql);
             if ($stmt) {
@@ -266,9 +267,10 @@ class Future extends Request {
                 return true;
             }
             else {
-                echo "failed!";
+                return false;
             }
         }
+
     }
 
     function bootstrap_blog_comment($post_id)
@@ -607,12 +609,17 @@ EOD;
     }
 
     //select All
-    private function Select_All($sql, $fetchAll = false, $object = false)
+    private function Select_All($sql, $fetchAll = false, $object = false, $entry = null)
     {
         $stmt = $this->db()->prepare($sql);
         //
         if ($stmt) {
-            $stmt->execute();
+            if ($entry === null) {
+                $stmt->execute();
+            }
+            else {
+                $stmt->execute($entry);
+            }
         }
         else {
             exit;

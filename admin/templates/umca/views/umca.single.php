@@ -6,6 +6,7 @@ $txt_month = $f->calender('short')[ intval($dateTime->format("m") - 1)];
 if ($f->is_post_request()) {
 	$f->new_comment($article->post_id);
 }
+$comments = $f->fetch_comments($article->post_id);
 require dirname(__DIR__) . "/includes/umca.header.php";
 ?>
 	<div class="main-container">
@@ -74,65 +75,31 @@ require dirname(__DIR__) . "/includes/umca.header.php";
 						<div id="comments" class="comments-area">
 							<h2 class="comments-title">Comments</h2>
 							<ol class="comment-list">
-								<li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1 parent">
-									<div class="comment-body">
-										<footer class="comment-meta">
-											<div class="comment-author vcard">
-												<img alt="img" src="<?=$future->theme_assets?>/images/male.jpg" class="avatar avatar-72 photo"/>
-												<b class="fn">Jesulayomi Omotosho</b>
-											</div>
-											<div class="comment-metadata">
-												<a href="#">Sep 20,2017</a>											
-											</div>
-										</footer>
-										<div class="comment-content">
-											<p>Blanaced diet for the spirit.</p>
-										</div>
-										<div class="reply">
-											<a rel="nofollow" class="comment-reply-link" href="#">Reply</a>
-										</div>
-									</div>
-									<ol class="children">
-										<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2 parent">
-											<div class="comment-body">
-												<footer class="comment-meta">
-													<div class="comment-author vcard">
-														<img alt="img" src="<?=$future->theme_assets?>/images/male.jpg" class="avatar avatar-72 photo"/>
-														<b class="fn">Ladejobi Blessing</b>
-													</div>
-													<div class="comment-metadata">
-														<a href="#">Sep 29,2017</a>											
-													</div>
-												</footer>
-												<div class="comment-content">
-													<p>Am richly blessed.</p>
-												</div>
-												<div class="reply">
-													<a rel="nofollow" class="comment-reply-link" href="#">Reply</a>
-												</div>
-											</div>
-										</li>
-									</ol>
-								</li>
+							<?php
+							foreach ($comments as $comment) {
+							?>
 								<li class="comment byuser comment-author-admin bypostauthor even thread-odd thread-alt depth-1">
 									<div class="comment-body">
 										<footer class="comment-meta">
 											<div class="comment-author vcard">
 												<img alt="img" src="<?=$future->theme_assets?>/images/female.png" class="avatar avatar-72 photo"/>
-												<b class="fn">Olosunde Busola</b>
+												<b class="fn"><?=$comment->commentor?></b>
 											</div>
 											<div class="comment-metadata">
-												<a href="#">Oct 20,2017</a>											
+												<a href="#"><?=$comment->comment_datetime?></a>											
 											</div>
 										</footer>
 										<div class="comment-content">
-											<p>The unmerited grace of God. Thanks for the words.</p>
+											<p><?=$comment->comment_body?></p>
 										</div>
 										<div class="reply">
 											<a rel="nofollow" class="comment-reply-link" href="#">Reply</a>
 										</div>
 									</div>
 								</li>
+								<?php
+							}
+							?>
 							</ol><!-- .comment-list -->
 							<!-- Comment Form -->
 							<div id="respond" class="comment-respond">
@@ -140,18 +107,18 @@ require dirname(__DIR__) . "/includes/umca.header.php";
 								<form method="post" action=".<?=$_SERVER['REQUEST_URI']?>" id="commentform" class="comment-form row">
 									<div class="col-md-5 col-xs-12">
 										<p class="comment-form-author">
-											<input id="author" name="commentor" placeholder="Name*" required="required" type="text" value="Timmy Brain"/>
+											<input id="author" name="commentor" placeholder="Name*" required="required" type="text"/>
 										</p>
 										<p class="comment-form-phone">
-											<input id="url" name="comment_phone" placeholder="Phone Number" type="text" value="+2348119933754" />
+											<input id="url" name="comment_phone" placeholder="Phone Number" type="text" />
 										</p>
 										<p class="comment-form-email">
-											<input id="email" name="commentor_email" placeholder="Email Id*" required="required" type="email" value="info@timmybrain.com"/>
+											<input id="email" name="commentor_email" placeholder="Email Id*" required="required" type="email"/>
 										</p>
 									</div>
 									<div class="col-md-5 col-xs-12">
 										<p class="comment-form-comment">
-											<textarea id="comment" name="comment_body" rows="8" placeholder="Message*" required="required">Anything goes...</textarea>
+											<textarea id="comment" name="comment_body" rows="8" placeholder="Message*" required="required"></textarea>
 										</p>
 									</div>
 									<div class="col-md-2 col-xs-12">
