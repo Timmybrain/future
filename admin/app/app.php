@@ -240,8 +240,8 @@ class Future extends Request {
             $sql = "SELECT * FROM `comments`";
             return $this->Select_All($sql, true, true);
         }
-        else {
-            
+        elseif (is_int($post)) {
+            $sql = "SELECT * FROM `comments` WHERE `post_id` = :id";
         }
 
     }

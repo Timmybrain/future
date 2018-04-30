@@ -59,7 +59,7 @@
 					<span class="icon-bar"></span>
 				</button>
 						<a class="navbar-brand" href="index.html">
-							<h1><span class="fa fa-book" aria-hidden="true"></span> Instruction <label>Education</label></h1>
+							<h1><span class="fa fa-book" aria-hidden="true"></span> WINNERS <label>Advanced Success Academy</label></h1>
 						</a>
 					</div>
 					<!--/.navbar-header-->
@@ -71,10 +71,14 @@
 								<li><a href="services.html" class="effect-3">Services</a></li>
 								<li><a href="gallery.html" class="effect-3">Gallery</a></li>
 								<li class="dropdown">
-									<a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">Pages <b class="caret"></b></a>
+									<a href="#" class="dropdown-toggle effect-3" data-toggle="dropdown">Programs <b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><a href="codes.html">Codes</a></li>
-										<li><a href="icons.html">Icons</a></li>
+										<li><a href="ijmb.html">IJMB</a></li>
+										<li><a href="jupeb.html">JUPEB</a></li>
+										<li><a href="nabteb.html">NABTEB</a></li>
+										<li><a href="sat.html">SAT</a></li>
+										<li><a href="tofel.html">TOFEL</a></li>
+										<li><a href="cambridge.html">CAMBRIDGE</a></li>
 									</ul>
 								</li>
 								<li><a href="contact.html" class="effect-3">Contact</a></li>
@@ -99,7 +103,7 @@
 			<div class="item active">
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>Graphic Work <span>Designing</span></h3>
+						<h3>Quality <span>Education</span></h3>
 						<p>Any successful career starts with good education. Together with us you will have deeper knowledge of the subjects</p>
 						<div class="agileits-button top_ban_agile">
 							<a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#myModal">Read More »</a>
@@ -110,8 +114,8 @@
 			<div class="item item2">
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>Financial Analyst <span>Course.</span></h3>
-						<p>Any successful career starts with good education. Together with us you will have deeper knowledge of the subjects</p>
+						<h3>Qualified <span>Lecturers.</span></h3>
+						<p>We get the best university lecturers and teaching experts to train our students!</p>
 						<div class="agileits-button top_ban_agile">
 							<a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#myModal">Read More »</a>
 						</div>
@@ -121,10 +125,10 @@
 			<div class="item item3">
 				<div class="container">
 					<div class="carousel-caption">
-						<h3>Digital Marketing  <span>Course.</span></h3>
-						<p>Any successful career starts with good education. Together with us you will have deeper knowledge of the subjects</p>
+						<h3>Unconventional Learning <span>Evironment</span></h3>
+						<p>We pride on creating winners in all field of life. We are aware of the differences per student, so we tweak the class per student for optimum results.</p>
 						<div class="agileits-button top_ban_agile">
-							<a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#myModal">Read More »</a>
+							<a class="btn btn-primary btn-lg" href="#" data-toggle="modal" data-target="#myModal">Check the Result »</a>
 						</div>
 					</div>
 				</div>
@@ -144,11 +148,11 @@
 		<!-- about -->
 	<div class="agile-about w3ls-section text-center" id="about">
 		<div class="container">
-		<h3 class="heading-agileinfo">Welcome To Education<span>When Climbing The Carrer Ladder</span></h3>
+		<h3 class="heading-agileinfo">Welcome To <?=$f->derive('site_title')?><span>When Climbing The Carrer Ladder</span></h3>
 			<div class="agileits-about-grid">
-				<p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, sunt in culpa qui officia
-					deserunt mollit anim id est laboth. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-					fugiat nulla pariatur sunt in culpa qui .</p>
+				<p>Since 2009, Winners Advanced Success Academy has been helping students win in all fields of life. 
+				We yearly produce scholars in all major universities in the country. 
+				Our students makes the best results out of their prestigious institutions and we are glad to help you too.</p>
 			</div>
 		</div>
 	</div>
@@ -159,27 +163,27 @@
 			<div class="w3-flex">
 			<div class="col-md-4 col-sm-4 col-xs-12 ab1 agileits-about-grid1">
 				<span class="fa fa-desktop" aria-hidden="true"></span>
-				<h4 class="agileinfo-head">Design Course</h4>
-				<h5>Fashion Design</h5>
+				<h4 class="agileinfo-head">Learn Better</h4>
+				<h5>IJMB</h5>
+				<p>G.</p>
+				<h5>JUPEB</h5>
 				<p>Ncididunt ut labore et t enim ad minim.</p>
-				<h5>Interior Design</h5>
-				<p>Ncididunt ut labore et t enim ad minim.</p>
-				<h5>Graphic Design</h5>
-				<p>Ncididunt ut labore et t enim ad minim.</p>
+				<h5>UTME</h5>
+				<p>We offer tutorial for the entrance examination to 100 level</p>
 			</div>
 			<div class="col-md-4 col-sm-4 ab1 agileits-about-grid2">
 				<span class="fa fa-arrows  wthree-title-list" aria-hidden="true"></span>
-				<h4 class="agileinfo-head">Marketing Course</h4>
-				<h5>Facebook Marketing</h5>
+				<h4 class="agileinfo-head">Secure Admission</h4>
+				<h5>IJMB</h5>
+				<p>Gain admission to 200 level of any course in university in Nigeria.</p>
+				<h5>JUPEB</h5>
 				<p>Ncididunt ut labore et t enim ad minim.</p>
-				<h5>YouTube Marketing</h5>
-				<p>Ncididunt ut labore et t enim ad minim.</p>
-				<h5>Twitter Marketing</h5>
-				<p>Ncididunt ut labore et t enim ad minim.</p>
+				<h5>UTME</h5>
+				<p>We offer tutorial for the entrance examination to 100 level</p>
 			</div>
 			<div class="col-md-4 col-sm-4 ab1 agileits-about-grid3">
 				<span class="fa fa-bar-chart  wthree-title-list" aria-hidden="true"></span>
-				<h4 class="agileinfo-head">Financial Course</h4>
+				<h4 class="agileinfo-head">Be Outstanding</h4>
 				<h5>Complexities of banking </h5>
 				<p>Ncididunt ut labore et t enim ad minim.</p>
 				<h5>Compliance regulations</h5>
@@ -199,25 +203,25 @@
 			<div class="col-md-3 w3layouts_stats_left w3_counter_grid">
 				<span class="fa fa-graduation-cap" aria-hidden="true"></span>
 				<h3>Graduates</h3>
-				<p class="counter">45</p>
+				<p class="counter">1231</p>
 				
 			</div>
 			<div class="col-md-3 w3layouts_stats_left w3_counter_grid1">
 				<span class="fa fa-user" aria-hidden="true"></span>
 				<h3>Certified Staff</h3>
-				<p class="counter">165</p>
+				<p class="counter">16</p>
 				
 			</div>
 			<div class="col-md-3 w3layouts_stats_left w3_counter_grid2">
 				<span class="fa fa-users" aria-hidden="true"></span>
-				<h3>Student</h3>
+				<h3>Curret Student</h3>
 				<p class="counter">563</p>
 				
 			</div>
 			<div class="col-md-3 w3layouts_stats_left w3_counter_grid3">
 				<span class="fa fa-trophy" aria-hidden="true"></span>
 				<h3>Awards</h3>
-				<p class="counter">245</p>
+				<p class="counter">12</p>
 				
 			</div>
 			<div class="clearfix"> </div>
@@ -465,7 +469,7 @@
 			<div class="col-md-4 footer_grid">
 				<h3>Contact Info</h3>
 				<ul class="address">
-					<li><i class="fa fa-map-marker" aria-hidden="true"></i>8088 USA, Honey block, <span>New York City.</span></li>
+					<li><i class="fa fa-map-marker" aria-hidden="true"></i><?=$f->derive('location')?></li>
 					<li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:<?=$future->derive('site_email')?>"><?=$future->derive('site_email')?></a></li>
 					<li><i class="fa fa-phone" aria-hidden="true"></i><a href="tel:<?=$future->derive('site_mobile')?>"><?=$future->derive('site_mobile')?></a></li>
 				</ul>
