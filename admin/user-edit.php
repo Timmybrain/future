@@ -2,12 +2,19 @@
 require "app/app.php";
 $page_title = "Edit Profile";
 $app->is_admin();
+$nick = !empty($_GET['user']) ? $_GET['user'] : $_SESSION['author_data']->author_nick;
+if (!$f->is_administrator() && !$f->is_account($nick)) {
+  setcookie("not_allowed", "only an <b>Administrator</b> can edit other users account!", time()+5);
+  header("Location: ./profile.php");
+  exit;
+}
+
 $app->add_script_to_head([$f->add_css('custom/css/upload.css'), $f->add_js("jquery-1.9.1.js", "http://code.jquery.com"),
 $f->add_js('custom/js/upload.js')]);
 $app->admin_html_head($page_title);
 $app->admin_sidebar($page_title);
 $app->admin_nav_section();
-$nick = !empty($_GET['user']) ? $_GET['user'] : $_SESSION['author_data']->author_nick;
+
 $user = $future->fetch_author($nick);
 $id = $user->author_id;
 ?>

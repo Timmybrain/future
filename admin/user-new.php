@@ -2,6 +2,15 @@
 require "app/app.php";
 $page_title = "New User";
 $app->is_admin();
+//if the attempt is not an administrator
+if (!$f->is_administrator()) {
+  setcookie("not_allowed", "only an <b>Administrator</b> can create new users!", time()+30);
+  header("Location: ./profile.php");
+  exit;
+}
+if ($f->is_post_request()) {
+  $future->update_user_profile("new");
+}
 $app->add_script_to_head([$f->add_css('custom/css/upload.css'), $f->add_js("jquery-1.9.1.js", "http://code.jquery.com"),
 $f->add_js('custom/js/upload.js')]);
 $app->admin_html_head($page_title);
@@ -53,19 +62,6 @@ $app->admin_nav_section();
       
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
-        <?php
-        if ($f->is_post_request()) {
-          if ($future->update_user_profile("new")) {
-          ?>
-          <div class="alert alert-success alert-dismissable">
-            <a class="panel-close close" data-dismiss="alert">×</a> 
-            <i class="fa fa-coffee"></i>
-            New account created! 
-          </div>
-          <?php
-          }
-        }
-        ?>
         <form action="<?=$_SERVER['PHP_SELF']?>" method="post" class="form-horizontal" role="form">
           <div class="form-group">
             <label class="col-lg-3 control-label">First name:</label>

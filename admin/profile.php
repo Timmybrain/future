@@ -12,6 +12,10 @@ if ( !empty($_GET['user']) && !empty($_GET['action'])) {
 	}
 }
 $users = $future->fetch_authors();
+if (!empty($_COOKIE['not_allowed'])) {
+	echo "<div class=\"alert alert-danger alert-dismissable\">
+	<a class=\"panel-close close\" data-dismiss=\"alert\">×</a>" . $_COOKIE['not_allowed'] ."</div>";
+}
 ?>
 <div class="main-grid">
 			<div class="agile-grids">	

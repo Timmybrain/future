@@ -606,20 +606,46 @@ EOD;
         }
     }
 
-    function delete_author($id)
+    function is_administrator()
     {
-        $sql = "DELETE FROM `authors` WHERE `author_id` = :id OR `author_email` = :id OR `author_nick` = :id";
-        $stmt = $this->db()->prepare($sql);
-        //
-        if ($stmt) {
-            if ($stmt->execute(array(':id' => $id))) {
-                return true;
-            }
-            else {
-                return false;
-            }
+        if ($_SESSION['author_data']->level_title === "administrator") {
+            return true;
+        }
+        else {
+            return false;
         }
     }
+
+    function is_account($nick)
+    {
+        if ($_SESSION['author_data']->author_nick == $nick || $_SESSION['author_data']->author_email == $nick ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    function delete_author($id)
+    {
+        if ($this->is_administrator()) {
+            $sql = "DELETE FROM `authors` WHERE `author_id` = :id OR `author_email` = :id OR `author_nick` = :id";
+            $stmt = $this->db()->prepare($sql);
+            //
+            if ($stmt) {
+                if ($stmt->execute(array(':id' => $id))) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+        else {
+            echo "<script>alert(\"You are unauthorized to perform this action!\")</script>";
+        }
+    }
+
     function pull_user_levels() {
         return $this->Select_All("SELECT * FROM `user_levels`", true, true);
     }
@@ -788,7 +814,9 @@ EOD;
 
         $redirect = !empty($_POST['redirect_to']) ? $_POST['redirect_to'] : "dashboard.php";
 
-        $sql = "SELECT * FROM `authors` 
+        $sql = "SELECT * FROM `authors`
+                LEFT JOIN `user_levels`
+                ON authors.authority = user_levels.level_auth
                 WHERE `author_email` = :username 
                 AND `author_password` = SHA(:passkey)
                 OR author_nick = :username 
