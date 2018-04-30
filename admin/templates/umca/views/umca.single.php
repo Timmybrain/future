@@ -3,6 +3,9 @@ $article = $future->pull_content($requested);
 $post_title = $article->post_title;
 $dateTime = DateTime::createFromFormat('Y-m-d h:i:s', $article->post_date);
 $txt_month = $f->calender('short')[ intval($dateTime->format("m") - 1)];
+if ($f->is_post_request()) {
+	$f->new_comment($article->post_id);
+}
 require dirname(__DIR__) . "/includes/umca.header.php";
 ?>
 	<div class="main-container">
@@ -134,21 +137,21 @@ require dirname(__DIR__) . "/includes/umca.header.php";
 							<!-- Comment Form -->
 							<div id="respond" class="comment-respond">
 								<h2 class="comment-reply-title">Write Comments</h2>
-								<form method="post" id="commentform" class="comment-form row">
+								<form method="post" action=".<?=$_SERVER['REQUEST_URI']?>" id="commentform" class="comment-form row">
 									<div class="col-md-5 col-xs-12">
 										<p class="comment-form-author">
-											<input id="author" name="author" placeholder="Name*" required="required" type="text"/>
+											<input id="author" name="commentor" placeholder="Name*" required="required" type="text" value="Timmy Brain"/>
 										</p>
 										<p class="comment-form-phone">
-											<input id="url" name="url" placeholder="Phone Number" type="text" />
+											<input id="url" name="comment_phone" placeholder="Phone Number" type="text" value="+2348119933754" />
 										</p>
 										<p class="comment-form-email">
-											<input id="email" name="email" placeholder="Email Id*" required="required" type="email"/>
+											<input id="email" name="commentor_email" placeholder="Email Id*" required="required" type="email" value="info@timmybrain.com"/>
 										</p>
 									</div>
 									<div class="col-md-5 col-xs-12">
 										<p class="comment-form-comment">
-											<textarea id="comment" name="comment" rows="8" placeholder="Message*" required="required"></textarea>
+											<textarea id="comment" name="comment_body" rows="8" placeholder="Message*" required="required">Anything goes...</textarea>
 										</p>
 									</div>
 									<div class="col-md-2 col-xs-12">

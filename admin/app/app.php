@@ -246,6 +246,31 @@ class Future extends Request {
 
     }
 
+    function new_comment($post_id)
+    {
+        if (!empty($_POST['commentor_email'])) {
+            $sql = "INSERT INTO `comments`(`post_id`, `commentor`, `commentor_email`, `commentor_phone`, `commentor_ip`, `comment_body`, `comment_status`) 
+            VALUES (:post_id, :commentor, :com_email, :com_phone, :com_ip, :com_body)";
+            $stmt = $this->db()->prepare($sql);
+            if ($stmt) {
+                $stmt->execute(array(
+                    ':post_id' => intval($post_id),
+                    ':commentor' => $_POST['commentor'],
+                    ':com_email' => $_POST['commentor_email'],
+                    ':com_phone' => $_POST['comment_phone'],
+                    ':com_ip' => $_SERVER['REMOTE_ADDR'],
+                    ':com_body' => $_POST['comment_body']
+                ));
+            }
+            if ($stmt->rowCount() == 1) {
+                return true;
+            }
+            else {
+                echo "failed!";
+            }
+        }
+    }
+
     function bootstrap_blog_comment($post_id)
     {
         $post_comments = $this->fetch_comments($post_id);

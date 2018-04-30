@@ -1,5 +1,6 @@
 <?php
 $blog = $future->pull_contents();
+$post_title = ucfirst($f->derive('blog_page'));
 $categories = $f->fetch_categories();
 require dirname(__DIR__) . "/includes/umca.header.php";
 ?>
