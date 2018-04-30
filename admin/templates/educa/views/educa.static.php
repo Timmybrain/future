@@ -164,32 +164,34 @@
 			<div class="col-md-4 col-sm-4 col-xs-12 ab1 agileits-about-grid1">
 				<span class="fa fa-desktop" aria-hidden="true"></span>
 				<h4 class="agileinfo-head">Learn Better</h4>
-				<h5>IJMB</h5>
-				<p>G.</p>
-				<h5>JUPEB</h5>
-				<p>Ncididunt ut labore et t enim ad minim.</p>
-				<h5>UTME</h5>
-				<p>We offer tutorial for the entrance examination to 100 level</p>
+				<h5>Customized Learning Experience</h5>
+				<p>You are unique and your learning experience should reflect your core strength.</p>
+				<h5>Serene Environment</h5>
+				<p>Learning is best in conducive environment, our facilities are well optimized for learning.</p>
+				<h5>Experienced Tutors</h5>
+				<p>We hire the best hands for the jobs. We simply select those who know and believe in the uniqueness in you and could help you attain greatness with it.</p>
 			</div>
 			<div class="col-md-4 col-sm-4 ab1 agileits-about-grid2">
 				<span class="fa fa-arrows  wthree-title-list" aria-hidden="true"></span>
 				<h4 class="agileinfo-head">Secure Admission</h4>
 				<h5>IJMB</h5>
-				<p>Gain admission to 200 level of any course in university in Nigeria.</p>
+				<p>Gain admission to 200 level of any course offered by universities in Nigeria.</p>
 				<h5>JUPEB</h5>
-				<p>Ncididunt ut labore et t enim ad minim.</p>
+				<p>Including Unilorin, secure admission to 200 level of <b>Western</b> universities in Nigeria.</p>
+				<h5>NABTEB</h5>
+				<p>Straight admission to 200 level in universities in  Nigeria.</p>
 				<h5>UTME</h5>
 				<p>We offer tutorial for the entrance examination to 100 level</p>
 			</div>
 			<div class="col-md-4 col-sm-4 ab1 agileits-about-grid3">
 				<span class="fa fa-bar-chart  wthree-title-list" aria-hidden="true"></span>
 				<h4 class="agileinfo-head">Be Outstanding</h4>
-				<h5>Complexities of banking </h5>
-				<p>Ncididunt ut labore et t enim ad minim.</p>
-				<h5>Compliance regulations</h5>
-				<p>Ncididunt ut labore et t enim ad minim.</p>
-				<h5>Finance products</h5>
-				<p>Ncididunt ut labore et t enim ad minim.</p>
+				<h5>Be the Scholar </h5>
+				<p>We produce scholars that beats up their peer in academic struggles. We frown at average students and help them become better. </p>
+				<h5>Top Your Class</h5>
+				<p>Having First Class is our target for you. We have many leading through as best graduating students.</p>
+				<h5>Realize Your Dreams</h5>
+				<p>It all comes to making the best out of life. You can be whatever you concieve!</p>
 			</div>
 			<div class="clearfix"></div>
 			</div>
@@ -214,7 +216,7 @@
 			</div>
 			<div class="col-md-3 w3layouts_stats_left w3_counter_grid2">
 				<span class="fa fa-users" aria-hidden="true"></span>
-				<h3>Curret Student</h3>
+				<h3>Current Students</h3>
 				<p class="counter">563</p>
 				
 			</div>
@@ -493,7 +495,7 @@
 	<div class="footer_w3ls">
 		<div class="container">
 					<div class="footer_bottom1">
-						<p>© <?=date('Y')?> Instruction. All rights reserved | Powered by <a href="http://fxnigeria.com">FutureX Media Inc.</a></p>
+						<p>© <?=date('Y') . " " . $f->derive('site_title')?>. All rights reserved | Powered by <a href="http://fxnigeria.com">FutureX Media Inc.</a></p>
 					</div>
 		</div>
 	</div>
