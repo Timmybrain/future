@@ -7,7 +7,7 @@ if ($stmt) {
     $stmt->execute(array(':post_id' => $post['post_id']));
 }
 $comments = $stmt->fetchAll();
-echo '<div class="card-panel">';
+echo '<div class="panel panel-primary"><div class="panel-heading">';
 if (count($comments) === 1) {
     echo "<h5>". count($comments) . " Thought on this post.</h5>";
 }
@@ -17,15 +17,15 @@ elseif (count($comments) >= 1) {
 else {
     echo "<h5>Be the first comment this post</h5>";
 }
-echo '</div>';
+echo '</div></div>';
 
 if (!empty($comments)) {
-    echo '<ul class="collection">';
+    echo '<ul class="list-group">';
     
     foreach ($comments as $comment) {
         $frame = <<<EOD
 
-        <li class="collection-item">
+        <li class="list-group-item">
         <h6>{$comment['commentor']}</h6>
         {$comment['comment_body']}
 
@@ -40,7 +40,7 @@ EOD;
 echo "</ul>";
 ?>
 <div class="card-panel medium">
-    <h3 class="black-text">Share Your Thought</h3>
+    <h3 class="text-dark">Share Your Thought</h3>
     <div class="row">
         <form method="post" action="/<?=$post['post_url']?>/post" class="col 12">
             <div class="input-field col s6">

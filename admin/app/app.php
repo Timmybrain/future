@@ -234,6 +234,79 @@ class Future extends Request {
         </nav>';
 
     }
+    function fetch_comments($post = null)
+    {
+        if ($post == null) {
+            $sql = "SELECT * FROM `comments`";
+            return $this->Select_All($sql, true, true);
+        }
+        else {
+            
+        }
+
+    }
+
+    function bootstrap_blog_comment($post_id)
+    {
+        $post_comments = $this->fetch_comments($post_id);
+        echo '<div class="panel panel-primary"><div class="panel-heading">';
+    if (count($post_comments) === 1) {
+        echo "<h5>One Thought on this post.</h5>";
+    }
+    elseif (count($comments) > 1) {
+        echo "<h5>". count($comments) . " Thoughts on this post.</h5>";
+    }
+    else {
+        echo "<h5>Be the first to comment on this post</h5>";
+    }
+    echo "</div></div>";
+
+    if (!empty($comments)) {
+        echo '<ul class="list-group">';
+        
+        foreach ($comments as $comment) {
+            $frame = <<<EOD
+
+            <li class="list-group-item">
+            <h6>{$comment->commentor}</h6>
+            {$comment->comment_body}
+
+            <span class="secondary-content">
+            {$comment->comment_datetime}
+            </span>
+            </li>
+EOD;
+            echo $frame;
+        }
+    }
+    echo "</ul>";
+    ?>
+    <div class="card-panel medium">
+        <h3 class="text-dark">Share Your Thought</h3>
+        <div class="row">
+            <form method="post" action="/<?=$post['post_url']?>/post" class="col 12">
+                <div class="input-field col s6">
+                    <input type="text" name="commentor">
+                    <label for="commentor">Name</label>
+                </div>
+
+                <div class="form-group col-s6">
+                    <input type="email" name="commentor_email">
+                    <label for="commentor">Email</label>
+                </div>
+
+                <div class="materialize_textarea col s12">
+                    <label for="comment_body">Your Thought</label>
+                    <textarea name="comment_body" rows="" cols="" class="validate"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Comment</button>
+            </form>
+        </div>
+    </div>
+    <?php
+    }
+
     function count_unread_comments(Type $var = null)
     {
         # code...
@@ -241,7 +314,7 @@ class Future extends Request {
 
     function total_comments(Type $var = null)
     {
-        
+        return count($this->fetch_comments());
     }
 
     private function set_traffic($requested)
@@ -532,6 +605,21 @@ class Future extends Request {
             return $stmt->fetch();
         }
     }
+
+    function delete_author($id)
+    {
+        $sql = "DELETE FROM `authors` WHERE `author_id` = :id OR `author_email` = :id OR `author_nick` = :id";
+        $stmt = $this->db()->prepare($sql);
+        //
+        if ($stmt) {
+            if ($stmt->execute(array(':id' => $id))) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
     function pull_user_levels() {
         return $this->Select_All("SELECT * FROM `user_levels`", true, true);
     }
@@ -816,8 +904,6 @@ class Future extends Request {
             <!-- //bootstrap-css -->
             <!-- Custom CSS -->
             <link href="{$this->assets}/colored/css/style.css" rel='stylesheet' type='text/css' />
-            <!-- font CSS -->
-            <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
             <!-- font-awesome icons -->
             <link rel="stylesheet" href="{$this->assets}/colored/css/font.css" type="text/css"/>
             <link href="{$this->assets}/colored/css/font-awesome.css" rel="stylesheet"> 

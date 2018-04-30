@@ -6,6 +6,11 @@ $app->add_script_to_head("<!-- Nothing for now! -->");
 $app->admin_html_head($page_title);
 $app->admin_sidebar($page_title);
 $app->admin_nav_section();
+if ( !empty($_GET['user']) && !empty($_GET['action'])) {
+	if ($_GET['action'] == "delete") {
+		$f->delete_author($_GET['user']);
+	}
+}
 $users = $future->fetch_authors();
 ?>
 <div class="main-grid">
@@ -36,7 +41,10 @@ $users = $future->fetch_authors();
                                 <h5 class="mb-1"><?=$app->get_author_full_name($user->author_id)?> <small class="left"><?=$user->level_title?></small></h5>
                             </div>
                             <p class="mb-1"><?=$user->author_bio?></p>
-                            <small><a href="./user-edit.php?user=<?=$user->author_nick?>">Edit Profile</a></small>
+							<div class="row container">
+								<small class="col-sm-2"><a href="./user-edit.php?user=<?=$user->author_nick?>">Edit Profile</a></small>
+								<small class="col-sm-2"><a href="./profile.php?user=<?=$user->author_nick?>&action=delete" class="text-danger">Delete</a></small>
+							</div>
                             </li>
 
                             <?php

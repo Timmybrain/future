@@ -26,7 +26,17 @@ $future->admin_nav_section();
 					<div class="blank-page">
 						<p>
 						<?php
-						require "includes/admin-comment-home.php";
+						$comments = $f->fetch_comments();
+						echo "<ul class=\"collection\">\n";
+
+						foreach ($comments as $comment) {
+							$frame = <<<EOD
+							<li class="collection-item">{$comment->comment_body}</li>\n
+EOD;
+
+						echo $frame;
+						}
+						echo "</ul>";
 						?>
 						</p>
 					</div>
