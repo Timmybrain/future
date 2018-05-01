@@ -1,0 +1,5 @@
+{
+    "require": {
+        "riesenia/cart": "^2.1"
+    }
+}

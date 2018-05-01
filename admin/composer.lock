@@ -1,0 +1,109 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "bc0a48c15104f4bc792028fbd5f443c0",
+    "packages": [
+        {
+            "name": "litipk/php-bignumbers",
+            "version": "0.8.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Litipk/php-bignumbers.git",
+                "reference": "9b90b3282b36d32a22b194481fd05567144b56e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Litipk/php-bignumbers/zipball/9b90b3282b36d32a22b194481fd05567144b56e8",
+                "reference": "9b90b3282b36d32a22b194481fd05567144b56e8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-bcmath": "*",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "^0.4",
+                "phpunit/phpunit": "~6.0",
+                "psy/psysh": "^0.8",
+                "squizlabs/php_codesniffer": "^2.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Litipk\\BigNumbers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrés Correa Casablanca",
+                    "email": "castarco@litipk.com"
+                }
+            ],
+            "description": "An opensource library to handle immutable big numbers inside PHP applications",
+            "keywords": [
+                "bcmath",
+                "bignum",
+                "decimal",
+                "gmp",
+                "number"
+            ],
+            "time": "2017-08-31T04:45:41+00:00"
+        },
+        {
+            "name": "riesenia/cart",
+            "version": "v2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/riesenia/cart.git",
+                "reference": "0f9bb98c0b7af86be1a347ed93721271c3bafea5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/riesenia/cart/zipball/0f9bb98c0b7af86be1a347ed93721271c3bafea5",
+                "reference": "0f9bb98c0b7af86be1a347ed93721271c3bafea5",
+                "shasum": ""
+            },
+            "require": {
+                "litipk/php-bignumbers": "~0.8",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~4.0",
+                "rshop/php-cs-fixer-config": "~1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Riesenia\\Cart\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tomas Saghy",
+                    "email": "segy@riesenia.com"
+                }
+            ],
+            "description": "PHP library providing shopping cart functionality",
+            "time": "2018-03-21T14:40:02+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
